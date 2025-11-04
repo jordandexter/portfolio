@@ -4,7 +4,7 @@ import { useState } from "react"
 import { MouseEvent } from "react"
 
 interface ImageCardProps {
-    path: string
+    src: string
 }
 
 interface Styles {
@@ -13,7 +13,7 @@ interface Styles {
 }
 
 export const ImageCard = ({
-    path
+    src
 }: ImageCardProps) => {
     const [coords, setCoords] = useState<Styles>({ x: -500, y: -500 })
 
@@ -33,7 +33,7 @@ export const ImageCard = ({
     }
 
     return (
-        <div className="flex rounded-2xl border-gray-500 border-1 overflow-hidden cursor-pointer relative transition-all duration-200 hover:border-gray-400"
+        <div className="flex rounded-2xl  overflow-hidden cursor-pointer relative transition-all duration-200"
             onMouseMove={handleSetStyles}
             onMouseLeave={handleMouseLeave}>
             <div className="absolute flex h-100 w-100" style={{
@@ -43,7 +43,7 @@ export const ImageCard = ({
                 top: `${coords.y}px`,
                 left: `${coords.x}px`,
             }}></div>
-            <Image src={path} alt={path} height={500} width={500} />
+            <Image src={src} alt={src} height={1000} width={350} />
         </div>
     )
 }
