@@ -19,8 +19,6 @@ export function Section({
     const [animationTrigger, setAnimationTrigger] = useState(false);
     const background = !variant ? 'bg-background-section' : variant === 'dark' ? 'bg-section-background-dark' : 'bg-section-background-darkest'
 
-
-
     useEffect(() => {
         if (!parentRef.current || !triggerRef.current) return;
 
