@@ -1,28 +1,60 @@
 'use client'
-import { useState } from "react"
+import { Lightbulb } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export function Header() {
-    const [displayMode, setDisplayMode] = useState<'light' | 'dark'>('dark')
+    const [displayMode, setDisplayMode] = useState<'light' | 'dark' | null>(null)
 
-    const handleModeChange = () => {
+    const getThemeCookie = () => {
+        return localStorage.getItem('theme-preference')
+    }
+
+    const setThemeCookie = (mode: 'light' | 'dark') => {
+        localStorage.setItem('theme-preference', mode)
+    }
+
+    const changeMode = (newMode: 'light' | 'dark') => {
         const body = document.getElementsByTagName('body')[0]
         if (!body) return;
 
-        if (displayMode === 'light') {
+        if (newMode === 'dark') {
             body.className = body.className + ' dark'
-            setDisplayMode('dark')
+            setThemeCookie('dark')
+
         }
         else {
             body.className = body.className.replace(' dark', '')
-            setDisplayMode('light')
+            setThemeCookie('light')
         }
     }
 
+    const handleModeChange = () => {
+        if (displayMode === 'dark')
+            setDisplayMode('light')
+        else
+            setDisplayMode('dark')
+    }
+
+    useEffect(() => {
+        const cookie = getThemeCookie()
+        if (cookie && (cookie === 'light' || cookie === 'dark'))
+            setDisplayMode(cookie)
+        else {
+            setDisplayMode('light')
+        }
+    }, [])
+
+
+    useEffect(() => {
+        if (displayMode)
+            changeMode(displayMode)
+    }, [displayMode])
+
     return (
-        <header className="absolute top-0 sticky flex w-full bg-transparent">
-            <button className="flex bg-gray-600 rounded-sm p-2 m-2" onClick={handleModeChange}>
-                {displayMode === 'light' ? 'Dark Mode' : 'Light Mode'}
+        <div className="absolute rounded-full top-0 h-12 flex w-full bg-transparent z-99999">
+            <button className="flex" onClick={handleModeChange}>
+                <Lightbulb className={`transition-all duration-200 rounded-full h-10 w-10 p-2 ${displayMode === 'light' ? 'text-black hover:bg-black/5' : 'text-white hover:bg-white/20'}`} />
             </button>
-        </header>
+        </div>
     )
 }

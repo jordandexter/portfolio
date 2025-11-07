@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-primary: oklch(0.616 0.174 261.5);
+
+  --color-background: oklch(0.900 0.000 89.9);
+  --color-foreground: oklch(0.20 0.000 89.9);
+
+  --color-section-background: oklch(1.000 0.000 89.9);
+  --color-section-background-dark: oklch(0.50 0.000 89.9);
+  --color-section-background-darkest: oklch(0.000 0.000 0.0);
+}
+
+.dark {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-primary: oklch(0.616 0.174 261.5);
+
+  --color-background: oklch(0% 0 0);
+  --color-foreground: oklch(0.80 0.000 89.9);
+
+  --color-section-background: oklch(28.066% 0.01646 285.272);
+  --color-section-background-dark: oklch(18.906% 0.01009 285.373);
+  --color-section-background-darkest: oklch(0% 0 0);
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+p {
+  font-size: 16px;
+}
+
+.fade-in {
+  opacity: 0;
+  translate: 0px 20px;
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-ball {
+  opacity: 0;
+  animation: fadeInBall 3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    translate: 0px 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInBall {
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-shift {
+  translate: 200px 20px;
+  animation: shiftLeft 10s ease forwards;
+}
+
+@keyframes shiftLeft {
+  to {
+    translate: 0px 0px;
+  }
+}

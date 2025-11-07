@@ -1,27 +1,57 @@
 @import "tailwindcss";
 
-:root {
-  --primary: hsl(199, 100%, 60%);
-  --background: hsl(0, 0, 0);
-  --foreground: hsl(0, 0%, 100%);
-}
+:root {}
 
-
-@theme inline {
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-primary: oklch(0.698 0.1038 228.79);
+  --color-primary-hover: oklch(0.60 0.1038 228.79);
+
+  --color-background: oklch(0.900 0.000 89.9);
+  --color-foreground: oklch(0.50 0.000 89.9);
+
+  --color-section-background: oklch(1.000 0.000 89.9);
+  --color-section-background-dark: oklch(0.95 0.000 89.9);
+  --color-section-background-darkest: oklch(0.9 0.000 89.9);
+
+  --hero-glow: oklch(0.859 0.075 228.7 / 0.34);
+  --color-tech-items: oklch(1.000 0.000 89.9);
 }
+
+.dark {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-primary: oklch(0.698 0.1038 228.79);
+  --color-primary-hover: oklch(0.60 0.1038 228.79);
+
+  --color-background: oklch(0% 0 0);
+  --color-foreground: oklch(63.542% 0.02382 285.667);
+
+  --color-section-background: oklch(28.066% 0.01646 285.272);
+  --color-section-background-dark: oklch(18.906% 0.01009 285.373);
+  --color-section-background-darkest: oklch(0% 0 0);
+
+  --hero-glow: oklch(100% 0.00011 271.152 / 0.11);
+  --color-tech-items: oklch(0.40 0.01009 285.373);
+}
+
 
 body {
-  background: var(--foreground);
-  color: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-foreground);
+  background: var(--color-background);
 }
 
-body.dark {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  cursor: pointer;
 }
 
 h1 {
@@ -31,8 +61,6 @@ h1 {
 
 h2 {
   font-size: 24px;
-  font-weight: 400;
-  color: rgb(192, 192, 192)
 }
 
 p {
@@ -41,11 +69,35 @@ p {
 
 .fade-in {
   opacity: 0;
+  translate: 0px 20px;
   animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-ball {
+  opacity: 0;
+  animation: fadeInBall 3s ease forwards;
 }
 
 @keyframes fadeIn {
   to {
+    translate: 0px 0px;
     opacity: 1;
+  }
+}
+
+@keyframes fadeInBall {
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-shift {
+  translate: 200px 20px;
+  animation: shiftLeft 10s ease forwards;
+}
+
+@keyframes shiftLeft {
+  to {
+    translate: 0px 0px;
   }
 }
