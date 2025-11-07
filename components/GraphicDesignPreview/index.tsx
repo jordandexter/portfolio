@@ -147,7 +147,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                                     }
                                 }}>
                                     <div className="flex max-w-[100%] max-h-[100%] rounded-[25px] overflow-hidden">
-                                        <img key={imagePath} className="object-cover" src={`/designs/${imagePath}`} />
+                                        <img key={imagePath} className="object-cover " src={`/designs/${imagePath}`} />
                                     </div>
                                 </div>
                             );
