@@ -33,7 +33,7 @@ export function HeroHeader({ scrollRef }: HeroHeaderProps) {
                         animationDuration: '1000ms',
                     }}>
                     <video className="object-fit"
-                        src="/IMG_9756.MOV"
+                        src="/IMG_9756.mp4"
                         autoPlay
                         muted
                         loop>
