@@ -38,7 +38,7 @@ export function Section({
     }, [parentRef, triggerRef])
 
     return (
-        <div className={`flex min-h-100 w-full justify-center items-center flex-col py-12 gap-6 relative ${background}`} >
+        <div className={`flex px-10 min-h-100 w-full justify-center items-center flex-col py-12 gap-6 relative ${background}`} >
             <div className="flex flex-col w-full max-w-[1500px] gap-10">
                 <div ref={triggerRef} data-section={heading} className="absolute flex w-full top-[50%]" />
                 <div className="overflow-y-visible min-h-[72px]">
