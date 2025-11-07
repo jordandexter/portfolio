@@ -40,8 +40,8 @@ export function Section({
     return (
         <div className={`flex min-h-100 w-full justify-center items-center flex-col py-12 gap-6 relative ${background}`} >
             <div className="flex flex-col w-full max-w-[1500px] gap-10">
-                <div ref={triggerRef} data-section={heading} className="absolute flex w-full top-[30%]" />
-                <div className="overflow-y-visible">
+                <div ref={triggerRef} data-section={heading} className="absolute flex w-full top-[50%]" />
+                <div className="overflow-y-visible min-h-[72px]">
                     {animationTrigger &&
                         <>
                             <h3 className="text-foreground fade-in">{subheading}</h3>
