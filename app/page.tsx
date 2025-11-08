@@ -5,6 +5,7 @@ import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
 import { Section } from "@/components/Section";
+import { BackgroundPreview } from "@/components/BackgroundPreview";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
@@ -79,10 +80,11 @@ export default function Home() {
 
 
               <Section
-                heading=""
-                subheading=""
+                heading="Background"
+                subheading="About"
                 parentRef={ref}
                 variant="darkest">
+                <BackgroundPreview scrollRef={ref} />
 
               </Section>
 
