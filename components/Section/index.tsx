@@ -36,14 +36,14 @@ export function Section({
     }, [parentRef, triggerRef])
 
     return (
-        <div className={`flex px-10 min-h-100 w-full justify-center items-center flex-col py-12 gap-6 relative ${background}`} >
-            <div className="flex flex-col w-full max-w-[1500px] gap-10">
+        <div className={`flex px-10 min-h-100 w-full justify-center items-center flex-col py-12 relative ${background}`} >
+            <div className="flex flex-col w-full max-w-[1500px]">
                 <div ref={triggerRef} data-section={heading} className="absolute flex w-full top-[50%]" />
-                <div className="overflow-y-visible min-h-[72px]">
+                <div className="flex flex-col justify-center items-center sm:justify-start sm:items-start overflow-y-visible">
                     {animationTrigger &&
                         <>
                             <h3 className="text-foreground fade-in">{subheading}</h3>
-                            <h1 className="flex text-5xl bg-clip-text text-transparent inline-block fade-in"
+                            <h1 className="flex text-3xl md:5xl bg-clip-text text-transparent inline-block fade-in"
                                 style={{
                                     animationDuration: '1000ms',
                                     animationDelay: '200ms',

@@ -21,7 +21,7 @@ export function HeroHeader({ scrollRef }: HeroHeaderProps) {
     const gradientScale = useTransform(scrollYProgress, [0, 0.05], [1, 2])
 
     return (
-        <motion.div className="sticky top-0 flex gap-10 flex-col md:flex-row h-screen w-full pt-15 overflow-hidden" style={{
+        <motion.div className="sticky top-0 z-0 flex gap-10 flex-col md:flex-row h-screen w-full pt-15" style={{
             opacity: opacityScale,
             scale: scaleScale,
             filter: blurScale && useTransform(blurScale, (b) => `blur(${b})`)

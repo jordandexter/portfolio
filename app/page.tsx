@@ -41,7 +41,8 @@ export default function Home() {
 
   return (
     <div className="flex justify-center font-sans relative">
-      <main ref={ref} className="flex flex-col w-full gap-8 items-center">
+      <main ref={ref} className="flex flex-col w-full gap-8 items-center border-2 border-red-400">
+
         {ref &&
           <>
             <HeroHeader scrollRef={ref} />
@@ -49,7 +50,6 @@ export default function Home() {
               style={{
                 boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'
               }}>
-
 
               <Section
                 heading="Recent Additions"

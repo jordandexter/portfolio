@@ -22,20 +22,20 @@ export function ProjectPreview({ scrollRef }: ProjectPreviewProps) {
     });
     const opacityScale = useTransform(scrollYProgress, [0.1, 0.2], [0.6, 1]);
 
-
-
     return (
         <motion.div className="flex flex-col md:flex-row gap-10 w-full"
             style={{
                 opacity: opacityScale,
             }}>
-            <motion.div className="flex min-h-[400px] md:w-[50%] max-h-[468px] bg-gray-200 overflow-hidden rounded-[25px] justify-center"
+            <motion.div className={`flex min-h-[400px] md:w-[50%] max-h-[468px] bg-background overflow-hidden rounded-[25px] justify-center relative`}
                 style={{
                     scale: opacityScale
                 }}>
-                {hoveredItem &&
-                    <img className="object-cover fade-in" src={hoveredItem.image}></img>
-                }
+                {projects.map((project) => {
+                    return (
+                        <img className={`${hoveredItem === project ? 'z-1 opacity-100' : 'z-0 opacity-0'} transition-all duration-300 absolute h-full w-full`} src={project.image}></img>
+                    )
+                })}
             </motion.div>
 
             <div className="flex flex-col md:w-[50%] border-t-1 border-foreground">

@@ -20,8 +20,8 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0.4, 0.55], ["0%", "100%"]);
-    const translateScale = useTransform(scrollYProgress, [0.4, 0.55], ["500px", "0px"]);
+    const opacityScale = useTransform(scrollYProgress, [0.4, 0.52], ["0%", "100%"]);
+    const translateScale = useTransform(scrollYProgress, [0.4, 0.52], ["200px", "0px"]);
 
     const handleFocusLeft = (spacesToMove: number) => {
         if (focusedImageIndex.current - spacesToMove < 0) {
@@ -133,7 +133,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
             }}>
             <div className="flex w-full justify-center">
 
-                <div className="flex h-80 w-80 md:h-150 md:w-150 lg:h-250 lg:w-250 relative">
+                <div className="flex w-150 md:w-150 lg:h-200 lg:w-200 relative">
                     <div id='carousel' className=" flex min-h-full flex-row flex-nowrap transition-all duration-1000 ease-in-out">
                         {designs.map((imagePath, index) => {
                             return (
