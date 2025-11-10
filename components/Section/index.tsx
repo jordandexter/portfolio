@@ -37,7 +37,7 @@ export function Section({
 
     return (
         <div className={`flex px-10 min-h-100 w-full justify-center items-center flex-col py-12 relative ${background}`} >
-            <div className="flex flex-col w-full max-w-[1500px]">
+            <div className="flex flex-col w-full max-w-[1500px] gap-6">
                 <div ref={triggerRef} data-section={heading} className="absolute flex w-full top-[50%]" />
                 <div className="flex flex-col justify-center items-center sm:justify-start sm:items-start overflow-y-visible">
                     {animationTrigger &&

@@ -9,43 +9,14 @@ import { BackgroundPreview } from "@/components/BackgroundPreview";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
-
-  const graphicDesignRef = useRef<HTMLDivElement>(null)
-
-  const [triggerGraphicDesign, setTriggerGraphicDesign] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (!ref.current
-      || !graphicDesignRef.current
-    ) return;
-
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(async (entry) => {
-          if (entry.isIntersecting) {
-
-            switch (entry.target.getAttribute("data-section")) {
-              case 'graphic-design':
-                setTriggerGraphicDesign(true)
-                break;
-              default:
-                break;
-            }
-          }
-        })
-      }
-    )
-
-    observer.observe(graphicDesignRef.current)
-  }, [graphicDesignRef])
+  const aboutSectionRef = useRef<HTMLDivElement>(null)
 
   return (
     <div className="flex justify-center font-sans relative">
       <main ref={ref} className="flex flex-col w-full gap-8 items-center border-2 border-red-400">
-
         {ref &&
           <>
-            <HeroHeader scrollRef={ref} />
+            <HeroHeader scrollRef={ref} aboutSectionRef={aboutSectionRef} />
             <div className="flex flex-col w-full z-1 bg-section-background rounded-t-[50px] overflow-hidden"
               style={{
                 boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'
@@ -84,7 +55,7 @@ export default function Home() {
                 subheading="About"
                 parentRef={ref}
                 variant="darkest">
-                <BackgroundPreview scrollRef={ref} />
+                <BackgroundPreview scrollRef={ref} backgroundPreviewRef={aboutSectionRef} />
 
               </Section>
 

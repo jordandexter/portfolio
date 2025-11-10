@@ -2,16 +2,18 @@ import { RefObject, useEffect } from "react";
 import { AnimatedParagraph } from "./AnimatedParagraph";
 interface BackgroundPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
+    backgroundPreviewRef: RefObject<HTMLDivElement | null>
 }
 
 export function BackgroundPreview({
-    scrollRef
+    scrollRef,
+    backgroundPreviewRef
 }: BackgroundPreviewProps) {
 
 
 
     return (
-        <div className="flex flex-col w-full items-center">
+        <div ref={backgroundPreviewRef} className="flex flex-col w-full items-center">
             <div className="flex flex-col w-full max-w-200">
                 <p className="flex w-full text-foreground items-start">By Jordan Dexter</p>
                 <p className="pb-4">Updated 11-7-2025</p>

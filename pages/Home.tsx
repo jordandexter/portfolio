@@ -6,10 +6,10 @@ const SHOW_CONTAINER_NAMES = false
 
 interface HeroHeaderProps {
     scrollRef: RefObject<HTMLDivElement | null>
+    aboutSectionRef: RefObject<HTMLDivElement | null>
 }
 
-export function HeroHeader({ scrollRef }: HeroHeaderProps) {
-
+export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
     const { scrollYProgress } = useScroll({
         target: scrollRef,
         offset: ["start start", "end start"]
@@ -19,6 +19,18 @@ export function HeroHeader({ scrollRef }: HeroHeaderProps) {
     const scaleScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.5]);
     const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "100px"])
     const gradientScale = useTransform(scrollYProgress, [0, 0.05], [1, 2])
+
+    const scrollToAbout = () => {
+        const body = document.getElementsByTagName('html')[0]
+        const aboutRef = aboutSectionRef.current
+
+        if (body && aboutSectionRef.current) {
+            body.scrollTo({
+                top: 3000,
+                behavior: 'smooth'
+            })
+        }
+    }
 
     return (
         <motion.div className="sticky top-0 z-0 flex gap-10 flex-col md:flex-row h-screen w-full pt-15" style={{
@@ -59,7 +71,8 @@ export function HeroHeader({ scrollRef }: HeroHeaderProps) {
                             animationDuration: '1000ms',
                             animationDelay: '600ms',
                         }}>
-                        <button className="flex bg-gray-500 transition-all duration-300 min-w-[150px] rounded-full text-gray-200 font-bold hover:bg-gray-600 hover:text-white">
+                        <button className="flex bg-gray-500 transition-all duration-300 min-w-[150px] rounded-full text-gray-200 font-bold hover:bg-gray-600 hover:text-white"
+                            onClick={() => { scrollToAbout() }}>
                             About
                         </button>
                         <button className="flex bg-primary transition-all duration-300 min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white">
