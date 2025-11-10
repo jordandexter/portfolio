@@ -37,23 +37,31 @@ export function Header() {
 
     useEffect(() => {
         const cookie = getThemeCookie()
-        if (cookie && (cookie === 'light' || cookie === 'dark'))
+
+        if (cookie && (cookie === 'light' || cookie === 'dark')) {
+            const body = document.getElementsByTagName('body')[0]
+
+            if (body) {
+                body.className = body.className.replace('hidden', '')
+            }
+
             setDisplayMode(cookie)
-        else {
+        } else {
             setDisplayMode('light')
         }
     }, [])
 
 
     useEffect(() => {
-        if (displayMode)
+        if (displayMode) {
             changeMode(displayMode)
+        }
     }, [displayMode])
 
     return (
         <div className="absolute rounded-full top-0 h-12 flex w-full bg-transparent z-99999">
             <button className="flex" onClick={handleModeChange}>
-                <Lightbulb className={`transition-all duration-200 rounded-full h-10 w-10 p-2 ${displayMode === 'light' ? 'text-black hover:bg-black/5' : 'text-white hover:bg-white/20'}`} />
+                <Lightbulb className={`transition-all duration-200 rounded-full h-10 w-10 p-2 text-foreground ${displayMode === 'light' ? 'hover:bg-black/10' : 'hover:bg-white/20'}`} />
             </button>
         </div>
     )

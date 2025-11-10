@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center font-sans relative">
-      <main ref={ref} className="flex flex-col w-full gap-8 items-center border-2 border-red-400">
+      <main ref={ref} className="flex flex-col w-full gap-8 items-center">
         {ref &&
           <>
             <HeroHeader scrollRef={ref} aboutSectionRef={aboutSectionRef} />
@@ -29,8 +29,6 @@ export default function Home() {
                 <ProjectPreview scrollRef={ref} />
               </Section>
 
-
-
               <Section
                 heading="Technologies"
                 subheading="Skillset"
@@ -38,8 +36,6 @@ export default function Home() {
                 variant='dark'>
                 <TechnologiesPreview scrollRef={ref} />
               </Section>
-
-
 
               <Section
                 heading="Graphic Design"
@@ -49,14 +45,12 @@ export default function Home() {
                 <GraphicDesignPreview scrollRef={ref} />
               </Section>
 
-
               <Section
                 heading="Background"
                 subheading="About"
                 parentRef={ref}
                 variant="darkest">
                 <BackgroundPreview scrollRef={ref} backgroundPreviewRef={aboutSectionRef} />
-
               </Section>
 
             </div>

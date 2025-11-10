@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 
@@ -16,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` flex bg-background flex-col min-w-[375px] relative antialiased`}
+        className={`flex bg-background flex-col min-w-[375px] relative antialiased hidden`}
       >
         <Header />
         {children}

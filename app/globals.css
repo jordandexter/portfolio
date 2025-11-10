@@ -39,6 +39,11 @@
 }
 
 
+html {
+  background: var(--color-background);
+}
+
+
 body {
   color: var(--color-foreground);
   background: var(--color-background);
@@ -58,8 +63,7 @@ h1 {
   font-weight: 700;
 }
 
-h2 {
-}
+h2 {}
 
 p {
   font-size: 16px;
