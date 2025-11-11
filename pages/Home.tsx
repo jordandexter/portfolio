@@ -52,7 +52,7 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
                     </video>
                 </div>
                 <div className="flex flex-col gap-1 justify-center items-center">
-                    <h2 className="fade-in" style={{
+                    <h2 className="fade-in text-xl" style={{
                         animationDuration: '1000ms',
                         animationDelay: '200ms'
                     }}>

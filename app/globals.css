@@ -10,7 +10,8 @@
   --color-primary-hover: oklch(0.60 0.1038 228.79);
 
   --color-background: oklch(0.900 0.000 89.9);
-  --color-foreground: oklch(0.50 0.000 89.9);
+  --color-foreground: oklch(0.65 0.000 89.9);
+  --color-foreground-emphasized: oklch(0 0.01009 285.373);
 
   --color-section-background: oklch(1.000 0.000 89.9);
   --color-section-background-dark: oklch(0.95 0.000 89.9);
@@ -18,6 +19,8 @@
 
   --hero-glow: oklch(0.859 0.075 228.7 / 0.34);
   --color-tech-items: oklch(1.000 0.000 89.9);
+  --color-contact-form-inputs: oklch(0.950 0.000 89.9);
+  --color-contact-form-background: oklch(0.60 0.01009 285.373);
 }
 
 .dark {
@@ -28,7 +31,8 @@
   --color-primary-hover: oklch(0.60 0.1038 228.79);
 
   --color-background: oklch(0% 0 0);
-  --color-foreground: oklch(63.542% 0.02382 285.667);
+  --color-foreground: oklch(0.63 0.02382 285.667);
+  --color-foreground-emphasized: oklch(100% 0.00011 271.152);
 
   --color-section-background: oklch(28.066% 0.01646 285.272);
   --color-section-background-dark: oklch(18.906% 0.01009 285.373);
@@ -36,6 +40,8 @@
 
   --hero-glow: oklch(100% 0.00011 271.152 / 0.11);
   --color-tech-items: oklch(0.40 0.01009 285.373);
+  --color-contact-form-inputs: oklch(.8 0.00006 271.152 / 0.151);
+  --color-contact-form-background: oklch(26.033% 0.00003 271.152 / 0.486);
 }
 
 

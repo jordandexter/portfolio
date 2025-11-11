@@ -1,5 +1,6 @@
 import { RefObject, useEffect } from "react";
 import { AnimatedParagraph } from "./AnimatedParagraph";
+import { SectionHeader } from "../Section/SectionHeader";
 interface BackgroundPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
     backgroundPreviewRef: RefObject<HTMLDivElement | null>
@@ -9,8 +10,6 @@ export function BackgroundPreview({
     scrollRef,
     backgroundPreviewRef
 }: BackgroundPreviewProps) {
-
-
 
     return (
         <div ref={backgroundPreviewRef} className="flex flex-col w-full items-center">
@@ -48,6 +47,12 @@ export function BackgroundPreview({
                         I became quite familiar with backend tools like Docker and Kubernetes, familiar enough to land my first industry
                         postion as a Junior SysAdmin for a local software company. However, my SysAdmin title didn't last long when I jumped
                         at the opportunity to resdesign their company website.
+                    </h2>
+                </AnimatedParagraph>
+
+                <AnimatedParagraph scrollRef={scrollRef}>
+                    <h2>
+                        From that moment forward, a career spent designing user experience was an effortless one.
                     </h2>
                 </AnimatedParagraph>
             </div>
