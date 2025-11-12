@@ -20,7 +20,7 @@ export function Section({
     const background = !variant ? 'bg-background-section' : variant === 'dark' ? 'bg-section-background-dark' : 'bg-section-background-darkest'
 
     return (
-        <div className={`flex px-10 min-h-100 w-full items-center flex-col py-12 relative ${background}`} >
+        <div className={`flex px-10 min-h-100 w-full max-w-[100vw] overflow-hidden items-center flex-col py-12 relative ${background}`} >
             <div className="flex flex-col w-full max-w-[1500px] gap-6">
                 <SectionHeader
                     heading={heading}

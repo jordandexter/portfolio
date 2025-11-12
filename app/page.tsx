@@ -5,6 +5,7 @@ import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
 import { Section } from "@/components/Section";
+import { StickySection } from "@/components/StickySection";
 import { BackgroundPreview } from "@/components/BackgroundPreview";
 import { ContactForm } from "@/components/ContactForm";
 import { StatisticsPreview } from "@/components/StatisticsPreview";
@@ -24,7 +25,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex justify-center font-sans relative">
+    <div className="flex justify-center font-sans">
       <main ref={ref} className="flex flex-col w-full gap-8 items-center">
         {projectModalOpen.open && projectModalOpen.project &&
           <ProjectModal project={projectModalOpen.project} onClose={() => setProjectModalOpen({ open: false, project: null })} />
@@ -32,7 +33,7 @@ export default function Home() {
         {ref &&
           <>
             <HeroHeader scrollRef={ref} aboutSectionRef={aboutSectionRef} />
-            <div className="flex flex-col w-full z-1 bg-section-background rounded-t-[50px] overflow-hidden"
+            <div className="flex flex-col w-full z-1 bg-section-background rounded-t-[50px]"
               style={{
                 boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'
               }}>
@@ -66,13 +67,13 @@ export default function Home() {
                 <GraphicDesignPreview scrollRef={ref} />
               </Section>
 
-              <Section
+              <StickySection
                 heading="Background"
                 subheading="About"
                 parentRef={ref}
                 variant="darkest">
                 <BackgroundPreview scrollRef={ref} backgroundPreviewRef={aboutSectionRef} />
-              </Section>
+              </StickySection>
 
               <Section
                 parentRef={ref}

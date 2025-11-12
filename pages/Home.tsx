@@ -16,14 +16,12 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
     });
 
     const opacityScale = useTransform(scrollYProgress, [0, 0.1], [1, 0.5]);
-    const scaleScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.5]);
-    const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "100px"])
-    const gradientScale = useTransform(scrollYProgress, [0, 0.05], [1, 2])
+    const scaleScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.0]);
+    const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "200px"])
+    const gradientScale = useTransform(scrollYProgress, [0, 0.05], ["0px", "-1-00px"])
 
     const scrollToAbout = () => {
         const body = document.getElementsByTagName('html')[0]
-        const aboutRef = aboutSectionRef.current
-
         if (body && aboutSectionRef.current) {
             body.scrollTo({
                 top: 3000,
@@ -33,14 +31,14 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
     }
 
     return (
-        <motion.div className="sticky top-0 z-0 flex gap-10 flex-col md:flex-row h-screen w-full pt-15" style={{
+        <motion.div className="sticky top-0 z-0 flex gap-10 flex-col md:flex-row md:h-screen h-[calc(100vh-155px)] w-full pt-15" style={{
             opacity: opacityScale,
             scale: scaleScale,
             filter: blurScale && useTransform(blurScale, (b) => `blur(${b})`)
         }}>
             {SHOW_CONTAINER_NAMES && <p className="absolute text-red-500 font-bold">container 1</p>}
             <div className="flex items-center justify-center flex-col flex-1 rounded-xl min-h-100 gap-8">
-                <div className="flex h-50 w-50 fade-in rounded-full bg-transparent overflow-hidden justify-center items-center"
+                <div className="flex  h-40 w-40 md:h-50 md:w-50 fade-in rounded-full bg-transparent overflow-hidden justify-center items-center"
                     style={{
                         animationDuration: '1000ms',
                     }}>
@@ -48,6 +46,7 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
                         src="/IMG_9756.mp4"
                         autoPlay
                         muted
+                        playsInline
                         loop>
                     </video>
                 </div>
@@ -82,12 +81,12 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
                 </div>
             </div>
 
+
             <motion.div
-                className="absolute w-[800px] h-[800px] bottom-[-550px] right-1/2 translate-x-1/2 rounded-full opacity-40 animate-pulse fade-in-ball"
+                className="absolute w-screen max-w-[800px] h-[800px] bottom-[-550px] right-1/2 translate-x-1/2 rounded-full opacity-40 animate-pulse fade-in-ball"
                 style={{
                     background: 'radial-gradient(circle, var(--hero-glow), #ffffff00)',
                     filter: 'blur(30px)',
-                    scale: gradientScale,
                     animationDelay: '1000ms'
                 }}
             />

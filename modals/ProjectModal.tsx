@@ -26,7 +26,10 @@ export const ProjectModal = ({
             />
             <div className="flex flex-col justify-between">
                 <div />
-                <img src={project.image} className="max-w-full rounded-tr-[25px] " />
+                <img src={project.image} className="max-w-full fade-in rounded-tr-[25px]"
+                    style={{
+                        animationDelay: '600ms'
+                    }} />
             </div>
             <div className="flex flex-col w-full gap-3 md:pt-45 p-12">
                 <SectionHeader

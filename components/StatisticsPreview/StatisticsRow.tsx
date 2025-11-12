@@ -1,6 +1,6 @@
 import { StatisticContent } from "./StatisticContent"
 import { Statistic } from "./types"
-import { useTransform, useScroll } from "framer-motion"
+import { useTransform, useScroll, motion } from "framer-motion"
 import { useState, useEffect, RefObject, useRef } from "react"
 
 interface StatisticRowProps {
@@ -17,28 +17,35 @@ export const StatisticsRow = ({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-    const transformScale = useTransform(scrollYProgress, [0.37, 0.42], [0, 500]);
+    const transformScale = useTransform(scrollYProgress, [0.24, 0.32], [500, 0]);
+    const opacityScale = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
 
     return (
         <div className="flex flex-col">
             <div className="flex flex-row flex-wrap md:flex-nowrap gap-3 w-full">
                 {stats.map((s, index) => {
-                    return (
-                        <div key={s.title} className="flex flex-1 p-0.5 md:w-fit rounded-[12px] transition-all duration-2000"
-                            style={{
-                                transform: `${index % 2 === 0 ? `${-1 * transformScale.get()}px` : `${transformScale}px`}`,
-                                backgroundImage: 'linear-gradient(to right, #59B5BD, #42a1e0ff, #0f576dff)',
-                            }}>
-                            <StatisticContent
-                                stat={s}
-                                animationTrigger={true}
-                            />
-                        </div>
-                    )
-                })}
+                    const translateX = useTransform(
+                        transformScale,
+                        (v) => (index % 2 === 0 ? v : -v)
+                    );
 
+                    return (
+                        <motion.div
+                            key={s.title}
+                            className="flex flex-1 p-0.5 md:w-fit rounded-[12px]"
+                            style={{
+                                translateX,
+                                opacity: opacityScale,
+                                backgroundImage:
+                                    "linear-gradient(to right, #59B5BD, #42a1e0ff, #0f576dff)",
+                            }}
+                        >
+                            <StatisticContent stat={s} animationTrigger={true} />
+                        </motion.div>
+                    );
+                })}
             </div>
             <div ref={triggerRef} className="flex w-full" />
         </div>
-    )
+    );
 }

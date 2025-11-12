@@ -24,8 +24,8 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0.37, 0.42], ["0%", "100%"]);
-    const translateScale = useTransform(scrollYProgress, [0.37, 0.42], ["200px", "0px"]);
+    const opacityScale = useTransform(scrollYProgress, [0.37, 0.395], ["0%", "100%"]);
+    const translateScale = useTransform(scrollYProgress, [0.37, 0.395], ["200px", "0px"]);
 
     const handleFocusLeft = (spacesToMove: number) => {
         if (focusedImageIndex.current - spacesToMove < 0) {
@@ -151,10 +151,13 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                 {animationTrigger &&
                     <h1 className=" flex flex-col w-[100%] justify-center text-center text-xl max-w-[500px] fade-in"
                         style={{
-                            animationDelay: '600ms'
+                            animationDelay: '600ms',
+                            display: 'inline'
                         }}>
-                        <span className="text-foreground-emphasized">Beautiful websites 25+ years in the making.</span> Elegant, visually appealing
-                        designs have been a lifelong hobby.
+                        <span className="text-foreground-emphasized inline">
+                            Beautiful websites 25+ years in the making.
+                        </span>{" "}
+                        Elegant, visually appealing designs have been a lifelong hobby.
                     </h1>
                 }
             </div>
@@ -228,7 +231,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                             </div>
                         </div>
                     </div>
-                    <div className={`flex justify-start w-full h-1 ${isPlaying ? 'bg-foreground/50' : ''}`}>
+                    <div className={`flex justify-start w-full h-1 ${isPlaying ? 'bg-foreground/50' : ''} rounded-full overflow-hiddenx`}>
                         <div className="flex h-1 bg-white"
                             style={{
                                 width: `${Math.round((focusDurationElapsed / FOCUS_DURATION) * 100)}%`

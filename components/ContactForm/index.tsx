@@ -36,7 +36,6 @@ export function ContactForm({
                 entries.forEach(async (entry) => {
                     if (entry.isIntersecting) {
                         setAnimationTrigger(true)
-                        console.log('here')
                     }
                 })
             }

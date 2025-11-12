@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect, useState, useRef } from "react";
 import { AnimatedParagraph } from "./AnimatedParagraph";
 import { SectionHeader } from "../Section/SectionHeader";
 interface BackgroundPreviewProps {
@@ -10,6 +10,24 @@ export function BackgroundPreview({
     scrollRef,
     backgroundPreviewRef
 }: BackgroundPreviewProps) {
+    const [animationTrigger, setAnimationTrigger] = useState(false);
+    const triggerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (!scrollRef.current || !triggerRef.current) return;
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(async (entry) => {
+                    if (entry.isIntersecting) {
+                        setAnimationTrigger(true)
+                    }
+                })
+            }
+        )
+
+        observer.observe(triggerRef.current)
+    }, [triggerRef, scrollRef])
 
     return (
         <div ref={backgroundPreviewRef} className="flex flex-col w-full items-center">
@@ -18,7 +36,7 @@ export function BackgroundPreview({
                 <p className="pb-4">Updated 11-7-2025</p>
 
                 <AnimatedParagraph scrollRef={scrollRef}>
-                    <h2>
+                    <h2 className="text-white font-bold text-xl px-12">
                         Since I could first pick up a pencil, I wanted to be an artist. Little did I know that
                         the medium I would eventually come to love most was not crayons or colored pencils, but instead pixels
                         and programming languages.
@@ -26,7 +44,8 @@ export function BackgroundPreview({
                 </AnimatedParagraph>
 
                 <AnimatedParagraph scrollRef={scrollRef}>
-                    <h2>
+
+                    <h2 className="text-white font-bold text-xl px-12">
                         My computer savvy older brother introduced me to Unix and web development quite young, around nine years
                         old. We would <s style={{ textDecoration: 'linethrough' }}>pirate</s> borrow filehosting software to store/share games
                         and movies on our local network, tweaking {`(or attempted to tweak)`} the software as necessary to fit our needs.
@@ -34,7 +53,8 @@ export function BackgroundPreview({
                 </AnimatedParagraph>
 
                 <AnimatedParagraph scrollRef={scrollRef}>
-                    <h2>
+
+                    <h2 className="text-white font-bold text-xl px-12">
                         As I grew older and DevOps was all the rage at the time, I was influenced by my peers enough to pursue a
                         career in networking as a DevOps engineer, a more pragmatic alternative to pure artistry. This choice
                         greatly dictated my course-load throughout highschool and college which heavily emphisized cloud-based networking,
@@ -43,7 +63,7 @@ export function BackgroundPreview({
                 </AnimatedParagraph>
 
                 <AnimatedParagraph scrollRef={scrollRef}>
-                    <h2>
+                    <h2 className="text-white font-bold text-xl px-12">
                         I became quite familiar with backend tools like Docker and Kubernetes, familiar enough to land my first industry
                         postion as a Junior SysAdmin for a local software company. However, my SysAdmin title didn't last long when I jumped
                         at the opportunity to resdesign their company website.
@@ -51,7 +71,7 @@ export function BackgroundPreview({
                 </AnimatedParagraph>
 
                 <AnimatedParagraph scrollRef={scrollRef}>
-                    <h2>
+                    <h2 className="text-white font-bold text-xl px-12">
                         From that moment forward, a career spent designing user experience was an effortless one.
                     </h2>
                 </AnimatedParagraph>

@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex bg-background flex-col min-w-[375px] relative antialiased hidden`}
+        className={`flex bg-background flex-col min-w-[375px] antialiased hidden`}
       >
         <Header />
         {children}

@@ -5,7 +5,7 @@ export const projects: Project[] = [
     {
         name: "LFG.TV",
         subtitle: "Web Design",
-        image: '/lfg/lfg-1.png',
+        image: '/lfg/lfg-1.jpeg',
         description: `The LFGTV project is my most prized project to date. The inital concept was
         a DJ specific livestreaming platform built in response to Twitch's growing concerns
         over copywritten music being played on air leading them to severly restrict what, when,
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     {
         name: "Carolyn",
         subtitle: "Full stack",
-        image: '/carolyn/carolyn-1.png'
+        image: '/carolyn/carolyn-1.jpeg'
     },
     {
         name: "Menu Mingle",

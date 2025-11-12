@@ -41,15 +41,15 @@ export function TechnologiesPreview({
                     style={{
                         animationDelay: '600ms'
                     }}>
-                    <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With my formal training in network infrastructre and DevOps, I not only
-                    implement your application, but gaurentee performance and longevity.
+                    <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With my formal training in network infrastructure and DevOps, I not only
+                    implement your application, but guarantee performance and longevity.
                 </h2>
             }
 
             <div ref={triggerRef} className="flex w-full" />
 
             <h1 className="text-primary">Frontend</h1>
-            <div className="flex flex-row gap-2 w-full">
+            <div className="flex flex-row gap-2 w-full relative">
                 <TechnologiesSlider scrollRef={scrollRef} items={tools.filter((tools) => tools.type === 'frontend')} />
             </div>
 
