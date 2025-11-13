@@ -20,8 +20,8 @@ export function ProjectPreview({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0.0, 0.1], [0, 1]);
-    const opacityScaleItems = useTransform(scrollYProgress, [0.0, 0.15], [0.0, 1]);
+    const opacityScale = useTransform(scrollYProgress, [0.0, 0.09], [0, 1]);
+    const opacityScaleItems = useTransform(scrollYProgress, [0.0, 0.09], [0.0, 1]);
 
     const [animationTrigger, setAnimationTrigger] = useState(false);
     const triggerRef = useRef<HTMLDivElement>(null)

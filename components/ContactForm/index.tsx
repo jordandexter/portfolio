@@ -45,7 +45,7 @@ export function ContactForm({
     }, [triggerRef, scrollRef])
 
     return (
-        <div className={`flex w-full justify-center items-center flex-col gap-12`}>
+        <div className={`flex w-full h-screen justify-center items-center flex-col gap-12`}>
             <div className={`flex justify-center items-center ${animationTrigger ? ' h-150 px-6 py-0 overflow-hidden' : ' px-6 py-0 h-0 max-h-0 overflow-hidden'} flex-col w-full max-w-150 transition-all bg-section-background rounded-[25px] gap-4`}
                 style={{
                     transitionDuration: '3000ms'

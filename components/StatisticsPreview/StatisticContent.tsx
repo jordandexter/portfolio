@@ -40,10 +40,10 @@ export const StatisticContent = ({
     return (
         <div className="flex w-full justify-between flex-col bg-section-background p-6 rounded-[10px]">
             <h1 className="inline-block text-3xl">{stat.title}</h1>
-            <h1 className="inline-block text-transparent bg-clip-text text-5xl"
+            <h1 className="flex items-center text-transparent bg-clip-text text-5xl"
                 style={{
                     backgroundImage: 'linear-gradient(45deg, #59B5BD, #42a1e0ff, #0f576dff)',
-                }}>{value} {stat.metric}</h1>
+                }}><span className="-translate-y-1">{value} {stat.metric}</span></h1>
         </div>
     )
 }
