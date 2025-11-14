@@ -23,8 +23,8 @@ export const StatisticsRow = ({
     const transformScale = useTransform(scrollYProgress, [0.24, 0.29], [500, 0]);
     const opacityScale = useTransform(scrollYProgress, [0.24, 0.29], [0, 1]);
 
-    const transformScaleMobile = useTransform(scrollYProgress, [0.15, 0.33], [500, 0]);
-    const opacityScaleMobile = useTransform(scrollYProgress, [0.15, 0.33], [0, 1]);
+    const transformScaleMobile = useTransform(scrollYProgress, [0.15, 0.30], [500, 0]);
+    const opacityScaleMobile = useTransform(scrollYProgress, [0.15, 0.3], [0, 1]);
 
     return (
         <div className="flex flex-col">

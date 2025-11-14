@@ -27,9 +27,9 @@ export function StickySection({
     const opacity = useTransform(scrollYProgress, [0.35, 0.55, 0.8, 1], [0, 1, 1, 0]);
     const rounded = useTransform(scrollYProgress, [0.35, 0.55, 0.763, 1], ["500px", "0px", "0px", "500px"]);
 
-    const scaleMobile = useTransform(scrollYProgress, [0.35, 0.48, 0.71, 1], [0, 1, 1, 0]);
-    const opacityMobile = useTransform(scrollYProgress, [0.35, 0.48, 0.71, 1], [0, 1, 1, 0]);
-    const roundedMobile = useTransform(scrollYProgress, [0.35, 0.48, 0.71, 1], ["500px", "0px", "0px", "500px"]);
+    const scaleMobile = useTransform(scrollYProgress, [0.35, 0.524, 0.8, 1], [0, 1, 1, 0]);
+    const opacityMobile = useTransform(scrollYProgress, [0.35, 0.5, 0.8, 1], [0, 1, 1, 0]);
+    const roundedMobile = useTransform(scrollYProgress, [0.35, 0.52, 0.8, 1], ["500px", "0px", "0px", "500px"]);
 
     return (
         <div className={`flex  h-[400vh] md:h-[280vh] min-h-100 w-full relative flex-col ${background}`} >

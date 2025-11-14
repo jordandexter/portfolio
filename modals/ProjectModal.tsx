@@ -54,9 +54,9 @@ export const ProjectModal = ({
                     parentRef={ref}
                 />
 
-                {project.description?.split('\n\n').map((paragraph) => {
+                {project.description?.split('\n\n').map((paragraph, index) => {
                     return (
-                        <h2 className="text-xl md:text-3xl">{paragraph}</h2>
+                        <h2 key={index} className="text-xl md:text-3xl">{paragraph}</h2>
                     )
                 })}
             </div>

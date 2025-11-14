@@ -27,10 +27,8 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
     const opacityScale = useTransform(scrollYProgress, [0.33, 0.395], ["0%", "100%"]);
     const translateScale = useTransform(scrollYProgress, [0.33, 0.395], ["200px", "0px"]);
 
-    const opacityScaleMobile = useTransform(scrollYProgress, [0.3, 0.37], ["0%", "100%"]);
-    const translateScaleMobile = useTransform(scrollYProgress, [0.35, 0.37], ["200px", "0px"]);
-
-
+    const opacityScaleMobile = useTransform(scrollYProgress, [0.39, 0.43], ["0%", "100%"]);
+    const translateScaleMobile = useTransform(scrollYProgress, [0.39, 0.43], ["200px", "0px"]);
 
     const getCarouselContainer = () => {
 

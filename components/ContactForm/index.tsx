@@ -45,8 +45,11 @@ export function ContactForm({
     }, [triggerRef, scrollRef])
 
     return (
-        <div className={`flex w-full justify-center items-center flex-col gap-12`}>
-            <div className={`flex justify-center items-center ${animationTrigger ? ' h-150 px-6 py-0 overflow-hidden' : ' px-6 py-0 h-0 max-h-0 overflow-hidden'} flex-col w-full max-w-150 transition-all bg-section-background rounded-[25px] gap-4`}
+        <div className={`flex w-full justify-center items-center flex-col gap-12`}
+            style={{
+                minHeight: '100dvh'
+            }}>
+            <div className={`flex justify-center items-center ${animationTrigger ? 'h-150 md:h-170 px-6 py-10 overflow-hidden' : ' px-6 py-0 h-0 max-h-0 overflow-hidden'} flex-col w-full max-w-150 transition-all bg-section-background rounded-[25px] gap-1 md:gap-4`}
                 style={{
                     transitionDuration: '3000ms'
                 }}>
@@ -93,6 +96,7 @@ export function ContactForm({
 
                     }}
                 />
+
                 <div className="flex w-full flex-col gap-2">
                     <p>Message</p>
                     <textarea
@@ -109,7 +113,7 @@ export function ContactForm({
                 </div>
 
 
-                <button className="flex max-w-100 bg-primary transition-all duration-300 min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white">
+                <button className="flex mt-5 md:mt-0 max-w-100 bg-primary transition-all duration-300 min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white">
                     Submit
                 </button>
             </div>
