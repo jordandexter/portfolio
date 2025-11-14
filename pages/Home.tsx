@@ -9,7 +9,7 @@ interface HeroHeaderProps {
     aboutSectionRef: RefObject<HTMLDivElement | null>
 }
 
-export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
+export default function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
     const { scrollYProgress } = useScroll({
         target: scrollRef,
         offset: ["start start", "end start"]
@@ -21,11 +21,14 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
 
     const scrollToAbout = () => {
         const body = document.getElementsByTagName('html')[0]
-        if (body && aboutSectionRef.current) {
-            body.scrollTo({
-                top: 3000,
-                behavior: 'smooth'
-            })
+        if (aboutSectionRef.current) {
+            const top = aboutSectionRef.current.getBoundingClientRect().top + window.pageYOffset;
+            if (body && aboutSectionRef.current) {
+                body.scrollTo({
+                    top: top - 100,
+                    behavior: 'smooth'
+                })
+            }
         }
     }
 

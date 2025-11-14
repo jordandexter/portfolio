@@ -1,5 +1,5 @@
 'use client'
-import { HeroHeader } from "@/pages/Home";
+import HeroHeader from "@/pages/Home";
 import { useEffect, useRef, useState } from "react";
 import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"

@@ -122,6 +122,7 @@ export function ContactForm({
                         return (
                             <a className="flex flex-col gap-1 justify-center items-center"
                                 href={social.link}
+                                key={social.name}
                                 target="__blank"
                                 onMouseEnter={() => setHoveredSocial(social)}
                                 onMouseLeave={() => setHoveredSocial(null)}>

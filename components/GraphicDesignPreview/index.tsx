@@ -292,7 +292,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                             </div>
                         </div>
                     </div>
-                    <div className={`flex justify-start w-full h-1 ${isPlaying ? 'bg-foreground/50' : ''} rounded-full overflow-hiddenx`}>
+                    <div className={`flex justify-start w-full h-1 ${isPlaying ? 'bg-foreground/50' : ''} rounded-full overflow-hidden`}>
                         <div className="flex h-1 bg-white"
                             style={{
                                 width: `${Math.round((focusDurationElapsed / FOCUS_DURATION) * 100)}%`

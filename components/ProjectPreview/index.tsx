@@ -74,7 +74,7 @@ export function ProjectPreview({
                     }}>
                     {showImage && shownProject.map((project) => {
                         return (
-                            <img className={`${hoveredItem === project ? 'z-1 opacity-100' : 'z-0 opacity-0'} object-cover transition-all duration-300 absolute h-full w-full`} src={project.image}></img>
+                            <img key={project.image} className={`${hoveredItem === project ? 'z-1 opacity-100' : 'z-0 opacity-0'} object-cover transition-all duration-300 absolute h-full w-full`} src={project.image}></img>
                         )
                     })}
                 </motion.div>
