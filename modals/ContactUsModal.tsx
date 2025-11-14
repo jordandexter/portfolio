@@ -22,6 +22,7 @@ export const ContactUsModal = ({
         message: ""
     })
     const [animationTrigger, setAnimationTrigger] = useState(false);
+
     const [hoveredSocial, setHoveredSocial] = useState<SocialLink | null>(null)
     const triggerRef = useRef<HTMLDivElement>(null)
 
