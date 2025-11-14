@@ -18,7 +18,6 @@ export function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
     const opacityScale = useTransform(scrollYProgress, [0, 0.1], [1, 0.5]);
     const scaleScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.0]);
     const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "200px"])
-    const gradientScale = useTransform(scrollYProgress, [0, 0.05], ["0px", "-1-00px"])
 
     const scrollToAbout = () => {
         const body = document.getElementsByTagName('html')[0]

@@ -17,7 +17,7 @@
   --color-section-background-dark: oklch(0.95 0.000 89.9);
   --color-section-background-darkest: oklch(0.9 0.000 89.9);
 
-  --hero-glow: oklch(0.859 0.075 228.7 / 0.34);
+  --hero-glow: oklch(0.859 0.075 228.7 / 0.2);
   --color-tech-items: oklch(1.000 0.000 89.9);
   --color-contact-form-inputs: oklch(0.950 0.000 89.9);
   --color-contact-form-background: oklch(0.60 0.01009 285.373);

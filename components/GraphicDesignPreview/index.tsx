@@ -27,21 +27,20 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
     const opacityScale = useTransform(scrollYProgress, [0.33, 0.395], ["0%", "100%"]);
     const translateScale = useTransform(scrollYProgress, [0.33, 0.395], ["200px", "0px"]);
 
-    const opacityScaleMobile = useTransform(scrollYProgress, [0.3, 0.38], ["0%", "100%"]);
-    const translateScaleMobile = useTransform(scrollYProgress, [0.35, 0.38], ["200px", "0px"]);
+    const opacityScaleMobile = useTransform(scrollYProgress, [0.3, 0.37], ["0%", "100%"]);
+    const translateScaleMobile = useTransform(scrollYProgress, [0.35, 0.37], ["200px", "0px"]);
 
 
 
     const getCarouselContainer = () => {
-        const carouselContainer = document.getElementById('carousel');
-        const carouselContainerMobile = document.getElementById('carousel-mobile');
 
-        if (carouselContainer)
-            return carouselContainer;
-        if (carouselContainerMobile)
+        if (window.innerWidth <= 767) {
+            const carouselContainerMobile = document.getElementById('carousel-mobile');
             return carouselContainerMobile;
-
-        return null
+        } else {
+            const carouselContainer = document.getElementById('carousel');
+            return carouselContainer
+        }
     }
 
     const handleFocusLeft = (spacesToMove: number) => {
@@ -51,6 +50,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         }
         setOffset((prev) => {
             const carouselContainer = getCarouselContainer()
+            console.log(carouselContainer)
             let newOffset = 0;
             if (carouselContainer) {
                 const containerWidth = carouselContainer.scrollWidth;
@@ -186,10 +186,10 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                     translateY: translateScaleMobile
                 }}>
                 <div className="flex w-full justify-center">
-                    <div className="flex w-150 md:w-150 lg:h-200 lg:w-200 relative">
+                    <div className="flex relative">
                         <motion.div
                             id='carousel-mobile'
-                            className=" flex min-h-full flex-row flex-nowrap transition-all duration-1000 ease-in-out"
+                            className=" flex min-h-90 min-w-90 h-full max-h-150  flex-row flex-nowrap transition-all duration-1000 ease-in-out"
                             drag='x'
                             dragControls={controls}
                             onPointerDown={(e) => controls.start(e)}
@@ -209,7 +209,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                                     }}>
                                         <div className="flex max-w-[100%] max-h-[100%] rounded-[25px] overflow-hidden"
                                             style={{
-                                                boxShadow: '0 10px 10px 0 rgba(0,0,0,0.05)'
+                                                boxShadow: '0 10px 10px 0 rgba(0,0,0,0.08)'
                                             }} >
                                             <img key={imagePath} className="object-cover " src={`/designs/${imagePath}`} />
                                         </div>
@@ -264,40 +264,41 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
 
 
             <div className="flex flex-col gap-2 justify-center items-center w-full">
-                <div className="flex flex-row gap-2">
-                    <div className="flex bg-foreground/50 p-2 rounded-full gap-1">
-                        {designs.map((item, index) => {
-                            return (
-                                <div key={item} className={`flex min-h-2 z-10 rounded-full transition-all duration-1000 cursor-pointer ${focusedImageIndex.current === index ? 'w-10 bg-white' : 'w-2 bg-gray-500'}`}
-                                    onClick={() => {
-                                        if (index < focusedImageIndex.current) {
-                                            handleFocusLeft(focusedImageIndex.current - index)
-                                        } else {
-                                            handleFocusRight(index - focusedImageIndex.current)
-                                        }
-                                    }}
-                                />
-                            );
-                        })}
-                    </div>
-                    <div className="flex bg-foreground/50 rounded-full " onClick={() => { setIsPlaying(!isPlaying) }}>
-                        <div className={`flex justify-center items-center z-10 rounded-full cursor-pointer`}
-                        >
-                            {!isPlaying ? (
-                                <Play fill="white" strokeWidth={0} className="h-3" />
-                            ) : (
-                                <Pause fill="white" strokeWidth={0} className="h-3" />
-                            )}
+                <div className="flex flex-col gap-2">
+                    <div className="flex flex-row gap-2">
+                        <div className="flex bg-foreground/50 p-2 rounded-full gap-1">
+                            {designs.map((item, index) => {
+                                return (
+                                    <div key={item} className={`flex min-h-2 z-10 rounded-full transition-all duration-1000 cursor-pointer ${focusedImageIndex.current === index ? 'w-10 bg-white' : 'w-2 bg-gray-500'}`}
+                                        onClick={() => {
+                                            if (index < focusedImageIndex.current) {
+                                                handleFocusLeft(focusedImageIndex.current - index)
+                                            } else {
+                                                handleFocusRight(index - focusedImageIndex.current)
+                                            }
+                                        }}
+                                    />
+                                );
+                            })}
+                        </div>
+                        <div className="flex bg-foreground/50 rounded-full " onClick={() => { setIsPlaying(!isPlaying) }}>
+                            <div className={`flex justify-center items-center z-10 rounded-full cursor-pointer`}
+                            >
+                                {!isPlaying ? (
+                                    <Play fill="white" strokeWidth={0} className="h-3" />
+                                ) : (
+                                    <Pause fill="white" strokeWidth={0} className="h-3" />
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={`flex justify-start w-32 h-1 ${isPlaying ? 'bg-foreground/50' : ''} rounded-full overflow-hiddenx`}>
-                    <div className="flex h-1 bg-white"
-                        style={{
-                            width: `${Math.round((focusDurationElapsed / FOCUS_DURATION) * 100)}%`
-                        }}
-                    />
-
+                    <div className={`flex justify-start w-full h-1 ${isPlaying ? 'bg-foreground/50' : ''} rounded-full overflow-hiddenx`}>
+                        <div className="flex h-1 bg-white"
+                            style={{
+                                width: `${Math.round((focusDurationElapsed / FOCUS_DURATION) * 100)}%`
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         </>

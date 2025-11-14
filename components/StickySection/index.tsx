@@ -27,9 +27,31 @@ export function StickySection({
     const opacity = useTransform(scrollYProgress, [0.35, 0.55, 0.8, 1], [0, 1, 1, 0]);
     const rounded = useTransform(scrollYProgress, [0.35, 0.55, 0.763, 1], ["500px", "0px", "0px", "500px"]);
 
+    const scaleMobile = useTransform(scrollYProgress, [0.35, 0.48, 0.71, 1], [0, 1, 1, 0]);
+    const opacityMobile = useTransform(scrollYProgress, [0.35, 0.48, 0.71, 1], [0, 1, 1, 0]);
+    const roundedMobile = useTransform(scrollYProgress, [0.35, 0.48, 0.71, 1], ["500px", "0px", "0px", "500px"]);
+
     return (
         <div className={`flex  h-[400vh] md:h-[280vh] min-h-100 w-full relative flex-col ${background}`} >
-            <motion.div className="sticky top-0 h-screen flex flex-col w-full gap-6 overflow-hidden bg-black"
+            <motion.div className="sticky flex md:hidden top-0 h-screen flex-col w-full gap-6 overflow-hidden bg-black"
+                style={{
+                    scale: scaleMobile,
+                    opacity: opacityMobile,
+                    borderRadius: roundedMobile
+                }}>
+                <video src="/acid.mp4"
+                    playsInline
+                    autoPlay
+                    controls={false}
+                    muted
+                    loop
+                    className="h-full w-full object-cover opacity-80"
+                />
+            </motion.div>
+
+
+
+            <motion.div className="sticky hidden md:flex top-0 h-screen flex flex-col w-full gap-6 overflow-hidden bg-black"
                 style={{
                     scale: scale,
                     opacity: opacity,

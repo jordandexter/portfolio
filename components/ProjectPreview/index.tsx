@@ -20,8 +20,8 @@ export function ProjectPreview({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0.0, 0.09], [0, 1]);
-    const opacityScaleItems = useTransform(scrollYProgress, [0.0, 0.09], [0.0, 1]);
+    const opacityScale = useTransform(scrollYProgress, [0.0, 0.07], [0, 1]);
+    const opacityScaleItems = useTransform(scrollYProgress, [0.0, 0.07], [0.0, 1]);
 
     const [animationTrigger, setAnimationTrigger] = useState(false);
     const triggerRef = useRef<HTMLDivElement>(null)
@@ -67,7 +67,7 @@ export function ProjectPreview({
     return (
         <motion.div className="flex flex-col w-full">
             <div className="flex md:flex-row flex-col gap-6">
-                <motion.div className={`flex min-h-[250px] md:min-h-[400px] md:w-[50%] max-h-[468px] bg-background fade-in overflow-hidden rounded-[25px] justify-center relative`}
+                <motion.div className={`flex min-h-80 md:min-h-[250px] md:min-h-[400px] md:w-[50%] md:max-h-[468px] bg-background fade-in overflow-hidden rounded-[25px] justify-center relative`}
                     style={{
                         scale: opacityScale,
                         opacity: showImage ? opacityScale : 0

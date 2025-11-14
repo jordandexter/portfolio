@@ -1,6 +1,5 @@
-import { RefObject, useEffect, useState, useRef } from "react";
+import { RefObject } from "react";
 import { AnimatedParagraph } from "./AnimatedParagraph";
-import { SectionHeader } from "../Section/SectionHeader";
 interface BackgroundPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
     backgroundPreviewRef: RefObject<HTMLDivElement | null>
@@ -10,24 +9,6 @@ export function BackgroundPreview({
     scrollRef,
     backgroundPreviewRef
 }: BackgroundPreviewProps) {
-    const [animationTrigger, setAnimationTrigger] = useState(false);
-    const triggerRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (!scrollRef.current || !triggerRef.current) return;
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(async (entry) => {
-                    if (entry.isIntersecting) {
-                        setAnimationTrigger(true)
-                    }
-                })
-            }
-        )
-
-        observer.observe(triggerRef.current)
-    }, [triggerRef, scrollRef])
 
     return (
         <div ref={backgroundPreviewRef} className="flex flex-col w-full items-center">
