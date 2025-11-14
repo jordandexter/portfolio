@@ -28,7 +28,12 @@ export const stats: Statistic[] = [
     },
     {
         title: "Projects Deployed",
-        value: 120,
+        value: 6,
         metric: "+",
     },
+    {
+        title: "Age",
+        value: 25,
+        metric: "yrs"
+    }
 ];

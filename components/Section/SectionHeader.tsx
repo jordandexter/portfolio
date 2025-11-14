@@ -46,7 +46,7 @@ export const SectionHeader = ({
                             <h3 className="text-foreground fade-in">{subheading}</h3>
                         }
                         {heading &&
-                            <h1 className="flex text-3xl md:text-5xl bg-clip-text text-transparent inline-block fade-in"
+                            <h1 className="flex text-3xl bg-clip-text text-transparent inline-block fade-in"
                                 style={{
                                     animationDuration: '1000ms',
                                     animationDelay: '200ms',

@@ -5,18 +5,23 @@ import { motion, useScroll, useTransform } from "framer-motion"
 const SHOW_CONTAINER_NAMES = false
 
 interface HeroHeaderProps {
-    scrollRef: RefObject<HTMLDivElement | null>
-    aboutSectionRef: RefObject<HTMLDivElement | null>
+    scrollRef: RefObject<HTMLDivElement | null>;
+    aboutSectionRef: RefObject<HTMLDivElement | null>;
+    onOpenContactModal: () => void;
 }
 
-export default function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderProps) {
+export default function HeroHeader({
+    scrollRef,
+    aboutSectionRef,
+    onOpenContactModal
+}: HeroHeaderProps) {
     const { scrollYProgress } = useScroll({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
 
     const opacityScale = useTransform(scrollYProgress, [0, 0.1], [1, 0.5]);
-    const scaleScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.0]);
+    const scaleScale = useTransform(scrollYProgress, [0, 0.1], [1, 0.0]);
     const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "200px"])
 
     const scrollToAbout = () => {
@@ -45,7 +50,7 @@ export default function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderPro
                         animationDuration: '1000ms',
                     }}>
                     <video className="object-fit"
-                        src="/IMG_9756.mp4"
+                        src="/IMG_4196.MOV"
                         autoPlay
                         muted
                         playsInline
@@ -67,7 +72,7 @@ export default function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderPro
                         }}>
                         Jordan Dexter
                     </h1>
-                    <div className="grid grid-cols-2 pt-4 gap-4 fade-in"
+                    <div className="grid z-10 grid-cols-2 pt-4 gap-4 fade-in"
                         style={{
                             animationDuration: '1000ms',
                             animationDelay: '600ms',
@@ -76,7 +81,8 @@ export default function HeroHeader({ scrollRef, aboutSectionRef }: HeroHeaderPro
                             onClick={() => { scrollToAbout() }}>
                             About
                         </button>
-                        <button className="flex bg-primary transition-all duration-300 min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white">
+                        <button className="flex bg-primary transition-all duration-300 min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white"
+                            onClick={onOpenContactModal}>
                             Contact
                         </button>
                     </div>

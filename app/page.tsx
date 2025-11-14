@@ -11,11 +11,13 @@ import { ContactForm } from "@/components/ContactForm";
 import { StatisticsPreview } from "@/components/StatisticsPreview";
 import { ProjectModal } from "@/modals/ProjectModal";
 import { Project } from "@/components/ProjectPreview/types";
+import { ContactUsModal } from "@/modals/ContactUsModal";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
   const aboutSectionRef = useRef<HTMLDivElement>(null)
   const [projectModalOpen, setProjectModalOpen] = useState<{ open: boolean, project: Project | null }>({ open: false, project: null })
+  const [contactModalOpen, setContactModalOpen] = useState<boolean>(false)
 
   const onProjectModalOpen = (project: Project) => {
     setProjectModalOpen({
@@ -24,15 +26,26 @@ export default function Home() {
     })
   }
 
+  const onContactModalOpen = () => {
+    setContactModalOpen(true)
+  }
+
   return (
     <div className="flex justify-center font-sans">
       <main ref={ref} className="flex flex-col w-full gap-8 items-center">
+
+
+        {/* Move these into a store later */}
         {projectModalOpen.open && projectModalOpen.project &&
           <ProjectModal project={projectModalOpen.project} onClose={() => setProjectModalOpen({ open: false, project: null })} />
         }
+        {contactModalOpen &&
+          <ContactUsModal scrollRef={ref} onClose={() => setContactModalOpen(false)} />
+        }
+
         {ref &&
           <>
-            <HeroHeader scrollRef={ref} aboutSectionRef={aboutSectionRef} />
+            <HeroHeader scrollRef={ref} onOpenContactModal={onContactModalOpen} aboutSectionRef={aboutSectionRef} />
             <div className="flex flex-col w-full z-1 bg-section-background rounded-t-[50px]"
               style={{
                 boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'

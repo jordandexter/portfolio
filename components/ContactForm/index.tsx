@@ -8,7 +8,7 @@ interface ContactFormProps {
     scrollRef: RefObject<HTMLDivElement | null>
 }
 
-interface ContactFormData {
+export interface ContactFormData {
     name: string,
     email: string,
     subject: string,

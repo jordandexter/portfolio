@@ -12,9 +12,7 @@ export function BackgroundPreview({
 
     return (
         <div ref={backgroundPreviewRef} className="flex flex-col w-full items-center">
-            <div className="flex flex-col w-full max-w-200">
-                <p className="flex w-full text-foreground items-start">By Jordan Dexter</p>
-                <p className="pb-4">Updated 11-7-2025</p>
+            <div className="flex flex-col w-full max-w-200 z-1">
 
                 <AnimatedParagraph scrollRef={scrollRef}>
                     <h2 className="text-white font-bold text-xl px-12">

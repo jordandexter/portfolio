@@ -59,7 +59,7 @@ export function Header() {
     }, [displayMode])
 
     return (
-        <div className="absolute rounded-full top-0 h-12 flex w-full bg-transparent z-99999">
+        <div className="absolute rounded-full top-0 h-12 flex w-full bg-transparent z-99">
             <button className="flex" onClick={handleModeChange}>
                 <Lightbulb className={`transition-all duration-200 rounded-full h-10 w-10 p-2 text-foreground ${displayMode === 'light' ? 'hover:bg-black/10' : 'hover:bg-white/20'}`} />
             </button>

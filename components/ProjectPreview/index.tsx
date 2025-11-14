@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import { projects } from "./constants"
 import { useState, RefObject, useEffect, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useMotionValue, useScroll, useTransform } from "framer-motion"
 import { Project } from "./types"
 
 interface ProjectPreviewProps {
@@ -13,8 +13,10 @@ export function ProjectPreview({
     scrollRef,
     onProjectModalOpen
 }: ProjectPreviewProps) {
+    const containerRef = useRef<HTMLDivElement>(null)
     const [hoveredItem, setHoveredItem] = useState<Project | null>(null)
     const [shownProject, setShownProjects] = useState<Project[]>([])
+    const [projectWidthMobile, setProjectWidthMobile] = useState<number>(0)
     const [showImage, setShowImage] = useState<boolean>(false);
     const { scrollYProgress } = useScroll({
         target: scrollRef,
@@ -22,6 +24,9 @@ export function ProjectPreview({
     });
     const opacityScale = useTransform(scrollYProgress, [0.0, 0.07], [0, 1]);
     const opacityScaleItems = useTransform(scrollYProgress, [0.0, 0.07], [0.0, 1]);
+    const x = useMotionValue(0)
+    const opacityScaleMobile = useTransform(scrollYProgress, [0.0, 0.07], [0, 1]);
+    const translateYScale = useTransform(scrollYProgress, [0.0, 0.07], ["100px", "0px"]);
 
     const [animationTrigger, setAnimationTrigger] = useState(false);
     const triggerRef = useRef<HTMLDivElement>(null)
@@ -64,10 +69,71 @@ export function ProjectPreview({
         }
     }, [animationTrigger]);
 
+
+
+    useEffect(() => {
+        if (!containerRef) return;
+
+        const handleResize = () => {
+            const containerWidth = containerRef.current?.clientWidth;
+            const projectCarouselContainer = document.getElementById('project-carousel')
+
+            if (containerWidth && projectCarouselContainer) {
+                setProjectWidthMobile(containerWidth)
+                x.set(0)
+
+            }
+        }
+
+        window.addEventListener('resize', handleResize)
+        handleResize()
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+
+
+    }, [containerRef])
+
     return (
         <motion.div className="flex flex-col w-full">
-            <div className="flex md:flex-row flex-col gap-6">
-                <motion.div className={`flex min-h-80 md:min-h-[250px] md:min-h-[400px] md:w-[50%] md:max-h-[468px] bg-background fade-in overflow-hidden rounded-[25px] justify-center relative`}
+
+            <div ref={containerRef} className="flex md:hidden relative">
+                <motion.div
+                    id="project-carousel"
+                    className={` flex flex-row gap-5 justify-center items-center`}
+                    drag={'x'}
+                    dragConstraints={containerRef}
+                    style={{
+                        x,
+                        translateY: translateYScale,
+                        opacity: opacityScaleMobile
+                    }}>
+                    {containerRef && projects.map((project) => {
+                        return (
+                            <div className="flex flex-col gap-6"
+                                style={{
+                                    width: `${projectWidthMobile}px`
+
+                                }}>
+                                <img key={project.image} className={`flex h-70 rounded-[25px] object-cover transition-all duration-300`} src={project.image}></img>
+                                <h1 className="text-primary text-3xl">{project.name}</h1>
+                                <p className="text-foreground">{project.description && project.description.slice(0, 200)}...</p>
+                                <div className="flex w-full justify-center ">
+                                    <button className="flex bg-primary transition-all duration-300 max-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white"
+                                        onClick={() => {
+                                            onProjectModalOpen(project)
+                                        }}>Read More</button>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </motion.div>
+
+
+            </div>
+
+            <div className="hidden md:flex md:flex-row flex-col gap-6">
+                <motion.div className={`flex min-h-70 md:min-h-[250px] md:min-h-[400px] md:w-[50%] md:max-h-[468px] bg-background fade-in overflow-hidden rounded-[25px] justify-center relative`}
                     style={{
                         scale: opacityScale,
                         opacity: showImage ? opacityScale : 0
@@ -104,7 +170,7 @@ export function ProjectPreview({
                     })}
                 </motion.div>
             </div>
-            <div ref={triggerRef} className="flex w-full" />
+            <div ref={triggerRef} className="flex w-full -translate-y-50 md:-translate-y-0" />
         </motion.div >
     )
 }
