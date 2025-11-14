@@ -20,16 +20,16 @@ jobs:
           export_default_credentials: true
 
       - name: Configure Docker for GCP
-        run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+        run: gcloud auth configure-docker us-west1-docker.pkg.dev --quiet
 
       - name: Build Docker image
         run: |
-          IMAGE="us-central1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
+          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
           docker build -t $IMAGE .
 
       - name: Push Docker image
         run: |
-          IMAGE="us-central1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
+          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
           docker push $IMAGE
 
       - name: SSH into GCP VM and deploy
@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            IMAGE="us-central1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
+            IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
 
             echo "Pulling latest image..."
             sudo docker pull $IMAGE
