@@ -46,14 +46,14 @@ jobs:
             IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
 
             echo "Pulling latest image..."
-            sudo docker pull $IMAGE
+            docker pull $IMAGE
 
             echo "Stopping old container (if running)..."
-            sudo docker stop app || true
-            sudo docker rm app || true
+            docker stop app || true
+            docker rm app || true
 
             echo "Starting new container..."
-            sudo docker run -d \
+            docker run -d \
               --name app \
               -p 80:80 \
               $IMAGE
