@@ -51,7 +51,6 @@ export default function HeroHeader({
                     }}>
                     <video className="object-fit"
                         src="/IMG_4196.MOV"
-                        autoPlay
                         muted
                         playsInline
                         loop>
