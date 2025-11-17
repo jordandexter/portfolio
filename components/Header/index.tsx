@@ -47,6 +47,11 @@ export function Header() {
 
             setDisplayMode(cookie)
         } else {
+            const body = document.getElementsByTagName('body')[0]
+
+            if (body) {
+                body.className = body.className.replace('hidden', '')
+            }
             setDisplayMode('light')
         }
     }, [])
