@@ -49,12 +49,9 @@ export default function HeroHeader({
                     style={{
                         animationDuration: '1000ms',
                     }}>
-                    <video className="object-fit"
-                        src="/IMG_4196.MOV"
-                        muted
-                        playsInline
-                        loop>
-                    </video>
+                    <img className="object-fit"
+                        src="/IMG_4202.jpg"
+                    />
                 </div>
                 <div className="flex flex-col gap-1 justify-center items-center">
                     <h2 className="fade-in text-xl" style={{

@@ -47,13 +47,15 @@ export const ProjectModal = ({
                         animationDelay: '600ms'
                     }} />
             </div>
-            <div className="flex flex-col w-full gap-10 p-12 overflow-y-scroll">
+            <div className="flex flex-col w-full gap-10 p-12 overflow-y-scroll max-w-200"
+                style={{
+                    scrollbarWidth: 'none'
+                }}>
                 <SectionHeader
                     heading={project.name}
                     subheading={project.subtitle}
                     parentRef={ref}
                 />
-
                 {project.description?.split('\n\n').map((paragraph, index) => {
                     return (
                         <h2 key={index} className="text-xl md:text-3xl">{paragraph}</h2>
