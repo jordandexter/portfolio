@@ -50,12 +50,19 @@ jobs:
           script: |
             IMAGE="${{ env.IMAGE_DIGEST }}"
 
-            echo "Pulling latest image..."
-            docker pull $IMAGE
-
+            
             echo "Stopping old container (if running)..."
             docker stop app || true
             docker rm app || true
+
+            echo "Deleting old containers..."
+            docker rm $(docker ps -a -f status=exited -q)
+
+            echo "Deleting old images..."
+            docker rmi $(docker images -a)
+
+            echo "Pulling latest image..."
+            docker pull $IMAGE
 
             echo "Starting new container..."
             docker run -d \
