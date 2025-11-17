@@ -28,13 +28,16 @@ jobs:
 
       - name: Build Docker image
         run: |
-          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
-          docker build -t $IMAGE .
+          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app"
+          docker build -t $IMAGE:latest .
 
       - name: Push Docker image
         run: |
-          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
-          docker push $IMAGE
+          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app"
+          docker push $IMAGE:latest
+
+          DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE:latest)
+          echo "IMAGE_DIGEST=$DIGEST" >> $GITHUB_ENV
 
       - name: SSH into GCP VM and deploy
         uses: appleboy/ssh-action@v1.1.0
@@ -43,7 +46,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
+            IMAGE="${IMAGE_DIGEST}"
 
             echo "Pulling latest image..."
             docker pull $IMAGE
