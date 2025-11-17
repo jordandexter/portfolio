@@ -41,6 +41,8 @@ jobs:
 
       - name: SSH into GCP VM and deploy
         uses: appleboy/ssh-action@v1.1.0
+        env:
+          IMAGE_DIGEST: ${{ env.IMAGE_DIGEST }}
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
