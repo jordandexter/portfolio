@@ -52,7 +52,7 @@ export function Header() {
             if (body) {
                 body.className = body.className.replace('hidden', '')
             }
-            setDisplayMode('light')
+            setDisplayMode('dark')
         }
     }, [])
 
