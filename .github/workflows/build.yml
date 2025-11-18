@@ -17,40 +17,55 @@ jobs:
       - name: Set up gcloud
         uses: google-github-actions/setup-gcloud@v2
         with:
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
+          project_id: portfolio-478222
+          version: 'latest'
 
-      - name: Configure Docker for GCP
-        run: gcloud auth configure-docker us-west1-docker.pkg.dev --quiet
+      - name: Authenticate Docker
+        run: |
+          echo '${{ secrets.GCP_SA_KEY }}' > key.json
+          gcloud auth activate-service-account --key-file=key.json
+          gcloud auth configure-docker us-west1-docker.pkg.dev --quiet
 
       - name: Build Docker image
         run: |
-          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
-          docker build -t $IMAGE .
+          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app"
+          docker build -t $IMAGE:latest .
 
       - name: Push Docker image
         run: |
-          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
-          docker push $IMAGE
+          IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app"
+          docker push $IMAGE:latest
+
+          DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE:latest)
+          echo "IMAGE_DIGEST=$DIGEST" >> $GITHUB_ENV
 
       - name: SSH into GCP VM and deploy
         uses: appleboy/ssh-action@v1.1.0
+        env:
+          IMAGE_DIGEST: ${{ env.IMAGE_DIGEST }}
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            IMAGE="us-west1-docker.pkg.dev/portfolio-478222/portfolio/app:latest"
+            IMAGE="${{ env.IMAGE_DIGEST }}"
+
+            
+            echo "Stopping old container (if running)..."
+            docker stop app || true
+            docker rm app || true
+
+            echo "Deleting old containers..."
+            docker rm $(docker ps -a -f status=exited -q)
+
+            echo "Deleting old images..."
+            docker rmi $(docker images -a)
 
             echo "Pulling latest image..."
-            sudo docker pull $IMAGE
-
-            echo "Stopping old container (if running)..."
-            sudo docker stop app || true
-            sudo docker rm app || true
+            docker pull $IMAGE
 
             echo "Starting new container..."
-            sudo docker run -d \
+            docker run -d \
               --name app \
               -p 3000:3000 \
               $IMAGE
