@@ -24,7 +24,7 @@ export default function RootLayout({
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL52QLRR5K" />
         <script dangerouslySetInnerHTML={{ __html: gtmScript2 }} />
       </head>
-      <body className={`flex bg - background flex - col min - w - [375px] antialiased hidden`}>
+      <body className={`flex bg-background flex-col min-w-[375px] antialiased hidden`}>
         <Header />
         {children}
       </body>
