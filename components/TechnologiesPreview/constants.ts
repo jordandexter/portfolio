@@ -26,7 +26,9 @@ import {
     SiFastapi,
     SiGoogle,
     SiSage,
-    SiHelm
+    SiHelm,
+    SiPostman,
+    SiSelenium
 } from "react-icons/si";
 import { SliderItem } from "./types";
 
@@ -58,5 +60,7 @@ export const tools: SliderItem[] = [
     { name: "Figma", Icon: SiFigma, type: "frontend" },
     { name: "GTM", Icon: SiGoogle, type: "other" },
     { name: "Cursor", Icon: SiSage, type: "other" },
-    { name: "Helm", Icon: SiHelm, type: "backend" }
+    { name: "Helm", Icon: SiHelm, type: "backend" },
+    { name: "Postman", Icon: SiPostman, type: "backend" },
+    { name: "Selenium", Icon: SiSelenium, type: "other" }
 ];
