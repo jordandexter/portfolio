@@ -110,7 +110,7 @@ export function ProjectPreview({
                     }}>
                     {containerRef && projects.map((project) => {
                         return (
-                            <div className="flex flex-col gap-6"
+                            <div key={project.name} className="flex flex-col gap-6"
                                 style={{
                                     width: `${projectWidthMobile}px`
 
