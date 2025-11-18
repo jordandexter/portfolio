@@ -49,7 +49,7 @@ export default function HeroHeader({
                     style={{
                         animationDuration: '1000ms',
                     }}>
-                    <img className="h-50 w-50"
+                    <img className="object-contain h-50 w-50"
                         src="/IMG_4202.jpg"
                     />
                 </div>

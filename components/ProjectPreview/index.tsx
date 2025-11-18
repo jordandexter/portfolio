@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Loader2, WindIcon } from "lucide-react"
 import { projects } from "./constants"
 import { useState, RefObject, useEffect, useRef } from "react"
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion"
@@ -17,11 +17,13 @@ export function ProjectPreview({
     const [hoveredItem, setHoveredItem] = useState<Project | null>(null)
     const [shownProject, setShownProjects] = useState<Project[]>([])
     const [projectWidthMobile, setProjectWidthMobile] = useState<number>(0)
+    const lastWidth = useRef(0)
     const [showImage, setShowImage] = useState<boolean>(false);
     const { scrollYProgress } = useScroll({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
+
     const opacityScale = useTransform(scrollYProgress, [0.0, 0.07], [0, 1]);
     const opacityScaleItems = useTransform(scrollYProgress, [0.0, 0.07], [0.0, 1]);
     const x = useMotionValue(0)
@@ -54,9 +56,8 @@ export function ProjectPreview({
             await new Promise((resolve) => setTimeout(resolve, 150));
             setHoveredItem(null);
         }
-
+        setShowImage(true)
         setTimeout(() => {
-            setShowImage(true)
             setHoveredItem(null)
 
         }, 1000)
@@ -72,25 +73,42 @@ export function ProjectPreview({
 
 
     useEffect(() => {
-        if (!containerRef) return;
+        if (!containerRef || projectWidthMobile !== 0) return;
 
         const handleResize = () => {
+            const width = window.innerWidth
+            console.log('last', lastWidth.current)
+            console.log('new', width)
+            if (lastWidth.current === width) {
+                lastWidth.current = width;
+                return;
+            }
+            lastWidth.current = width
+            const containerWidth = containerRef.current?.clientWidth;
+            const projectCarouselContainer = document.getElementById('project-carousel')
+
+            if (containerWidth && projectCarouselContainer) {
+                setProjectWidthMobile(containerWidth)
+            }
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [containerRef])
+
+
+    useEffect(() => {
+        if (projectWidthMobile === 0) {
             const containerWidth = containerRef.current?.clientWidth;
             const projectCarouselContainer = document.getElementById('project-carousel')
 
             if (containerWidth && projectCarouselContainer) {
                 setProjectWidthMobile(containerWidth)
                 x.set(0)
-
             }
         }
-
-        window.addEventListener('resize', handleResize)
-        handleResize()
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-
 
     }, [containerRef])
 
@@ -116,7 +134,7 @@ export function ProjectPreview({
 
                                 }}>
                                 <img key={project.image} className={`flex h-70 rounded-[25px] object-cover transition-all duration-300`} src={project.image}></img>
-                                <h1 className="text-primary text-3xl">{project.name}</h1>
+                                <h1 className="text-foreground text-3xl">{project.name}</h1>
                                 <p className="text-foreground">{project.description && project.description.slice(0, 200)}...</p>
                                 <div className="flex w-full justify-center ">
                                     <button className="flex bg-primary transition-all duration-300 max-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white"
@@ -138,6 +156,15 @@ export function ProjectPreview({
                         scale: opacityScale,
                         opacity: showImage ? opacityScale : 0
                     }}>
+                    {!showImage &&
+                        <Loader2 className="h-full animate-spin opacity-40" />
+                    }
+                    {!hoveredItem && showImage &&
+                        <div className="flex h-full justify-center items-center">
+                            <p className="text-foreground opacity-50" >Hover over a project</p>
+                        </div>
+
+                    }
                     {showImage && shownProject.map((project) => {
                         return (
                             <img key={project.image} className={`${hoveredItem === project ? 'z-1 opacity-100' : 'z-0 opacity-0'} object-cover transition-all duration-300 absolute h-full w-full`} src={project.image}></img>
@@ -169,7 +196,7 @@ export function ProjectPreview({
                         )
                     })}
                 </motion.div>
-            </div>
+            </div >
             <div ref={triggerRef} className="flex w-full -translate-y-50 md:-translate-y-0" />
         </motion.div >
     )
