@@ -94,7 +94,7 @@ export const projects: Project[] = [
     {
         name: "CRN Mobile App",
         subtitle: "UI/UX",
-        image: "/lfg/lfg-1.png",
+        image: "/crn-mobile/crn-mobile-1.png",
         description: `The Community Resource Network is a web application whose sole purpose is to make it easy for community
         members to find and share necessities (such as food or clothing) and get them in the hands of people who need them.
         Working alongside Portland State Universities Captstone program, I was tasked with assisting the development team in

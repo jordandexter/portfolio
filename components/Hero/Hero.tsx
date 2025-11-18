@@ -45,11 +45,11 @@ export default function HeroHeader({
         }}>
             {SHOW_CONTAINER_NAMES && <p className="absolute text-red-500 font-bold">container 1</p>}
             <div className="flex items-center justify-center flex-col flex-1 rounded-xl min-h-100 gap-8">
-                <div className="flex  h-40 w-40 md:h-50 md:w-50 fade-in rounded-full bg-transparent overflow-hidden justify-center items-center"
+                <div className="flex  h-40 w-40 md:h-50 md:w-50 fade-in rounded-full overflow-hidden justify-center items-center bg-white"
                     style={{
                         animationDuration: '1000ms',
                     }}>
-                    <img className="object-fit"
+                    <img className="h-50 w-50"
                         src="/IMG_4202.jpg"
                     />
                 </div>
