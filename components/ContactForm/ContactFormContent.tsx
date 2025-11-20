@@ -129,7 +129,6 @@ export const ContactFormContent = ({
         observer.observe(triggerRef.current)
     }, [triggerRef, scrollRef])
 
-
     useEffect(() => {
         setFormError(null)
     }, [formData])

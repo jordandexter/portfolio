@@ -28,7 +28,11 @@ import {
     SiSage,
     SiHelm,
     SiPostman,
-    SiSelenium
+    SiSelenium,
+    SiAuth0,
+    SiYarn,
+    SiLinux,
+    SiUbuntu
 } from "react-icons/si";
 import { SliderItem } from "./types";
 
@@ -62,5 +66,8 @@ export const tools: SliderItem[] = [
     { name: "Cursor", Icon: SiSage, type: "other" },
     { name: "Helm", Icon: SiHelm, type: "backend" },
     { name: "Postman", Icon: SiPostman, type: "backend" },
-    { name: "Selenium", Icon: SiSelenium, type: "other" }
+    { name: "Selenium", Icon: SiSelenium, type: "other" },
+    { name: "Yarn", Icon: SiYarn, type: "frontend" },
+    { name: "Linux", Icon: SiLinux, type: "other" },
+    { name: "Ubuntu", Icon: SiUbuntu, type: "other" }
 ];
