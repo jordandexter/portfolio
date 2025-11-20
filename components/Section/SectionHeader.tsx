@@ -3,12 +3,14 @@ import { RefObject, useRef, useEffect, useState } from "react";
 interface SectionHeaderProps {
     heading?: string,
     subheading?: string,
+    postion?: 'left' | 'right' | 'center'
     parentRef: RefObject<HTMLDivElement | null>
 }
 
 export const SectionHeader = ({
     heading,
     subheading,
+    postion = 'left',
     parentRef
 }: SectionHeaderProps) => {
     const triggerRef = useRef<HTMLDivElement | null>(null);
@@ -34,19 +36,19 @@ export const SectionHeader = ({
     if (!subheading && !heading) return null;
 
     return (
-        <>
+        <div className={`flex ${postion === 'center' ? 'justify-center' : postion === 'left' ? 'justify-start' : 'justify-end'}`}>
             <div ref={triggerRef} data-section={heading} className="absolute flex w-full top-[150px]" />
-            <div className="flex flex-col justify-center items-center sm:justify-start sm:items-start overflow-y-visible"
+            <div className="flex flex-col"
                 style={{
                     minHeight: heading && subheading ? '60px' : heading && !subheading ? '36px' : subheading && !heading ? '12px' : '0px'
                 }}>
                 {animationTrigger &&
                     <>
                         {subheading &&
-                            <h3 className="text-foreground fade-in">{subheading}</h3>
+                            <h3 className={`flex text-foreground fade-in ${postion === 'center' ? 'justify-center' : postion === 'left' ? 'justify-start' : 'justify-end'}`}>{subheading}</h3>
                         }
                         {heading &&
-                            <h1 className="flex text-3xl bg-clip-text text-transparent inline-block fade-in"
+                            <h1 className="flex text-4xl bg-clip-text text-transparent inline-block fade-in"
                                 style={{
                                     animationDuration: '1000ms',
                                     animationDelay: '200ms',
@@ -58,6 +60,6 @@ export const SectionHeader = ({
                     </>
                 }
             </div>
-        </>
+        </div>
     )
 }

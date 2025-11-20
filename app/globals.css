@@ -19,7 +19,8 @@
 
   --hero-glow: oklch(0.859 0.075 228.7 / 0.2);
   --color-tech-items: oklch(1.000 0.000 89.9);
-  --color-contact-form-inputs: oklch(0.950 0.000 89.9);
+  --color-contact-form-inputs: oklch(0.845 0.000 89.9);
+  --color-project-text: oklch(0.309 0.000 89.9);
   --color-contact-form-background: oklch(0.60 0.01009 285.373);
 }
 
@@ -41,6 +42,7 @@
   --hero-glow: oklch(100% 0.00011 271.152 / 0.11);
   --color-tech-items: oklch(0.40 0.01009 285.373);
   --color-contact-form-inputs: oklch(.8 0.00006 271.152 / 0.151);
+  --color-project-text: oklch(100% 0.00011 271.152);
   --color-contact-form-background: oklch(26.033% 0.00003 271.152 / 0.486);
 }
 
@@ -107,5 +109,59 @@ p {
 @keyframes shiftLeft {
   to {
     translate: 0px 0px;
+  }
+}
+
+
+.animate-rotate-top {
+  animation: rotateTop 4s ease infinite;
+}
+
+@keyframes rotateTop {
+  0% {
+    transform: translate(-2%, -2%)
+  }
+
+  12% {
+    transform: translate(2%, -2%)
+  }
+
+  50% {
+    transform: translate(2%, 2%)
+  }
+
+  82% {
+    transform: translate(-2%, 2%)
+  }
+
+  100% {
+    transform: translate(-2%, -2%)
+  }
+}
+
+.animate-rotate-bottom {
+  animation: rotateBottom 4s ease infinite;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.32, 1);
+}
+
+@keyframes rotateBottom {
+  0% {
+    transform: translate(2%, 2%)
+  }
+
+  12% {
+    transform: translate(-2%, 2%)
+  }
+
+  50% {
+    transform: translate(-2%, -2%)
+  }
+
+  82% {
+    transform: translate(2%, -2%)
+  }
+
+  100% {
+    transform: translate(2%, 2%)
   }
 }

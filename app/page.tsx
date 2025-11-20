@@ -12,6 +12,7 @@ import { StatisticsPreview } from "@/components/StatisticsPreview";
 import { ProjectModal } from "@/modals/ProjectModal";
 import { Project } from "@/components/ProjectPreview/types";
 import { ContactUsModal } from "@/modals/ContactUsModal";
+import { GithubPreview } from "@/components/GithubPreview";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
@@ -90,10 +91,15 @@ export default function Home() {
 
               <Section
                 parentRef={ref}
+                variant="darkest">
+                <GithubPreview scrollRef={ref} />
+              </Section>
+
+              <Section
+                parentRef={ref}
                 variant="dark">
                 <ContactForm scrollRef={ref} />
               </Section>
-
             </div>
 
           </>

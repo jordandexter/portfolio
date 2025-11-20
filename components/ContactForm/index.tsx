@@ -17,7 +17,6 @@ export interface ContactFormData {
 export function ContactForm({
     scrollRef
 }: ContactFormProps) {
-    const [hoveredSocial, setHoveredSocial] = useState<SocialLink | null>(null)
 
     return (
         <div className={`flex w-full justify-center items-center flex-col gap-12`}

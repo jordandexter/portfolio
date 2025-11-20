@@ -1,11 +1,28 @@
+import { Bot, Braces, CircleUser, Code, Code2, Database, Hourglass, Layers, LayoutDashboard, Lock, Pencil, PersonStanding, Settings, Settings2, Users, Video, Workflow } from "lucide-react";
 import { Project } from "./types";
+
+
 
 
 export const projects: Project[] = [
     {
         name: "LFG.TV",
         subtitle: "Web Design",
-        image: '/lfg/lfg-1.jpeg',
+        tools: [
+            {
+                name: 'HLS',
+                icon: Video
+            },
+            {
+                name: 'Design',
+                icon: Pencil
+            },
+            {
+                name: 'Auth',
+                icon: Lock
+            }
+        ],
+        image: '/lfg/lfg-1.png',
         description: `The LFGTV project is my most complex project to date. The inital concept was
         a DJ specific livestreaming platform built in response to Twitch's growing concerns
         over copywritten music being played on air leading them to severly restrict what, when,
@@ -27,6 +44,20 @@ export const projects: Project[] = [
     {
         name: "Raidflyer",
         subtitle: "UI/UX",
+        tools: [
+            {
+                name: 'Design',
+                icon: Pencil
+            },
+            {
+                name: 'CSS',
+                icon: Braces
+            },
+            {
+                name: 'API',
+                icon: Settings2
+            }
+        ],
         image: '/raidflyer/raidflyer-1.png',
         description: `The goal of Raidflyer was to allow Twitch DJs to create, collab, and share event flyer with 
         their audience. Since the layout of these flyers is similar week to week, we created a templating tool to 
@@ -51,7 +82,17 @@ export const projects: Project[] = [
     {
         name: "Carolyn",
         subtitle: "Full stack",
-        image: '/carolyn/carolyn-1.jpeg',
+        tools: [
+            {
+                name: 'Personal',
+                icon: CircleUser
+            },
+            {
+                name: 'Full-Stack',
+                icon: Layers
+            }
+        ],
+        image: '/carolyn/carolyn-1.png',
         description: `Carolyn was simultaneously a passion project and an exploration of my full stack knowledge. In a nutshell,
         the project was ment to give my family members a place to store and share my family photos. Prior to this apps creation,
         family photos (especially those older than 20 years) were stored in closets, boxes, and basements throughout the country.
@@ -75,6 +116,16 @@ export const projects: Project[] = [
     {
         name: "Menu Mingle",
         subtitle: "UI/UX",
+        tools: [
+            {
+                name: 'AI',
+                icon: Bot
+            },
+            {
+                name: 'UI/UX',
+                icon: LayoutDashboard
+            },
+        ],
         image: "/menumingle/dashboard-1.png",
         description: `Menu Mingle was a venture brought to us by a local entreprenuear who dreamed of a TikTok-esque social media platform
         that allowed resturants to create a more interactive menu experience. Through the power of algorithmic preference recognition
@@ -94,6 +145,20 @@ export const projects: Project[] = [
     {
         name: "CRN Mobile App",
         subtitle: "UI/UX",
+        tools: [
+            {
+                name: 'Community',
+                icon: Users
+            },
+            {
+                name: 'API',
+                icon: Settings2
+            },
+            {
+                name: 'Database',
+                icon: Database
+            }
+        ],
         image: "/crn-mobile/crn-mobile-1.png",
         description: `The Community Resource Network is a web application whose sole purpose is to make it easy for community
         members to find and share necessities (such as food or clothing) and get them in the hands of people who need them.
@@ -112,8 +177,18 @@ export const projects: Project[] = [
         `
     },
     {
-        name: "Automated Website Creation Flow",
+        name: "Automated Website Creation",
         subtitle: "Backend",
+        tools: [
+            {
+                name: 'Automation',
+                icon: Workflow
+            },
+            {
+                name: 'Scripting',
+                icon: Code2
+            }
+        ],
         image: "website-creation-flow/flow-1.png",
         description: `This one is less of a web application and more of a process. I helped create a blazingly fast onboarding process
         for clients looking to create a website. The company that hired me primarily used Managed Wordpress instances to host sites for
