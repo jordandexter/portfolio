@@ -4,7 +4,7 @@ export const stats: Statistic[] = [
     {
         title: "Frontend Experience",
         value: 3,
-        metric: "yrs",
+        metric: "+ yrs",
     },
     {
         title: "Degrees Obtained",
@@ -24,7 +24,7 @@ export const stats: Statistic[] = [
     {
         title: "Coffee Consumed",
         value: 65700,
-        metric: "oz",
+        metric: "+ oz",
     },
     {
         title: "Projects Deployed",
@@ -35,5 +35,5 @@ export const stats: Statistic[] = [
         title: "Age",
         value: 25,
         metric: "yrs"
-    }
+    },
 ];

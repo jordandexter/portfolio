@@ -14,6 +14,8 @@ export function ProjectPreview({
     onProjectModalOpen
 }: ProjectPreviewProps) {
     const containerRef = useRef<HTMLDivElement>(null)
+    const mode = useRef<'autoplay' | 'user-select'>('autoplay')
+    const [autoplayItemIndex, setAutoplayItemIndex] = useState<number>(0)
     const [hoveredItem, setHoveredItem] = useState<Project | null>(null)
     const [shownProject, setShownProjects] = useState<Project[]>([])
     const [projectWidthMobile, setProjectWidthMobile] = useState<number>(0)
@@ -112,6 +114,23 @@ export function ProjectPreview({
 
     }, [containerRef])
 
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setAutoplayItemIndex((prev) => {
+                if (prev + 1 > projects.length - 1) {
+                    return 0;
+                }
+                return prev + 1
+            })
+        }, 3000);
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
+
     return (
         <motion.div className="flex flex-col w-full">
 
@@ -165,20 +184,26 @@ export function ProjectPreview({
                         </div>
 
                     }
-                    {showImage && shownProject.map((project) => {
+                    {showImage && shownProject.map((project, index) => {
                         return (
-                            <img key={project.image} className={`${hoveredItem === project ? 'z-1 opacity-100' : 'z-0 opacity-0'} object-cover transition-all duration-300 absolute h-full w-full`} src={project.image}></img>
+                            <img key={project.image} className={`${mode.current === 'autoplay' ? index === autoplayItemIndex ? 'z-1 opacity-100' : '' : ''} ${hoveredItem === project ? 'z-1 opacity-100' : 'z-0 opacity-0'} object-cover transition-all duration-300 absolute h-full w-full`} src={project.image}></img>
                         )
                     })}
                 </motion.div>
 
                 <motion.div className="flex flex-col md:w-[50%] border-foreground min-h-100"
+                    onMouseEnter={() => {
+                        mode.current = 'user-select'
+                    }}
+                    onMouseLeave={() => {
+                        mode.current = 'autoplay'
+                    }}
                     style={{
                         opacity: opacityScaleItems
                     }}>
-                    {shownProject.map((project) => {
+                    {shownProject.map((project, index) => {
                         return (
-                            <div key={project.name} className={`flex flex-row py-5 justify-between fade-in transition-all duration-300 ${hoveredItem === project ? 'text-primary font-bold' : ''} cursor-pointer hover:border-primary border-foreground w-full border-b-1`}
+                            <div key={project.name} className={`flex flex-row py-5 justify-between fade-in transition-all duration-300 ${mode.current === 'autoplay' ? index === autoplayItemIndex ? 'text-primary/80 font-bold' : '' : ''} ${hoveredItem === project ? 'text-primary font-bold' : ''} cursor-pointer hover:border-primary border-foreground w-full border-b-1`}
                                 onMouseEnter={() => { setHoveredItem(project) }}
                                 onMouseLeave={() => { setHoveredItem(null) }}
                                 onClick={() => {
