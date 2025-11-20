@@ -24,7 +24,7 @@ export const stats: Statistic[] = [
     {
         title: "Coffee Consumed",
         value: 65700,
-        metric: "+ oz",
+        metric: "oz",
     },
     {
         title: "Projects Deployed",

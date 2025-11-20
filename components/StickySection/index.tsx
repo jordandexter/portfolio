@@ -23,9 +23,9 @@ export function StickySection({
         target: parentRef,
         offset: ["start start", "end start"]
     });
-    const scale = useTransform(scrollYProgress, [0.35, 0.55, 0.76, 1], [0, 1, 1, 0]);
-    const opacity = useTransform(scrollYProgress, [0.35, 0.55, 0.8, 1], [0, 1, 1, 0]);
-    const rounded = useTransform(scrollYProgress, [0.35, 0.55, 0.763, 1], ["500px", "0px", "0px", "500px"]);
+    const scale = useTransform(scrollYProgress, [0.35, 0.55, 0.7, 1], [0, 1, 1, 0]);
+    const opacity = useTransform(scrollYProgress, [0.35, 0.55, 0.66, 1], [0, 1, 1, 0]);
+    const rounded = useTransform(scrollYProgress, [0.35, 0.55, 0.7, 1], ["500px", "0px", "0px", "500px"]);
 
     const scaleMobile = useTransform(scrollYProgress, [0.35, 0.524, 0.8, 1], [0, 1, 1, 0]);
     const opacityMobile = useTransform(scrollYProgress, [0.35, 0.5, 0.8, 1], [0, 1, 1, 0]);
