@@ -75,6 +75,7 @@ export function GithubPreview({
             <div className="flex w-full justify-center items-center relative">
                 <a className="flex justify-center rounded-full bg-primary hover:bg-primary-hover max-w-70 text-white font-bold py-2 w-full overflow-hidden relative"
                     href={'https://github.com/jordandexter/portfolio'}
+                    target="__blank"
                 >
                     <p className="z-2">Go to Repo</p>
                 </a>
