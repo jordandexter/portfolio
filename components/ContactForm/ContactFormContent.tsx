@@ -142,6 +142,7 @@ export const ContactFormContent = ({
                 <>
                     <SectionHeader
                         heading="Contact Me"
+                        postion='center'
                         subheading="Request Information"
                         parentRef={scrollRef}
                     />

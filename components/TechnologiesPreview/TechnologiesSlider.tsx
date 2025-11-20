@@ -52,8 +52,9 @@ export const TechnologiesSlider = ({
 
     return (
         <div ref={containerRef} className="flex relative w-full">
-            <motion.div className="flex flex-row gap-2 min-h-30"
+            <motion.div className="flex flex-row gap-2 min-h-30 hover:cursor-grab "
                 drag='x'
+                whileDrag={{ cursor: 'grabbing' }}
                 dragConstraints={containerRef}>
                 {shownItems && shownItems.map((item) => {
                     return (
