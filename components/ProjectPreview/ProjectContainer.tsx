@@ -1,3 +1,4 @@
+import { useScreensize } from "@/app/hooks/useScreensize"
 import { Project } from "./types"
 import { RefObject, useState, useRef, useEffect } from "react"
 
@@ -19,6 +20,7 @@ export const ProjectContainer = ({
     onProjectModalOpen
 }: ProjectContainerProps) => {
     const [hovered, setHovered] = useState<boolean>(false);
+    const [windowWidth, setWindowWidth] = useState<number>(0)
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const [animationTrigger, setAnimationTrigger] = useState(false);
 
@@ -38,6 +40,25 @@ export const ProjectContainer = ({
         observer.observe(triggerRef.current)
     }, [scrollRef, triggerRef])
 
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth)
+
+            if (window.innerWidth < 1100)
+                setHovered(true)
+            else {
+                setHovered(false)
+            }
+        }
+
+        handleResize()
+        window.addEventListener('resize', handleResize)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
     return (
         <div className={`flex flex-col ${className} overflow-hidden ${variant === 'lg' ? 'md:max-w-[75%] w-full' : 'md:max-w-[25%] w-full relative'}`}
             onClick={() => onProjectModalOpen(project)}>
@@ -45,7 +66,12 @@ export const ProjectContainer = ({
                 {animationTrigger &&
                     <div className={`flex relative fade-in w-full cursor-pointer rounded-[10px] border-1 border-transparent hover:border-gray-600 overflow-hidden`}
                         onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
+                        onMouseLeave={() => {
+                            if (windowWidth > 1100)
+                                setHovered(false);
+                            else
+                                return;
+                        }}
                         style={{
                             scrollbarWidth: 'none',
                         }}>
@@ -68,7 +94,7 @@ export const ProjectContainer = ({
                                 </div>
                             </div>
 
-                            <div className={`absolute flex justify-start items-end h-full w-full p-6 ${hovered ? 'bg-black/60' : 'bg-black/0'}`}
+                            <div className={`absolute flex justify-start items-end h-full w-full p-6 ${hovered ? 'bg-black/40' : 'bg-black/0'}`}
                                 style={{
                                 }}>
                                 <div className={`flex flex-col max-w-[75%] ${hovered ? 'opacity-100' : 'opacity-0'}`}>
