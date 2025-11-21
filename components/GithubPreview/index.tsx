@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState, useRef } from "react";
+import { RefObject, useEffect, useState, useRef, MouseEvent } from "react";
 import { SectionHeader } from "../Section/SectionHeader";
 import { useScroll } from "framer-motion";
 
@@ -16,6 +16,30 @@ export function GithubPreview({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
+    const [flareX, setFlareX] = useState<number>(0)
+    const [leftFlareOpacity, setLeftFlareOpacity] = useState(0)
+    const [rightFlareOpacity, setRightFlareOpacity] = useState(0)
+
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left
+        if (x < 80) {
+            setFlareX(80)
+            return;
+        }
+        if (x > 200) {
+            setFlareX(200)
+            return;
+        }
+        setFlareX(x)
+    }
+
+
+    useEffect(() => {
+        setLeftFlareOpacity((200 - flareX) / 200)
+        setRightFlareOpacity((flareX) / 280)
+
+    }, [flareX])
 
     useEffect(() => {
         if (!scrollRef.current || !triggerRef.current) return;
@@ -32,6 +56,9 @@ export function GithubPreview({
 
         observer.observe(triggerRef.current)
     }, [scrollRef, triggerRef])
+
+
+
 
     return (
         <div className="flex gap-6 flex-col relative">
@@ -73,12 +100,42 @@ export function GithubPreview({
                 </div>
             </div>
             <div className="flex w-full justify-center items-center relative">
-                <a className="flex justify-center rounded-full bg-primary hover:bg-primary-hover max-w-70 text-white font-bold py-2 w-full overflow-hidden relative"
-                    href={'https://github.com/jordandexter/portfolio'}
-                    target="__blank"
-                >
-                    <p className="z-2">Go to Repo</p>
-                </a>
+                <div className="flex w-full max-w-70 relative"
+                    onMouseMove={(e) => handleMouseMove(e)}>
+                    <div className="absolute z-3 flex h-11 w-10 rounded-full opacity-40 pointer-events-none"
+                        style={{
+                            left: `${flareX - 22}px`,
+                            backgroundImage: 'radial-gradient(#00000000, oklch(0.69 0.1038 228.79))',
+                            filter: 'blur(4px)',
+                            transform: 'scaleX(4) scaleY(1.3)'
+                        }}>
+                    </div>
+
+                    <div className="absolute flex z-0 h-13 w-13"
+                        style={{
+                            backgroundImage: 'radial-gradient(white 10%, oklch(0.69 0.1038 228.79), #00000000)',
+                            opacity: leftFlareOpacity,
+                            filter: 'blur(4px)',
+                            top: -5,
+                            left: -8
+                        }}>
+                    </div>
+                    <div className="absolute flex z-0 h-13 w-13"
+                        style={{
+                            backgroundImage: 'radial-gradient(white 10%, oklch(0.69 0.1038 228.79), #00000000)',
+                            backgroundSize: 'cover',
+                            opacity: rightFlareOpacity,
+                            filter: 'blur(10px)',
+                            right: -8,
+                            top: -5,
+                        }}>
+                    </div>
+                    <a className="flex z-2 justify-center rounded-full bg-white text-primary border-primary border-2 font-bold py-2 w-full"
+                        href={'https://github.com/jordandexter/portfolio'}
+                        target="__blank">
+                        <p className="z-2">Go to Repo</p>
+                    </a>
+                </div>
             </div>
         </div>
     );
