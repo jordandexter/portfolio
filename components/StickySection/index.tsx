@@ -24,12 +24,14 @@ export function StickySection({
         offset: ["start end", "end start"]
     });
     const scale = useTransform(scrollYProgress, [0, 0.269, 0.7, 1.2], [0, 1, 1, 0]);
+    const rounded = useTransform(scrollYProgress, [0, 0.269, 0.7, 1.2], ["500px", "0px", "0px", "500px"]);
 
     return (
         <div ref={ref} className={`flex w-full h-[270vh] relative flex-col ${background}`} >
             <motion.div className="sticky flex top-0 h-screen flex-col w-full gap-6 overflow-hidden bg-black"
                 style={{
                     scale: scale,
+                    borderRadius: rounded
                 }}>
                 <video src="/acid.mp4"
                     playsInline
