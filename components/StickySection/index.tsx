@@ -8,7 +8,6 @@ interface SectionProps {
     parentRef: RefObject<HTMLDivElement | null>,
     variant?: 'dark' | 'darkest'
     children?: ReactNode
-
 }
 
 export function StickySection({
@@ -19,43 +18,18 @@ export function StickySection({
     children
 }: SectionProps) {
     const background = !variant ? 'bg-background-section' : variant === 'dark' ? 'bg-section-background-dark' : 'bg-section-background-darkest'
+    const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
-        target: parentRef,
-        offset: ["start start", "end start"]
+        target: ref,
+        offset: ["start end", "end start"]
     });
-    const scale = useTransform(scrollYProgress, [0.35, 0.55, 0.7, 1], [0, 1, 1, 0]);
-    const opacity = useTransform(scrollYProgress, [0.35, 0.55, 0.66, 1], [0, 1, 1, 0]);
-    const rounded = useTransform(scrollYProgress, [0.35, 0.55, 0.7, 1], ["500px", "0px", "0px", "500px"]);
-
-    const scaleMobile = useTransform(scrollYProgress, [0.35, 0.524, 0.8, 1], [0, 1, 1, 0]);
-    const opacityMobile = useTransform(scrollYProgress, [0.35, 0.5, 0.8, 1], [0, 1, 1, 0]);
-    const roundedMobile = useTransform(scrollYProgress, [0.35, 0.52, 0.8, 1], ["500px", "0px", "0px", "500px"]);
+    const scale = useTransform(scrollYProgress, [0, 0.269, 0.7, 1.2], [0, 1, 1, 0]);
 
     return (
-        <div className={`flex  h-[400vh] md:h-[280vh] min-h-100 w-full relative flex-col ${background}`} >
-            <motion.div className="sticky flex md:hidden top-0 h-screen flex-col w-full gap-6 overflow-hidden bg-black"
-                style={{
-                    scale: scaleMobile,
-                    opacity: opacityMobile,
-                    borderRadius: roundedMobile
-                }}>
-                <video src="/acid.mp4"
-                    playsInline
-                    autoPlay
-                    controls={false}
-                    muted
-                    loop
-                    className="h-full w-full object-cover opacity-80"
-                />
-            </motion.div>
-
-
-
-            <motion.div className="sticky hidden md:flex top-0 h-screen flex flex-col w-full gap-6 overflow-hidden bg-black"
+        <div ref={ref} className={`flex w-full h-[270vh] relative flex-col ${background}`} >
+            <motion.div className="sticky flex top-0 h-screen flex-col w-full gap-6 overflow-hidden bg-black"
                 style={{
                     scale: scale,
-                    opacity: opacity,
-                    borderRadius: rounded
                 }}>
                 <video src="/acid.mp4"
                     playsInline

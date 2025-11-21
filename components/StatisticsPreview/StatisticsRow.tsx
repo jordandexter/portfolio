@@ -8,27 +8,24 @@ import { useState, useEffect, RefObject, useRef } from "react"
 
 interface StatisticRowProps {
     stats: Statistic[]
-    scrollRef: RefObject<HTMLDivElement | null>
 }
 
 export const StatisticsRow = ({
     stats,
-    scrollRef
 }: StatisticRowProps) => {
-    const triggerRef = useRef<HTMLDivElement | null>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
     const { scrollYProgress } = useScroll({
-        target: scrollRef,
-        offset: ["start start", "end start"]
+        target: ref,
+        offset: ["start end", "start start"]
     });
-    const transformScale = useTransform(scrollYProgress, [0.24, 0.29], [500, 0]);
-    const opacityScale = useTransform(scrollYProgress, [0.24, 0.29], [0, 1]);
+    const transformScale = useTransform(scrollYProgress, [0, 0.4], [500, 0]);
+    const opacityScale = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
 
-    const transformScaleMobile = useTransform(scrollYProgress, [0.15, 0.30], [500, 0]);
-    const opacityScaleMobile = useTransform(scrollYProgress, [0.15, 0.3], [0, 1]);
+    const transformScaleMobile = useTransform(scrollYProgress, [0, 0.4], [500, 0]);
+    const opacityScaleMobile = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
 
     return (
-        <div className="flex flex-col">
-
+        <div ref={ref} className="flex flex-col">
             {/* Mobile */}
             <div className="flex flex-row flex-wrap md:hidden gap-3 w-full">
                 {stats.map((s, index) => {
@@ -75,7 +72,6 @@ export const StatisticsRow = ({
                     );
                 })}
             </div>
-            <div ref={triggerRef} className="flex w-full" />
         </div>
     );
 }

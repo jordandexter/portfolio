@@ -1,7 +1,6 @@
 "use client"
 import { useRef, RefObject, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import HeroMobileHeader from "./HeroMobile";
 
 const SHOW_CONTAINER_NAMES = false
 
@@ -11,7 +10,7 @@ interface HeroHeaderProps {
     onOpenContactModal: () => void;
 }
 
-export default function HeroHeader({
+export default function HeroMobileHeader({
     scrollRef,
     aboutSectionRef,
     onOpenContactModal
@@ -20,10 +19,6 @@ export default function HeroHeader({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-
-    const opacityScale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
-    const scaleScale = useTransform(scrollYProgress, [0, 1], [1, 0.0]);
-    const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "200px"])
 
     const scrollToAbout = () => {
         const body = document.getElementsByTagName('html')[0]
@@ -38,12 +33,9 @@ export default function HeroHeader({
         }
     }
 
+
     return (
-        <motion.div className="flex sticky top-0 z-0 gap-10 flex-col md:flex-row md:h-screen h-[calc(100vh-155px)] w-full pt-15" style={{
-            opacity: opacityScale,
-            scale: scaleScale,
-            filter: blurScale && useTransform(blurScale, (b) => `blur(${b})`)
-        }}>
+        <div className="md:hidden sticky top-0 z-0 flex gap-10 flex-col md:flex-row md:h-screen h-[calc(100vh-155px)] w-full pt-15">
             {SHOW_CONTAINER_NAMES && <p className="absolute text-red-500 font-bold">container 1</p>}
             <div className="flex items-center justify-center flex-col flex-1 rounded-xl min-h-100 gap-8">
                 <div className="flex  h-50 w-50 md:h-50 md:w-50 fade-in rounded-full overflow-hidden justify-center items-center bg-white"
@@ -86,6 +78,15 @@ export default function HeroHeader({
                 </div>
             </div>
 
-        </motion.div>
+
+            <div
+                className="absolute w-screen max-w-[800px] h-[800px] bottom-[-550px] right-1/2 translate-x-1/2 rounded-full opacity-40 animate-pulse fade-in-ball"
+                style={{
+                    background: 'radial-gradient(circle, var(--hero-glow), #ffffff00)',
+                    filter: 'blur(30px)',
+                    animationDelay: '1000ms'
+                }}
+            />
+        </div>
     )
 }

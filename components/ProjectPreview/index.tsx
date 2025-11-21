@@ -1,10 +1,9 @@
-import { ArrowRight, Loader2, WindIcon } from "lucide-react"
 import { projects } from "./constants"
-import { useState, RefObject, useEffect, useRef } from "react"
-import { motion, useMotionValue, useScroll, useTransform } from "framer-motion"
+import { RefObject, useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Project } from "./types"
 import { ProjectContainer } from "./ProjectContainer"
-import { SectionHeader } from "../Section/SectionHeader"
+import { AnimatedText } from "../AnimatedText"
 
 interface ProjectPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -15,47 +14,30 @@ export function ProjectPreview({
     scrollRef,
     onProjectModalOpen
 }: ProjectPreviewProps) {
-    const triggerRef = useRef<HTMLDivElement | null>(null);
-    const [animationTrigger, setAnimationTrigger] = useState(false);
+    const ref = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
-        target: scrollRef,
-        offset: ["start start", "end start"]
+        target: ref,
+        offset: ["start end", "start start"]
     });
 
-    useEffect(() => {
-        if (!scrollRef.current || !triggerRef.current) return;
+    const opacityScale = useTransform(scrollYProgress, [0, 0.7], ["0%", "100%"]);
+    const scaleScale = useTransform(scrollYProgress, [0, 0.7], [0.5, 1]);
 
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(async (entry) => {
-                    if (entry.isIntersecting) {
-                        setAnimationTrigger(true)
-                    }
-                })
-            }
-        )
-
-        observer.observe(triggerRef.current)
-    }, [scrollRef, triggerRef])
-
-    const opacityScale = useTransform(scrollYProgress, [0.05, 0.10], ["0%", "100%"]);
     return (
-        <div className="flex max-w-[1000px] justify-center overflow-hidden flex-col">
-            <div className="flex w-full justify-start">
-                {animationTrigger &&
-                    <h1 className="text-foreground max-w-[500px] fade-in text-xl text-left font-bold pb-6 fade-in"
-                        style={{
-                            animationDelay: '500ms'
-                        }}><span className="text-foreground-emphasized">Here are few of my favorites.</span> These
-                        projects showcase not only my creativity, but also my experience working across multiple
-                        technologies each with a unique stack.
-                    </h1>
-                }
-            </div>
-            <div ref={triggerRef} className="flex w-full h-0" />
+        <div ref={ref} className="flex max-w-[1000px] justify-center overflow-hidden flex-col">
+            <AnimatedText
+                scrollRef={scrollRef}
+                delay={400}
+            >
+                <span className="text-foreground-emphasized">Here are few of my favorites.</span> These
+                projects showcase not only my creativity, but also my experience working across multiple
+                technologies each with a unique stack.
+            </AnimatedText>
+
             <motion.div className="flex flex-col"
                 style={{
-                    opacity: opacityScale
+                    opacity: opacityScale,
+                    scale: scaleScale
                 }}>
                 <div className="flex flex-row flex-wrap">
                     <ProjectContainer

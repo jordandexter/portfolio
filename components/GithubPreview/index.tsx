@@ -16,7 +16,7 @@ export function GithubPreview({
         target: scrollRef,
         offset: ["start start", "end start"]
     });
-    const [flareX, setFlareX] = useState<number>(0)
+    const [flareX, setFlareX] = useState<number>(80)
     const [leftFlareOpacity, setLeftFlareOpacity] = useState(0)
     const [rightFlareOpacity, setRightFlareOpacity] = useState(0)
 
@@ -37,7 +37,7 @@ export function GithubPreview({
 
     useEffect(() => {
         setLeftFlareOpacity((200 - flareX) / 200)
-        setRightFlareOpacity((flareX) / 280)
+        setRightFlareOpacity((flareX) / 200)
 
     }, [flareX])
 
@@ -82,8 +82,8 @@ export function GithubPreview({
                 <div ref={triggerRef} className="flex w-full h-0" />
             </div>
 
-            <div className="flex relative">
-                <img className="rounded-[25px] z-1 border-2 border-primary" src={'/github-profile.png'} />
+            <div className="flex relative justify-center">
+                <img className="md:rounded-[25px] z-1 border-2 min-w-[100vw] md:min-w-full border-primary" src={'/github-profile.png'} />
                 <div className="absolute h-full w-full">
                     <div className="flex h-full w-full justify-center items-center relative">
                         <div id='accent' className="abosolute flex h-full w-full transition-all animate-rotate-top"
@@ -102,32 +102,31 @@ export function GithubPreview({
             <div className="flex w-full justify-center items-center relative">
                 <div className="flex w-full max-w-70 relative"
                     onMouseMove={(e) => handleMouseMove(e)}>
-                    <div className="absolute z-3 flex h-11 w-10 rounded-full opacity-40 pointer-events-none"
+                    <div className="absolute z-3 flex h-9 w-10 rounded-full opacity-60 pointer-events-none"
                         style={{
                             left: `${flareX - 22}px`,
                             backgroundImage: 'radial-gradient(#00000000, oklch(0.69 0.1038 228.79))',
                             filter: 'blur(4px)',
+                            top: 4,
                             transform: 'scaleX(4) scaleY(1.3)'
                         }}>
                     </div>
-
-                    <div className="absolute flex z-0 h-13 w-13"
+                    <div className="absolute flex z-0 h-12 w-13"
                         style={{
-                            backgroundImage: 'radial-gradient(white 10%, oklch(0.69 0.1038 228.79), #00000000)',
+                            backgroundImage: 'radial-gradient(white 10%, blue, oklch(0.69 0.1038 228.79), #00000000)',
                             opacity: leftFlareOpacity,
-                            filter: 'blur(4px)',
-                            top: -5,
-                            left: -8
+                            filter: 'blur(8px)',
+                            top: -4,
+                            left: -5
                         }}>
                     </div>
-                    <div className="absolute flex z-0 h-13 w-13"
+                    <div className="absolute flex z-0 h-12 w-13"
                         style={{
-                            backgroundImage: 'radial-gradient(white 10%, oklch(0.69 0.1038 228.79), #00000000)',
-                            backgroundSize: 'cover',
+                            backgroundImage: 'radial-gradient(white 10%, blue, oklch(0.69 0.1038 228.79), #00000000)',
                             opacity: rightFlareOpacity,
-                            filter: 'blur(10px)',
-                            right: -8,
-                            top: -5,
+                            filter: 'blur(8px)',
+                            top: -4,
+                            right: -5
                         }}>
                     </div>
                     <a className="flex z-2 justify-center rounded-full bg-white text-primary border-primary border-2 font-bold py-2 w-full"

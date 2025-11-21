@@ -2,6 +2,7 @@ import { RefObject, useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, motion, useDragControls } from "framer-motion";
 import { designs } from "./constants";
 import { Pause, Play } from "lucide-react";
+import { AnimatedText } from "../AnimatedText";
 
 interface GraphicDesignPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -10,9 +11,7 @@ interface GraphicDesignPreviewProps {
 const FOCUS_DURATION = 4000 // In Milliseconds
 
 export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
-    const [animationTrigger, setAnimationTrigger] = useState(false);
-    const triggerTextRef = useRef<HTMLDivElement>(null)
-
+    const ref = useRef<HTMLDivElement>(null);
     const focusedImageIndex = useRef(0)
     const triggerRef = useRef(false)
     const [focusDurationElapsed, setFocusDurationElapsed] = useState(0)
@@ -21,17 +20,13 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
     const [isPlaying, setIsPlaying] = useState(false)
 
     const { scrollYProgress } = useScroll({
-        target: scrollRef,
-        offset: ["start start", "end start"]
+        target: ref,
+        offset: ["start end", "start start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0.33, 0.395], ["0%", "100%"]);
-    const translateScale = useTransform(scrollYProgress, [0.33, 0.395], ["200px", "0px"]);
-
-    const opacityScaleMobile = useTransform(scrollYProgress, [0.39, 0.43], ["0%", "100%"]);
-    const translateScaleMobile = useTransform(scrollYProgress, [0.39, 0.43], ["200px", "0px"]);
+    const opacityScale = useTransform(scrollYProgress, [0, 0.9], ["0%", "100%"]);
+    const translateScale = useTransform(scrollYProgress, [0.5, 0.9], ["200px", "0px"]);
 
     const getCarouselContainer = () => {
-
         if (window.innerWidth <= 767) {
             const carouselContainerMobile = document.getElementById('carousel-mobile');
             return carouselContainerMobile;
@@ -143,85 +138,18 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         }
     }, [])
 
-
-    useEffect(() => {
-        if (!scrollRef.current || !triggerTextRef.current) return;
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(async (entry) => {
-                    if (entry.isIntersecting) {
-                        setAnimationTrigger(true)
-                    }
-                })
-            }
-        )
-
-        observer.observe(triggerTextRef.current)
-    }, [triggerTextRef, scrollRef])
-
     return (
-        <>
-            <div ref={triggerTextRef} className="flex w-full justify-center">
-                {animationTrigger &&
-                    <h1 className=" flex flex-col w-[100%] justify-center text-center text-xl max-w-[500px] fade-in"
-                        style={{
-                            animationDelay: '600ms',
-                            display: 'inline'
-                        }}>
-                        <span className="text-foreground-emphasized inline">
-                            Beautiful websites 25+ years in the making.
-                        </span>{" "}
-                        Elegant, visually appealing designs have been a lifelong hobby.
-                    </h1>
-                }
-            </div>
+        <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
+            <AnimatedText
+                delay={400}
+                scrollRef={scrollRef}>
+                <span className="text-foreground-emphasized inline">
+                    Beautiful websites 25+ years in the making.
+                </span>{" "}
+                Elegant, visually appealing designs have been a lifelong hobby.
+            </AnimatedText>
 
-            {/* Mobile */}
-            <motion.div className="flex md:hidden w-full flex-col justify-center items-center"
-                style={{
-                    opacity: opacityScaleMobile,
-                    translateY: translateScaleMobile
-                }}>
-                <div className="flex w-full justify-center">
-                    <div className="flex relative">
-                        <motion.div
-                            id='carousel-mobile'
-                            className=" flex min-h-90 min-w-90 h-full max-h-150  flex-row flex-nowrap transition-all duration-1000 ease-in-out"
-                            drag='x'
-                            dragControls={controls}
-                            onPointerDown={(e) => controls.start(e)}
-                            style={{
-                                x: 'x'
-                            }}>
-                            {designs.map((imagePath, index) => {
-                                return (
-                                    <div key={`${imagePath}-${index}`} className={`flex select-none justify-center items-center overflow-hidden ${isPlaying ? '' : 'cursor-pointer'} min-w-[100%] h-full transition-all duration-1000 p-4 ${index === focusedImageIndex.current ? '' : 'scale-90'}`} onClick={() => {
-                                        if (isPlaying) return;
-
-                                        if (index < focusedImageIndex.current) {
-                                            handleFocusLeft(focusedImageIndex.current - index)
-                                        } else {
-                                            handleFocusRight(index - focusedImageIndex.current)
-                                        }
-                                    }}>
-                                        <div className="flex max-w-[100%] max-h-[100%] rounded-[25px] overflow-hidden"
-                                            style={{
-                                                boxShadow: '0 10px 10px 0 rgba(0,0,0,0.08)'
-                                            }} >
-                                            <img key={imagePath} className="object-cover " src={`/designs/${imagePath}`} />
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </motion.div>
-                    </div>
-                </div>
-            </motion.div >
-
-
-            {/* Desktop */}
-            <motion.div className="hidden md:flex w-full flex-col justify-center items-center"
+            <motion.div className="flex w-full flex-col justify-center items-center"
                 style={{
                     opacity: opacityScale,
                     translateY: translateScale
@@ -299,6 +227,6 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
