@@ -20,9 +20,9 @@ export function StatisticsPreview({
             />
             <div className="flex flex-col gap-6 w-full justify-center items-center">
                 <div className="flex flex-col gap-3 max-w-200">
-                    <StatisticsRow scrollRef={scrollRef} stats={stats.slice(0, 3)} />
-                    <StatisticsRow scrollRef={scrollRef} stats={stats.slice(3, 5)} />
-                    <StatisticsRow scrollRef={scrollRef} stats={stats.slice(5, 8)} />
+                    <StatisticsRow stats={stats.slice(0, 3)} />
+                    <StatisticsRow stats={stats.slice(3, 5)} />
+                    <StatisticsRow stats={stats.slice(5, 8)} />
                 </div>
             </div>
         </div>

@@ -23,7 +23,6 @@ export function BackgroundPreview({
                 </AnimatedParagraph>
 
                 <AnimatedParagraph scrollRef={scrollRef}>
-
                     <h2 className="text-white font-bold text-xl px-12">
                         My computer savvy older brother introduced me to Unix and web development quite young, around nine years
                         old. We would <s style={{ textDecoration: 'linethrough' }}>pirate</s> borrow filehosting software to store/share games

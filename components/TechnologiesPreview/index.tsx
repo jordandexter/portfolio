@@ -1,6 +1,7 @@
 import { tools } from "./constants";
 import { RefObject, useState, useRef, useEffect } from "react";
 import { TechnologiesSlider } from "./TechnologiesSlider";
+import { AnimatedText } from "../AnimatedText";
 
 interface TechnologiesPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>;
@@ -10,43 +11,18 @@ export function TechnologiesPreview({
     scrollRef
 }: TechnologiesPreviewProps
 ) {
-    const [animationTrigger, setAnimationTrigger] = useState(false);
-    const triggerRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (!scrollRef.current || !triggerRef.current) return;
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(async (entry) => {
-                    if (entry.isIntersecting) {
-                        setAnimationTrigger(true)
-                    }
-                })
-            }
-        )
-
-        observer.observe(triggerRef.current)
-    }, [triggerRef, scrollRef])
-
     return (
-        <div className="flex w-full flex-col gap-5 scrollbar-hide"
+        <div className="flex w-full flex-col gap-6 scrollbar-hide"
             style={{
                 scrollbarWidth: 'none'
             }}>
 
-            {animationTrigger &&
-
-                <h2 className="text-foreground max-w-[500px] fade-in text-xl font-bold"
-                    style={{
-                        animationDelay: '600ms'
-                    }}>
-                    <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With my formal training in network infrastructure and DevOps, I not only
-                    implement your application, but guarantee performance and longevity.
-                </h2>
-            }
-
-            <div ref={triggerRef} className="flex w-full" />
+            <AnimatedText
+                scrollRef={scrollRef}
+                delay={200}>
+                <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With my formal training in network infrastructure and DevOps, I not only
+                implement your application, but guarantee performance and longevity.
+            </AnimatedText>
 
             <h1 className="text-primary">Frontend</h1>
             <div className="flex flex-row gap-2 w-full relative">

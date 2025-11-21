@@ -33,8 +33,8 @@ export default function Home() {
 
   return (
     <div className="flex justify-center font-sans">
-      <main ref={ref} className="flex flex-col w-full gap-8 items-center">
-
+      <div ref={ref} className="absolute z-9999 pointer-events-none top-0 min-w-screen min-h-screen" />
+      <main className="flex flex-col w-full gap-8 items-center">
 
         {/* Move these into a store later */}
         {projectModalOpen.open && projectModalOpen.project &&
