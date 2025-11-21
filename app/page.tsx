@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center font-sans">
-      <div ref={ref} className="absolute z-9999 pointer-events-none top-0 min-w-screen min-h-screen" />
+      <div ref={ref} className="absolute z-9999 pointer-events-none top-0 w-0 min-h-screen" />
       <main className="flex flex-col w-full gap-8 items-center">
 
         {/* Move these into a store later */}
