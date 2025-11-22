@@ -15,9 +15,6 @@ export const StatisticContent = ({
 
 
 
-
-
-
     useEffect(() => {
         if (!animationTrigger || !stat.value) return;
 

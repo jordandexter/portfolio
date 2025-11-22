@@ -77,10 +77,20 @@ p {
   font-size: 16px;
 }
 
+.primary-gradient {
+  background-image: linear-gradient(to left, #b5f5e7, #59cccc, #0c9ac5);
+}
+
 .fade-in {
   opacity: 0;
   translate: 0px 20px;
   animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-heading {
+  opacity: 0;
+  translate: 0px 20px;
+  animation: fadeInHeading 1s ease forwards;
 }
 
 .fade-in-ball {
@@ -94,6 +104,15 @@ p {
     opacity: 1;
   }
 }
+
+@keyframes fadeInHeading {
+  to {
+    translate: 0px 0px;
+    opacity: 1;
+  }
+}
+
+
 
 @keyframes fadeInBall {
   to {

@@ -27,13 +27,8 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
     const translateScale = useTransform(scrollYProgress, [0.5, 0.9], ["200px", "0px"]);
 
     const getCarouselContainer = () => {
-        if (window.innerWidth <= 767) {
-            const carouselContainerMobile = document.getElementById('carousel-mobile');
-            return carouselContainerMobile;
-        } else {
-            const carouselContainer = document.getElementById('carousel');
-            return carouselContainer
-        }
+        const carouselContainer = document.getElementById('carousel');
+        return carouselContainer
     }
 
     const handleFocusLeft = (spacesToMove: number) => {
@@ -161,9 +156,6 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                         <motion.div
                             id='carousel'
                             className=" flex min-h-full flex-row flex-nowrap transition-all duration-1000 ease-in-out"
-                            drag='x'
-                            dragControls={controls}
-                            onPointerDown={(e) => controls.start(e)}
                         >
                             {designs.map((imagePath, index) => {
                                 return (

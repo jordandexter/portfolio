@@ -65,9 +65,4 @@ export const personalStats: Statistic[] = [
         value: 65700,
         metric: "oz",
     },
-    {
-        title: "",
-        value: 65700,
-        metric: "hrs",
-    },
 ];

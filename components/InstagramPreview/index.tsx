@@ -2,6 +2,8 @@ import { motion, useTransform, useScroll } from 'framer-motion'
 import { RefObject, useRef, useState } from 'react';
 import { SocialCard } from './SocialCard';
 import { AnimatedText } from '../AnimatedText';
+import { SectionHeader } from '../Section/SectionHeader';
+import { SocialCardContainer } from './SocialCardContainer';
 
 interface InstagramPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -19,9 +21,15 @@ export function InstagramPreview({
     const translateScale = useTransform(scrollYProgress, [0.6, 0.7], ["-1000px", "560px"]);
     return (
         <div className='flex flex-col w-full justify-center gap-6'>
+            <SectionHeader
+                heading={`Let's connect.`}
+                subheading='Socials'
+                parentRef={scrollRef}
+                postion='center'
+            />
             <AnimatedText
                 delay={400}
-                align='left'
+                align='center'
                 scrollRef={scrollRef}>
                 <span className='text-foreground-emphasized'>Thanks for taking a look.</span> If you like what you see, feel free to give a follow. Here are
                 my main socials.
@@ -40,32 +48,11 @@ export function InstagramPreview({
                 <div className='flex w-full justify-center'>
                     <img src={image} className="h-150 min-w-70 max-w-70 z-1 border-8 border-black w-full overflow-hidden rounded-[36px] object-cover" height={2532} width={1170} />
                 </div>
-                <div className='flex flex-col gap-3'>
-                    <SocialCard
-                        username='de.xterart'
-                        displayName='Dexter'
-                        link='https://www.instagram.com/de.xterart/'
-                        image='instagram_logo.png'
-                        hoverImage='instagram-hover.png'
-                        setImage={setImage} />
+                <SocialCardContainer
+                    scrollRef={scrollRef}
+                    setImage={setImage}
+                />
 
-                    <SocialCard
-                        username='jordandexter'
-                        displayName='Jordan Dexter'
-                        link='https://github.com/jordandexter'
-                        image='github_logo.png'
-                        hoverImage='github-hover.png'
-                        setImage={setImage}
-                        invert={true} />
-
-                    <SocialCard
-                        username='jordan-dexter1'
-                        displayName='Jordan Dexter'
-                        link='https://www.linkedin.com/in/jordan-dexter1'
-                        image='linkedin_logo.png'
-                        setImage={setImage}
-                        hoverImage='linkedin-hover.png' />
-                </div>
             </div>
         </div >
     );

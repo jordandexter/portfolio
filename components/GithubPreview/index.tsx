@@ -74,8 +74,8 @@ export function GithubPreview({
     return (
         <div className="flex gap-6 flex-col relative">
             <SectionHeader
-                heading="View on Github"
-                subheading="Github"
+                heading="Crafted with love"
+                subheading="Repository"
                 postion="left"
                 parentRef={scrollRef}
             />
@@ -83,13 +83,12 @@ export function GithubPreview({
             <AnimatedText
                 delay={400}
                 scrollRef={scrollRef}>
-                <span className="text-foreground-emphasized">Want to know more?</span> I'd love it if
-                you took a look at this project on Github, or explore a few of my other projects.
+                <span className="text-foreground-emphasized">Checkout this repository on Github.</span> Maybe leave a star, a nice message, or explore a few of my other projects.
             </AnimatedText>
 
-            <div ref={triggerRef} className="flex w-full h-0" />
-
             <div className="flex relative justify-center">
+
+                <div ref={triggerRef} className="flex w-full h-0" />
                 <img className="md:rounded-[25px] z-1 border-2 min-w-[100vw] md:min-w-full border-primary" src={'/github-profile.png'} />
                 <div className="absolute h-full w-full">
                     <div className="flex h-full w-full justify-center items-center relative">
