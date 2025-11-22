@@ -1,6 +1,6 @@
 export interface Statistic {
     title: string,
     subtitle?: string,
-    value: number,
+    value?: number,
     metric?: string
 }

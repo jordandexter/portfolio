@@ -10,7 +10,7 @@ export const socials: SocialLink[] = [
     {
         name: "LinkedIn",
         icon: SiLinkedin,
-        link: "https://linkedin.com/in/jordandexter"
+        link: "https://linkedin.com/in/jordan-dexter1"
     },
     {
         name: "Gmail",

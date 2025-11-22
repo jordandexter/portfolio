@@ -13,6 +13,7 @@ import { ProjectModal } from "@/modals/ProjectModal";
 import { Project } from "@/components/ProjectPreview/types";
 import { ContactUsModal } from "@/modals/ContactUsModal";
 import { GithubPreview } from "@/components/GithubPreview";
+import { InstagramPreview } from "@/components/InstagramPreview";
 
 export default function Home() {
   const ref = useRef<HTMLDivElement>(null);
@@ -88,6 +89,14 @@ export default function Home() {
                 variant="darkest">
                 <BackgroundPreview scrollRef={ref} backgroundPreviewRef={aboutSectionRef} />
               </StickySection>
+
+              <Section
+                heading="Give me a follow"
+                subheading="Instagram"
+                parentRef={ref}
+                variant="darkest">
+                <InstagramPreview scrollRef={ref} />
+              </Section>
 
               <Section
                 parentRef={ref}

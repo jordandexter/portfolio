@@ -27,8 +27,8 @@ export function StickySection({
     const rounded = useTransform(scrollYProgress, [0, 0.269, 0.7, 1.2], ["500px", "0px", "0px", "500px"]);
 
     return (
-        <div ref={ref} className={`flex w-full h-[270vh] relative flex-col ${background}`} >
-            <motion.div className="sticky flex top-0 h-screen flex-col w-full gap-6 overflow-hidden bg-black"
+        <div ref={ref} className={`flex w-full sm:h-[400vh] lg:h-[270vh] relative flex-col ${background}`} >
+            <motion.div className="sticky flex top-0 min-h-screen flex-col w-full gap-6 overflow-hidden bg-black"
                 style={{
                     scale: scale,
                     borderRadius: rounded
