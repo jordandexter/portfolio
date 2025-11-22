@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useState, useRef, MouseEvent } from "react";
 import { SectionHeader } from "../Section/SectionHeader";
 import { useScroll } from "framer-motion";
+import { AnimatedText } from "../AnimatedText";
 
 interface GithubPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -23,12 +24,12 @@ export function GithubPreview({
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left
-        if (x < 80) {
-            setFlareX(80)
+        if (x < 50) {
+            setFlareX(50)
             return;
         }
-        if (x > 200) {
-            setFlareX(200)
+        if (x > 240) {
+            setFlareX(240)
             return;
         }
         setFlareX(x)
@@ -36,8 +37,18 @@ export function GithubPreview({
 
 
     useEffect(() => {
-        setLeftFlareOpacity((200 - flareX) / 200)
-        setRightFlareOpacity((flareX) / 200)
+        console.log(flareX)
+
+        if (flareX <= 130) {
+            setLeftFlareOpacity((130 - flareX) / 50)
+            setRightFlareOpacity(0)
+        }
+
+
+        if (flareX > 140) {
+            setRightFlareOpacity((flareX - 140) / 60)
+            setLeftFlareOpacity(0)
+        }
 
     }, [flareX])
 
@@ -63,26 +74,21 @@ export function GithubPreview({
     return (
         <div className="flex gap-6 flex-col relative">
             <SectionHeader
-                heading="View on Github"
-                subheading="Github"
+                heading="Crafted with love"
+                subheading="Repository"
                 postion="left"
                 parentRef={scrollRef}
             />
 
-            <div className="flex w-full justify-start">
-                {animationTrigger &&
-                    <h1 className="text-foreground max-w-[500px] fade-in text-xl text-left font-bold fade-in"
-                        style={{
-                            animationDelay: '500ms'
-                        }}><span className="text-foreground-emphasized">Want to know more?</span> I'd love it if
-                        you took a look at this project on Github, or explore a few of my other projects.
-                    </h1>
-                }
-
-                <div ref={triggerRef} className="flex w-full h-0" />
-            </div>
+            <AnimatedText
+                delay={400}
+                scrollRef={scrollRef}>
+                <span className="text-foreground-emphasized">Checkout this repository on Github.</span> Maybe leave a star, a nice message, or explore a few of my other projects.
+            </AnimatedText>
 
             <div className="flex relative justify-center">
+
+                <div ref={triggerRef} className="flex w-full h-0" />
                 <img className="md:rounded-[25px] z-1 border-2 min-w-[100vw] md:min-w-full border-primary" src={'/github-profile.png'} />
                 <div className="absolute h-full w-full">
                     <div className="flex h-full w-full justify-center items-center relative">
@@ -116,7 +122,7 @@ export function GithubPreview({
                             backgroundImage: 'radial-gradient(white 10%, blue, oklch(0.69 0.1038 228.79), #00000000)',
                             opacity: leftFlareOpacity,
                             filter: 'blur(8px)',
-                            top: -4,
+                            top: -2,
                             left: -5
                         }}>
                     </div>
@@ -125,17 +131,17 @@ export function GithubPreview({
                             backgroundImage: 'radial-gradient(white 10%, blue, oklch(0.69 0.1038 228.79), #00000000)',
                             opacity: rightFlareOpacity,
                             filter: 'blur(8px)',
-                            top: -4,
+                            top: -2,
                             right: -5
                         }}>
                     </div>
                     <a className="flex z-2 justify-center rounded-full bg-white text-primary border-primary border-2 font-bold py-2 w-full"
                         href={'https://github.com/jordandexter/portfolio'}
                         target="__blank">
-                        <p className="z-2">Go to Repo</p>
+                        <p className="z-2 text-[#0d1117]">Go to Repo</p>
                     </a>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

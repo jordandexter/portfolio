@@ -15,14 +15,13 @@ export const StatisticContent = ({
 
 
 
-
-
-
     useEffect(() => {
-        if (!animationTrigger) return;
+        if (!animationTrigger || !stat.value) return;
 
         const interval = setInterval(() => {
             setValue((prev) => {
+                if (!stat.value) return 0;
+
                 if (prev + 1 > stat.value) {
                     clearInterval(interval)
                     return stat.value;
@@ -45,7 +44,7 @@ export const StatisticContent = ({
                     WebkitTextFillColor: 'transparent',
                     backgroundImage: 'linear-gradient(45deg, #59B5BD, #42a1e0ff, #0f576dff)',
                     WebkitBackgroundClip: 'text'
-                }}><span className="-translate-y-1">{value} {stat.metric}</span></h1>
+                }}><span className="-translate-y-1">{stat.value ? value : null} {stat.metric}</span></h1>
         </div>
     )
 }

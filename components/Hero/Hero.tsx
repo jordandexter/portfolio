@@ -61,11 +61,10 @@ export default function HeroHeader({
                     }}>
                         Frontend Developer | Software Engineer
                     </h2>
-                    <h1 className="text-5xl fade-in bg-clip-text text-transparent"
+                    <h1 className="text-5xl fade-in bg-clip-text text-transparent primary-gradient"
                         style={{
                             animationDuration: '1000ms',
                             animationDelay: '400ms',
-                            backgroundImage: 'linear-gradient(to right, #59B5BD, #42a1e0ff, #0f576dff)'
                         }}>
                         Jordan Dexter
                     </h1>

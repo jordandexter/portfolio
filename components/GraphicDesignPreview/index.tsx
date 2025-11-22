@@ -23,17 +23,12 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         target: ref,
         offset: ["start end", "start start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0, 0.9], ["0%", "100%"]);
+    const opacityScale = useTransform(scrollYProgress, [0.5, 0.9], ["0%", "100%"]);
     const translateScale = useTransform(scrollYProgress, [0.5, 0.9], ["200px", "0px"]);
 
     const getCarouselContainer = () => {
-        if (window.innerWidth <= 767) {
-            const carouselContainerMobile = document.getElementById('carousel-mobile');
-            return carouselContainerMobile;
-        } else {
-            const carouselContainer = document.getElementById('carousel');
-            return carouselContainer
-        }
+        const carouselContainer = document.getElementById('carousel');
+        return carouselContainer
     }
 
     const handleFocusLeft = (spacesToMove: number) => {
@@ -142,11 +137,13 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
             <AnimatedText
                 delay={400}
+                align="left"
                 scrollRef={scrollRef}>
                 <span className="text-foreground-emphasized inline">
-                    Beautiful websites 25+ years in the making.
+                    Beautiful websites begin with good design.
                 </span>{" "}
-                Elegant, visually appealing designs have been a lifelong hobby.
+                Creating elegant, visually appealing designs has been a lifelong hobby. Here's some of my graphic
+                work.
             </AnimatedText>
 
             <motion.div className="flex w-full flex-col justify-center items-center"
@@ -155,13 +152,10 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                     translateY: translateScale
                 }}>
                 <div className="flex w-full justify-center">
-                    <div className="flex w-150 md:w-150 lg:h-200 lg:w-200 relative">
+                    <div className="flex w-150 md:w-150 lg:h-200 lg:w-160 relative">
                         <motion.div
                             id='carousel'
                             className=" flex min-h-full flex-row flex-nowrap transition-all duration-1000 ease-in-out"
-                            drag='x'
-                            dragControls={controls}
-                            onPointerDown={(e) => controls.start(e)}
                         >
                             {designs.map((imagePath, index) => {
                                 return (
