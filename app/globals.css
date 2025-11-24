@@ -6,7 +6,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-primary: oklch(0.698 0.1038 228.79);
+  --color-primary: oklch(0.7195 0.1094 208.91);
   --color-primary-hover: oklch(0.60 0.1038 228.79);
 
   --color-background: oklch(0.900 0.000 89.9);
@@ -28,7 +28,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-primary: oklch(0.698 0.1038 228.79);
+  --color-primary: oklch(0.7195 0.1094 208.91);
   --color-primary-hover: oklch(0.60 0.1038 228.79);
 
   --color-background: oklch(0% 0 0);
@@ -49,6 +49,7 @@
 
 html {
   background: var(--color-background);
+  scroll-behavior: smooth;
 }
 
 

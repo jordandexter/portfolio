@@ -1,4 +1,5 @@
-import { RefObject, useState, useEffect, ReactNode, useRef } from "react";
+"use client"
+import { RefObject, ReactNode, useRef } from "react";
 import { SectionHeader } from "../Section/SectionHeader";
 import { useScroll, useTransform, motion } from "framer-motion";
 

@@ -1,4 +1,4 @@
-import { s } from "framer-motion/client"
+"use client"
 import { Statistic } from "./types"
 import { useState, useEffect } from "react"
 
@@ -12,8 +12,6 @@ export const StatisticContent = ({
     animationTrigger
 }: StatisticContentProps) => {
     const [value, setValue] = useState<number>(0);
-
-
 
     useEffect(() => {
         if (!animationTrigger || !stat.value) return;

@@ -1,18 +1,16 @@
+"use client"
 import { projects } from "./constants"
 import { RefObject, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Project } from "./types"
 import { ProjectContainer } from "./ProjectContainer"
 import { AnimatedText } from "../AnimatedText"
 
 interface ProjectPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
-    onProjectModalOpen: (project: Project) => void
 }
 
 export function ProjectPreview({
     scrollRef,
-    onProjectModalOpen
 }: ProjectPreviewProps) {
     const ref = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
@@ -27,7 +25,7 @@ export function ProjectPreview({
         <div ref={ref} className="flex max-w-[1000px] justify-center overflow-hidden flex-col">
             <AnimatedText
                 scrollRef={scrollRef}
-                delay={400}
+                delay={600}
             >
                 <span className="text-foreground-emphasized">Here are few of my favorites.</span> These
                 projects showcase not only my creativity, but also my experience working across multiple
@@ -43,14 +41,12 @@ export function ProjectPreview({
                     <ProjectContainer
                         project={projects[0]}
                         scrollRef={scrollRef}
-                        onProjectModalOpen={onProjectModalOpen}
                         className={'py-3 md:pr-3'}
                         objectPosition="object-top"
                         variant='lg' />
                     <ProjectContainer
                         project={projects[1]}
                         scrollRef={scrollRef}
-                        onProjectModalOpen={onProjectModalOpen}
                         className="py-3 md:pl-3"
                         objectPosition="object-center"
                         variant='sm' />
@@ -60,14 +56,12 @@ export function ProjectPreview({
                     <ProjectContainer
                         project={projects[2]}
                         scrollRef={scrollRef}
-                        onProjectModalOpen={onProjectModalOpen}
                         className="py-3 md:pr-3"
                         objectPosition="object-center"
                         variant='sm' />
                     <ProjectContainer
                         project={projects[3]}
                         scrollRef={scrollRef}
-                        onProjectModalOpen={onProjectModalOpen}
                         className="py-3 md:pl-3"
                         objectPosition="object-center"
                         variant='lg' />
@@ -77,14 +71,12 @@ export function ProjectPreview({
                     <ProjectContainer
                         project={projects[4]}
                         scrollRef={scrollRef}
-                        onProjectModalOpen={onProjectModalOpen}
                         className="py-3 md:pr-3"
                         objectPosition="object-center"
                         variant='lg' />
                     <ProjectContainer
                         project={projects[5]}
                         scrollRef={scrollRef}
-                        onProjectModalOpen={onProjectModalOpen}
                         className="py-3 md:pl-3"
                         objectPosition="object-left"
                         variant='sm' />

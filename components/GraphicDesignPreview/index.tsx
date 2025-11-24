@@ -16,7 +16,6 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
     const triggerRef = useRef(false)
     const [focusDurationElapsed, setFocusDurationElapsed] = useState(0)
     const [offset, setOffset] = useState(0);
-    const controls = useDragControls()
     const [isPlaying, setIsPlaying] = useState(false)
 
     const { scrollYProgress } = useScroll({
@@ -136,7 +135,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
     return (
         <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
             <AnimatedText
-                delay={400}
+                delay={600}
                 align="left"
                 scrollRef={scrollRef}>
                 <span className="text-foreground-emphasized inline">

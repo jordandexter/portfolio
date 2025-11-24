@@ -1,3 +1,4 @@
+"use client"
 import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from "react"
 import { SocialCard } from "./SocialCard"
 

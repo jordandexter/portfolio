@@ -1,6 +1,6 @@
+"use client"
 import { RefObject, useEffect, useState, useRef, MouseEvent } from "react";
 import { SectionHeader } from "../Section/SectionHeader";
-import { useScroll } from "framer-motion";
 import { AnimatedText } from "../AnimatedText";
 
 interface GithubPreviewProps {
@@ -12,11 +12,6 @@ export function GithubPreview({
 }: GithubPreviewProps) {
 
     const triggerRef = useRef<HTMLDivElement | null>(null);
-    const [animationTrigger, setAnimationTrigger] = useState(false);
-    const { scrollYProgress } = useScroll({
-        target: scrollRef,
-        offset: ["start start", "end start"]
-    });
     const [flareX, setFlareX] = useState<number>(80)
     const [leftFlareOpacity, setLeftFlareOpacity] = useState(0)
     const [rightFlareOpacity, setRightFlareOpacity] = useState(0)
@@ -52,25 +47,6 @@ export function GithubPreview({
 
     }, [flareX])
 
-    useEffect(() => {
-        if (!scrollRef.current || !triggerRef.current) return;
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(async (entry) => {
-                    if (entry.isIntersecting) {
-                        setAnimationTrigger(true)
-                    }
-                })
-            }
-        )
-
-        observer.observe(triggerRef.current)
-    }, [scrollRef, triggerRef])
-
-
-
-
     return (
         <div className="flex gap-6 flex-col relative">
             <SectionHeader
@@ -81,7 +57,7 @@ export function GithubPreview({
             />
 
             <AnimatedText
-                delay={400}
+                delay={600}
                 scrollRef={scrollRef}>
                 <span className="text-foreground-emphasized">Checkout this repository on Github.</span> Maybe leave a star, a nice message, or explore a few of my other projects.
             </AnimatedText>
