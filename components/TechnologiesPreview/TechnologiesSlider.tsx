@@ -1,3 +1,4 @@
+"use client"
 import { RefObject, useState, useEffect, useRef } from "react"
 import { SliderItem } from "./types"
 import { motion } from "framer-motion"

@@ -44,7 +44,7 @@ export const SocialCard = ({
                     </div>
                     <div className='flex flex-col leading-5'>
                         <h1 className='text-foreground-emphasized whitespace-nowrap'>{displayName}</h1>
-                        <h2>@{username}</h2>
+                        <h2 className="text-sm">@{username}</h2>
                     </div>
                 </div>
                 <a href={link} className='flex justify-center items-center bg-primary px-5 rounded-full text-white font-bold hover:bg-primary-hover'>View</a>

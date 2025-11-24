@@ -1,6 +1,6 @@
+"use client"
 import { motion, useTransform, useScroll } from 'framer-motion'
 import { RefObject, useRef, useState } from 'react';
-import { SocialCard } from './SocialCard';
 import { AnimatedText } from '../AnimatedText';
 import { SectionHeader } from '../Section/SectionHeader';
 import { SocialCardContainer } from './SocialCardContainer';
@@ -28,7 +28,7 @@ export function InstagramPreview({
                 postion='center'
             />
             <AnimatedText
-                delay={400}
+                delay={600}
                 align='center'
                 scrollRef={scrollRef}>
                 <span className='text-foreground-emphasized'>Thanks for taking a look.</span> If you like what you see, feel free to give a follow. Here are

@@ -1,4 +1,5 @@
-import { RefObject, useState, useEffect, ReactNode, useRef } from "react";
+"use client"
+import { RefObject, ReactNode } from "react";
 import { SectionHeader } from "./SectionHeader";
 
 interface SectionProps {

@@ -1,3 +1,4 @@
+"use client"
 import { ReactNode, RefObject, useRef, useState, useEffect } from "react"
 
 interface AnimatedParagraphProps {

@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect, useRef, ChangeEvent, RefObject } from 'react';
 import { FormInput } from './FormInput';
 import { SectionHeader } from '../Section/SectionHeader';
@@ -7,13 +8,10 @@ import { init, send } from '@emailjs/browser';
 import { Loader2 } from 'lucide-react';
 import { socials } from './constants';
 
-interface ContactFormProps {
-    scrollRef: RefObject<HTMLDivElement | null>;
-}
 
-export const ContactFormContent = ({
-    scrollRef
-}: ContactFormProps) => {
+
+export const ContactFormContent = () => {
+    const ref = useRef<HTMLDivElement>(null)
     const [formData, setFormData] = useState<ContactFormData>({
         name: "",
         email: "",
@@ -114,7 +112,7 @@ export const ContactFormContent = ({
 
 
     useEffect(() => {
-        if (!scrollRef.current || !triggerRef.current) return;
+        if (!ref.current || !triggerRef.current) return;
 
         const observer = new IntersectionObserver(
             entries => {
@@ -127,14 +125,14 @@ export const ContactFormContent = ({
         )
 
         observer.observe(triggerRef.current)
-    }, [triggerRef, scrollRef])
+    }, [triggerRef, ref])
 
     useEffect(() => {
         setFormError(null)
     }, [formData])
 
     return (
-        <div className={`flex items-center flex-col w-full max-w-150 bg-transparent gap-1 md:gap-4 overflow-scroll p-6 ${sending && !hasSent ? 'opacity-50' : ''}`}
+        <div ref={ref} className={`flex items-center flex-col w-full max-w-150 bg-transparent gap-1 md:gap-4 overflow-scroll p-6 ${sending && !hasSent ? 'opacity-50' : ''}`}
             style={{
                 scrollbarWidth: 'none'
             }}>
@@ -144,7 +142,7 @@ export const ContactFormContent = ({
                         heading="Contact Me"
                         postion='center'
                         subheading="Request Information"
-                        parentRef={scrollRef}
+                        parentRef={ref}
                     />
 
                     {formError &&

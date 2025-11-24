@@ -1,6 +1,4 @@
-import { ChangeEvent, RefObject, useState, useRef, useEffect } from "react";
-import { socials } from "./constants";
-import { SocialLink } from "./types";
+import { RefObject } from "react";
 import { ContactFormContent } from "./ContactFormContent";
 
 interface ContactFormProps {
@@ -23,7 +21,7 @@ export function ContactForm({
             style={{
                 minHeight: '100dvh'
             }}>
-            <ContactFormContent scrollRef={scrollRef} />
+            <ContactFormContent />
         </div>
     );
 }

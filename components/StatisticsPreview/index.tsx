@@ -21,7 +21,7 @@ export function StatisticsPreview({
             />
 
             <AnimatedText
-                delay={400}
+                delay={600}
                 align="center"
                 scrollRef={scrollRef}>
                 <span className="text-foreground-emphasized">Nerds love stats.</span> I'm certainly not the exception. Here are a few I

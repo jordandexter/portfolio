@@ -1,10 +1,8 @@
-import { useScreensize } from "@/app/hooks/useScreensize"
+"use client"
 import { StatisticContent } from "./StatisticContent"
 import { Statistic } from "./types"
 import { useTransform, useScroll, motion } from "framer-motion"
-import { MapInputRange } from "framer-motion"
-
-import { useState, useEffect, RefObject, useRef } from "react"
+import { useRef } from "react"
 
 interface StatisticRowProps {
     stats: Statistic[]

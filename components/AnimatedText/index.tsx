@@ -1,3 +1,4 @@
+"use client"
 import { ReactNode, RefObject, useRef, useState, useEffect } from "react"
 
 interface AnimatedTextProps {
@@ -23,7 +24,9 @@ export function AnimatedText({
             entries => {
                 entries.forEach(async (entry) => {
                     if (entry.isIntersecting) {
-                        setAnimationTrigger(true)
+                        setTimeout(() => {
+                            setAnimationTrigger(true)
+                        }, delay)
                     }
                 })
             }
@@ -38,7 +41,6 @@ export function AnimatedText({
                 style={{
                     translate: animationTrigger ? '0px 0px' : `0 20px`,
                     opacity: animationTrigger ? 100 : 0,
-                    animationDelay: `${delay}ms`
                 }}>
                 {children}
             </h2>

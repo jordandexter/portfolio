@@ -1,5 +1,6 @@
+"use client"
 import { tools } from "./constants";
-import { RefObject, useState, useRef, useEffect } from "react";
+import { RefObject } from "react";
 import { TechnologiesSlider } from "./TechnologiesSlider";
 import { AnimatedText } from "../AnimatedText";
 
@@ -19,7 +20,7 @@ export function TechnologiesPreview({
 
             <AnimatedText
                 scrollRef={scrollRef}
-                delay={200}>
+                delay={600}>
                 <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With my formal training in network infrastructure and DevOps, I not only
                 implement your application, but guarantee performance and longevity.
             </AnimatedText>

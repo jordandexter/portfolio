@@ -1,3 +1,4 @@
+"use client"
 import { RefObject, useRef, useEffect, useState } from "react";
 
 interface SectionHeaderProps {
@@ -51,7 +52,7 @@ export const SectionHeader = ({
                             <h1 className="flex text-4xl bg-clip-text text-transparent inline-block fade-in-heading primary-gradient pb-1"
                                 style={{
                                     animationDuration: '1000ms',
-                                    animationDelay: '200ms',
+                                    animationDelay: '400ms',
                                 }}>
                                 {heading}
                             </h1>

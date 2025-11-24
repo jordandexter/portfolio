@@ -1,14 +1,13 @@
-import { useEffect, RefObject } from 'react';
+"use client"
+import { useEffect } from 'react';
 import { X } from "lucide-react";
 import { ContactFormContent } from '@/components/ContactForm/ContactFormContent';
 
 interface ContactFormModalProps {
-    scrollRef: RefObject<HTMLDivElement | null>
     onClose: () => void
 }
 
 export const ContactUsModal = ({
-    scrollRef,
     onClose
 }: ContactFormModalProps) => {
 
@@ -29,7 +28,7 @@ export const ContactUsModal = ({
             <X className="absolute top-6 right-6 h-10 w-10 cursor-pointer hover:text-white"
                 onClick={onClose}
             />
-            <ContactFormContent scrollRef={scrollRef} />
+            <ContactFormContent />
         </div>
     );
 }

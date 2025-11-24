@@ -1,6 +1,7 @@
-import { useScreensize } from "@/app/hooks/useScreensize"
+"use client"
 import { Project } from "./types"
 import { RefObject, useState, useRef, useEffect } from "react"
+import { useModalStore } from "@/stores/modalStore"
 
 interface ProjectContainerProps {
     project: Project,
@@ -8,7 +9,6 @@ interface ProjectContainerProps {
     className?: string,
     objectPosition: string,
     variant: 'lg' | 'sm'
-    onProjectModalOpen: (project: Project) => void
 }
 
 export const ProjectContainer = ({
@@ -17,9 +17,9 @@ export const ProjectContainer = ({
     className,
     objectPosition,
     variant,
-    onProjectModalOpen
 }: ProjectContainerProps) => {
     const [hovered, setHovered] = useState<boolean>(false);
+    const { projectModalOpen, setProjectModalOpen } = useModalStore()
     const [windowWidth, setWindowWidth] = useState<number>(0)
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const [animationTrigger, setAnimationTrigger] = useState(false);
@@ -61,7 +61,7 @@ export const ProjectContainer = ({
 
     return (
         <div className={`flex flex-col ${className} overflow-hidden ${variant === 'lg' ? 'md:max-w-[75%] w-full' : 'md:max-w-[25%] w-full relative'}`}
-            onClick={() => onProjectModalOpen(project)}>
+            onClick={() => setProjectModalOpen({ open: true, project: project })}>
             <div className="flex h-50">
                 <div className={`flex relative w-full transition-all duration-1000 cursor-pointer rounded-[10px] border-1 border-transparent hover:border-gray-600 overflow-hidden ${animationTrigger ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'} `}
                     onMouseEnter={() => setHovered(true)}
