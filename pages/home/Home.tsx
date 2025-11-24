@@ -12,6 +12,7 @@ import { StatisticsPreview } from "@/components/StatisticsPreview";
 import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
+import { ModalContainer } from "@/modals";
 
 export default function Home() {
     const ref = useRef<HTMLDivElement>(null);
@@ -21,6 +22,7 @@ export default function Home() {
         <div className="flex justify-center font-sans">
             <div ref={ref} className="absolute z-9999 pointer-events-none top-0 w-0 min-h-screen" />
             <main className="flex flex-col w-full gap-8 items-center">
+                <ModalContainer />
                 {ref &&
                     <>
                         <HeroHeader scrollRef={ref} aboutSectionRef={aboutSectionRef} />
@@ -58,6 +60,13 @@ export default function Home() {
                                 <GraphicDesignPreview scrollRef={ref} />
                             </Section>
 
+                            <Section
+                                heading="Simple, Elegant, familiar."
+                                subheading="Philosophy"
+                                parentRef={ref}
+                                variant='darkest'>
+                                <ComponentPreview scrollRef={ref} />
+                            </Section>
 
                             <StickySection
                                 heading="Background"
