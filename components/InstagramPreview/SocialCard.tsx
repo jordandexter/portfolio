@@ -47,7 +47,7 @@ export const SocialCard = ({
                         <h2 className="text-sm">@{username}</h2>
                     </div>
                 </div>
-                <a href={link} className='flex justify-center items-center bg-primary px-5 rounded-full text-white font-bold hover:bg-primary-hover'>View</a>
+                <a href={link} target='__blank' className='flex justify-center items-center bg-primary px-5 rounded-full text-white font-bold hover:bg-primary-hover'>View</a>
             </div>
         </div>
     )

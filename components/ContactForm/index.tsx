@@ -17,9 +17,8 @@ export function ContactForm({
 }: ContactFormProps) {
 
     return (
-        <div className={`flex w-full justify-center items-center flex-col gap-12`}
+        <div className={`flex w-full justify-center items-center flex-col gap-12 py-40`}
             style={{
-                minHeight: '100dvh'
             }}>
             <ContactFormContent />
         </div>
