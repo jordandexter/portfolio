@@ -4,6 +4,7 @@ import { RefObject, useState } from "react";
 import { TechnologiesSlider } from "./TechnologiesSlider";
 import { AnimatedText } from "../AnimatedText";
 import { SliderItem } from "./types";
+import { Code2 } from "lucide-react";
 
 interface TechnologiesPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>;
@@ -34,7 +35,13 @@ export function TechnologiesPreview({
                     <div className="flex flex-col w-[500px] fade-in border-1 p-3 bg-section-background rounded-[15px]">
                         <h1 className="w-full flex justify-center pl-1 text-sm">{hoveredIcon.name}</h1>
                         <div className="flex flex-row gap-3 h-full justify-center items-center">
-                            <hoveredIcon.Icon className="flex h-full w-10 text-primary" />
+                            {hoveredIcon.Icon ? (
+
+                                <hoveredIcon.Icon size={35} className="flex h-full text-primary" />
+                            ) : (
+                                <Code2 size={36} />
+                            )}
+
                             <div className="flex flex-col w-full">
                                 <div className="flex w-full justify-between flex-row gap-3">
                                     <div className="flex flex-row justify-between w-full">
