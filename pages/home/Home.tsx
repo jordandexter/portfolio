@@ -1,6 +1,6 @@
 "use client"
 import HeroHeader from "@/components/Hero";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
@@ -13,10 +13,34 @@ import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
 import { ModalContainer } from "@/modals";
+import { useState } from "react";
 
 export default function Home() {
     const ref = useRef<HTMLDivElement>(null);
     const aboutSectionRef = useRef<HTMLDivElement>(null)
+    const [data, setData] = useState<any | null>(null)
+
+    const getData = async () => {
+        try {
+            const res = await fetch('https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/766963')
+            console.log(res.body.toString())
+
+        } catch (err) {
+            return null;
+        }
+    }
+
+
+    useEffect(() => {
+        const init = async () => {
+            const res = await getData()
+            console.log(res)
+
+        }
+
+        init()
+    })
+
 
     return (
         <div className="flex justify-center font-sans">
