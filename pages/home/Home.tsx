@@ -20,28 +20,6 @@ export default function Home() {
     const aboutSectionRef = useRef<HTMLDivElement>(null)
     const [data, setData] = useState<any | null>(null)
 
-    const getData = async () => {
-        try {
-            const res = await fetch('https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/766963')
-            console.log(res.body.toString())
-
-        } catch (err) {
-            return null;
-        }
-    }
-
-
-    useEffect(() => {
-        const init = async () => {
-            const res = await getData()
-            console.log(res)
-
-        }
-
-        init()
-    })
-
-
     return (
         <div className="flex justify-center font-sans">
             <div ref={ref} className="absolute z-9999 pointer-events-none top-0 w-0 min-h-screen" />
