@@ -1,16 +1,19 @@
 "use client"
-import { RefObject, useState, useEffect, useRef } from "react"
+import { RefObject, useState, useEffect, useRef, Dispatch, SetStateAction } from "react"
 import { SliderItem } from "./types"
 import { motion } from "framer-motion"
+import { Star } from "lucide-react"
 
 interface TechnologiesSliderProps {
     scrollRef: RefObject<HTMLDivElement | null>
     items: SliderItem[]
+    setHoveredIcon: Dispatch<SetStateAction<SliderItem | null>>
 }
 
 export const TechnologiesSlider = ({
     scrollRef,
-    items
+    items,
+    setHoveredIcon
 }: TechnologiesSliderProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -59,9 +62,15 @@ export const TechnologiesSlider = ({
                 dragConstraints={containerRef}>
                 {shownItems && shownItems.map((item) => {
                     return (
-                        <div key={item.name} className="flex flex-col fade-in gap-4 cursor-arrow hover:scale-105 justify-center items-center p-2 whitespace-nowrap  overflow-hidden min-h-30 min-w-30 bg-tech-items rounded-[25px]"
-                            onMouseEnter={() => { setHoveredItem(item) }}
-                            onMouseLeave={() => { setHoveredItem(null) }}>
+                        <div key={item.name} className="flex flex-col fade-in gap-4 cursor-arrow hover:scale-105 justify-center items-center p-2 whitespace-nowrap  relative overflow-hidden min-h-29.5 min-w-29.5 bg-tech-items rounded-[25px]"
+                            onMouseEnter={() => { setHoveredItem(item); setHoveredIcon(item) }}
+                            onMouseLeave={() => { setHoveredItem(null); setHoveredIcon(null) }}>
+                            {item.mastery === 'Expert' &&
+                                <div className="absolute top-2 right-2">
+                                    <Star fill="oklch(0.7195 0.1094 208.91)" strokeWidth={0} />
+                                </div>
+
+                            }
                             <item.Icon size={36} color={`${hoveredItem === item ? 'oklch(0.698 0.1038 228.79)' : 'var(--color-foreground)'}`} />
                             <p className={`cursor-default ${hoveredItem === item ? "text-primary" : 'text-foreground'}`}>{item.name}</p>
                         </div>

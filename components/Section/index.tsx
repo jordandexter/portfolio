@@ -5,6 +5,7 @@ import { SectionHeader } from "./SectionHeader";
 interface SectionProps {
     heading?: string,
     subheading?: string,
+    position?: 'center' | 'left' | 'right',
     parentRef: RefObject<HTMLDivElement | null>,
     variant?: 'dark' | 'darkest'
     children?: ReactNode
@@ -14,6 +15,7 @@ interface SectionProps {
 export function Section({
     heading,
     subheading,
+    position = 'left',
     parentRef,
     variant,
     children
@@ -25,6 +27,7 @@ export function Section({
             <div className="flex flex-col w-full max-w-[1000px] gap-6">
                 <SectionHeader
                     heading={heading}
+                    postion={position}
                     subheading={subheading}
                     parentRef={parentRef}
                 />
