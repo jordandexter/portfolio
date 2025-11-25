@@ -2,7 +2,7 @@
 import { RefObject, useState, useEffect, useRef, Dispatch, SetStateAction } from "react"
 import { SliderItem } from "./types"
 import { motion } from "framer-motion"
-import { Star } from "lucide-react"
+import { Code2, Star } from "lucide-react"
 
 interface TechnologiesSliderProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -69,9 +69,12 @@ export const TechnologiesSlider = ({
                                 <div className="absolute top-2 right-2">
                                     <Star fill="oklch(0.7195 0.1094 208.91)" strokeWidth={0} />
                                 </div>
-
                             }
-                            <item.Icon size={36} color={`${hoveredItem === item ? 'oklch(0.698 0.1038 228.79)' : 'var(--color-foreground)'}`} />
+                            {item.Icon ? (
+                                <item.Icon size={36} color={`${hoveredItem === item ? 'oklch(0.698 0.1038 228.79)' : 'var(--color-foreground)'}`} />
+                            ) : (
+                                <Code2 size={35} />
+                            )}
                             <p className={`cursor-default ${hoveredItem === item ? "text-primary" : 'text-foreground'}`}>{item.name}</p>
                         </div>
                     )

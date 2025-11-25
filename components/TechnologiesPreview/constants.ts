@@ -69,5 +69,6 @@ export const tools: SliderItem[] = [
     { name: "Selenium", Icon: SiSelenium, type: "other", yearsExperience: 2, mastery: 'Proficient' },
     { name: "Yarn", Icon: SiYarn, type: "frontend", yearsExperience: 5, mastery: 'Proficient' },
     { name: "Linux", Icon: SiLinux, type: "other", yearsExperience: 15, mastery: 'Expert' },
+    { name: "zustand", Icon: null, type: "frontend", yearsExperience: 2, mastery: 'Proficient' },
     { name: "Ubuntu", Icon: SiUbuntu, type: "other", yearsExperience: 15, mastery: 'Expert' }
 ];

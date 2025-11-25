@@ -1,17 +1,12 @@
 import { Project } from "@/components/ProjectPreview/types";
 import { create } from "zustand";
 
-
-
-
 interface ProjectModalProps {
     open: boolean;
     project: Project | null;
 }
 
-
 // Simple zustand store for modal state management
-
 interface ModalStore {
     projectModalOpen: ProjectModalProps;
     contactFormOpen: boolean;
