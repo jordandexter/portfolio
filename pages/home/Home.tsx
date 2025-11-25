@@ -65,6 +65,7 @@ export default function Home() {
                             <Section
                                 heading="Simple, Elegant, familiar."
                                 subheading="Philosophy"
+                                position="center"
                                 parentRef={ref}
                                 variant='darkest'>
                                 <ComponentPreview scrollRef={ref} />

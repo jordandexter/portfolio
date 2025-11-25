@@ -15,7 +15,7 @@ export function ComponentPreview({
         <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
             <AnimatedText
                 delay={600}
-                align="left"
+                align="center"
                 scrollRef={scrollRef}>
                 <span className="text-foreground-emphasized inline">
                     Simplicity is the ultimate sophistication.
