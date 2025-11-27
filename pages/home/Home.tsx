@@ -18,7 +18,6 @@ import { useState } from "react";
 export default function Home() {
     const ref = useRef<HTMLDivElement>(null);
     const aboutSectionRef = useRef<HTMLDivElement>(null)
-    const [data, setData] = useState<any | null>(null)
 
     return (
         <div className="flex justify-center font-sans">
@@ -34,7 +33,7 @@ export default function Home() {
                             }}>
 
                             <Section
-                                heading="Recent Additions"
+                                heading="Case Studies"
                                 subheading="Projects"
                                 parentRef={ref}>
                                 <ProjectPreview scrollRef={ref} />
@@ -49,6 +48,9 @@ export default function Home() {
                             </Section>
 
                             <Section
+                                heading="Let's Talk Numbers"
+                                subheading="Statistics"
+                                position="center"
                                 parentRef={ref}
                                 variant="darkest">
                                 <StatisticsPreview scrollRef={ref} />
@@ -80,12 +82,17 @@ export default function Home() {
                             </StickySection>
 
                             <Section
+                                heading="Let's Connect"
+                                subheading="Socials"
                                 parentRef={ref}
                                 variant="darkest">
                                 <InstagramPreview scrollRef={ref} />
                             </Section>
 
                             <Section
+                                heading="Crafted With Love"
+                                subheading="Repository"
+                                position="center"
                                 parentRef={ref}
                                 variant="darkest">
                                 <GithubPreview scrollRef={ref} />

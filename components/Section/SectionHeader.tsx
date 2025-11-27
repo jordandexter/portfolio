@@ -12,7 +12,7 @@ export const SectionHeader = ({
     heading,
     subheading,
     postion = 'left',
-    parentRef
+    parentRef,
 }: SectionHeaderProps) => {
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const [animationTrigger, setAnimationTrigger] = useState(false);
