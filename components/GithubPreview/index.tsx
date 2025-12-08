@@ -49,13 +49,6 @@ export function GithubPreview({
 
     return (
         <div className="flex gap-6 flex-col relative">
-            <SectionHeader
-                heading="Crafted with love"
-                subheading="Repository"
-                postion="left"
-                parentRef={scrollRef}
-            />
-
             <AnimatedText
                 delay={600}
                 scrollRef={scrollRef}>

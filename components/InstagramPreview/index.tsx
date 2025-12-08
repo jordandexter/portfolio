@@ -30,12 +30,6 @@ export function InstagramPreview({
                 }}
             >
             </motion.div>
-            <SectionHeader
-                heading={`Let's connect.`}
-                subheading='Socials'
-                parentRef={scrollRef}
-                postion='center'
-            />
             <AnimatedText
                 delay={600}
                 align='center'

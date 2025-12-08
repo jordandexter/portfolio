@@ -158,7 +158,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                         >
                             {designs.map((imagePath, index) => {
                                 return (
-                                    <div key={`${imagePath}-${index}`} className={`flex select-none justify-center items-center overflow-hidden ${isPlaying ? '' : 'cursor-pointer'} min-w-[100%] h-full transition-all duration-1000 p-4 ${index === focusedImageIndex.current ? '' : 'scale-90'}`} onClick={() => {
+                                    <div key={`${imagePath}-${index}`} className={`flex select-none justify-center items-center overflow-hidden ${isPlaying ? '' : 'cursor-pointer'} min-w-[100%] h-full transition-all duration-500 p-4 ${index === focusedImageIndex.current ? '' : 'scale-90'}`} onClick={() => {
                                         if (isPlaying) return;
 
                                         if (index < focusedImageIndex.current) {
@@ -167,7 +167,7 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
                                             handleFocusRight(index - focusedImageIndex.current)
                                         }
                                     }}>
-                                        <div className="flex max-w-[100%] max-h-[100%] rounded-[25px] overflow-hidden"
+                                        <div className="flex max-w-[100%] max-h-[100%] rounded-[25px] overflow-hidden  border-transparent hover:border-1 transition-border duration-300"
                                             style={{
                                                 boxShadow: '0 10px 10px 0 rgba(0,0,0,0.05)'
                                             }} >

@@ -6,13 +6,15 @@ interface AnimatedTextProps {
     align?: 'left' | 'center' | 'right',
     delay: number,
     children: ReactNode
+    onAnimationEnd?: () => void
 }
 
 export function AnimatedText({
     scrollRef,
     align = 'left',
     delay,
-    children
+    children,
+    onAnimationEnd
 }: AnimatedTextProps) {
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const [animationTrigger, setAnimationTrigger] = useState(false);
@@ -27,6 +29,8 @@ export function AnimatedText({
                         setTimeout(() => {
                             setAnimationTrigger(true)
                         }, delay)
+
+
                     }
                 })
             }
@@ -34,6 +38,16 @@ export function AnimatedText({
 
         observer.observe(triggerRef.current)
     }, [scrollRef, triggerRef])
+
+
+    useEffect(() => {
+        if (animationTrigger && onAnimationEnd) {
+            setTimeout(() => {
+                onAnimationEnd()
+            }, 200)
+        }
+
+    }, [animationTrigger])
 
     return (
         <div className={`flex flex-col w-full white ${align === 'left' ? 'items-start text-left' : align === 'right' ? 'items-end text-right' : 'items-center text-center'}`}>

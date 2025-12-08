@@ -13,12 +13,6 @@ export function StatisticsPreview({
 }: StatisticsPreviewProps) {
     return (
         <div className="flex w-full justify-center flex-col gap-6">
-            <SectionHeader
-                heading="Let's talk numbers"
-                subheading="Statistics"
-                postion="center"
-                parentRef={scrollRef}
-            />
 
             <AnimatedText
                 delay={600}
