@@ -23,15 +23,6 @@ export function ProjectPreview({
 
     return (
         <div ref={ref} className="flex max-w-[1000px] justify-center overflow-hidden flex-col">
-            <AnimatedText
-                scrollRef={scrollRef}
-                delay={600}
-            >
-                <span className="text-foreground-emphasized">Here are few of my favorites.</span> These
-                projects showcase not only my creativity, but also my experience working across multiple
-                technologies each with a unique stack.
-            </AnimatedText>
-
             <motion.div className="flex flex-col"
                 style={{
                     opacity: opacityScale,

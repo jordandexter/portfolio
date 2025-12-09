@@ -22,15 +22,6 @@ export function TechnologiesPreview({
                 scrollbarWidth: 'none'
             }}>
             <div className="flex flex-wrap md:flex-nowrap gap-6 md:justify-between">
-
-                <AnimatedText
-                    scrollRef={scrollRef}
-                    delay={600}>
-                    <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With
-                    my formal training in network infrastructure and DevOps, I not only
-                    implement your application, but guarantee performance and longevity.
-                </AnimatedText>
-
                 {hoveredIcon &&
                     <div className="flex flex-col w-[500px] fade-in border-1 p-3 bg-section-background rounded-[15px]">
                         <h1 className="w-full flex justify-center pl-1 text-sm">{hoveredIcon.name}</h1>

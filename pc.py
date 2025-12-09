@@ -1,12 +1,13 @@
 import sys
 import os
 
+# Little CLI tool to standardize component creation conventions
+
 def createNewComponent(name):
     component_dir = os.path.join('.', 'components', name)
     os.makedirs(component_dir, exist_ok=True)
     index_file_path = os.path.join(component_dir, 'index.tsx')
 
-    # Write the React component boilerplate
     with open(index_file_path, 'w') as f:
         f.write(f"export function {name}() {{\n")
         f.write("    return (\n")

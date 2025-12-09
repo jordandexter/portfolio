@@ -24,7 +24,7 @@ A personal portfolio website built with Next.js and TypeScript. This repository 
 This site is a modern portfolio built on Next.js (App Router) with React and Tailwind CSS styles. It uses a component-first approach — individual previews, sliders, and modals are organized under `components/` and `app/` contains the pages and layout.
 
 Key goals:
-- Fast, accessible pages with animations (framer-motion)
+- Fast, accessible pages with smooth, sleek animations (framer-motion)
 - Reusable components for project previews and statistics
 - Easy content updates by adding project folders under `public/` and wiring them in `app/project` pages
 
@@ -38,7 +38,7 @@ Key goals:
 
 ## Getting started
 
-Prerequisites:
+Prerequisites (keepin' it simple):
 
 - Node.js 18 or newer
 - npm
@@ -57,7 +57,7 @@ npm run dev
 
 Open http://localhost:3000 in your browser.
 
-Production build:
+OR production build:
 
 ```bash
 npm run build

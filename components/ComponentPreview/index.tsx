@@ -13,15 +13,6 @@ export function ComponentPreview({
 
     return (
         <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
-            <AnimatedText
-                delay={600}
-                align="center"
-                scrollRef={scrollRef}>
-                <span className="text-foreground-emphasized inline">
-                    Simplicity is the ultimate sophistication.
-                </span>{" "} Let the UI stay intuitive and unobtrusive — allow just
-                enough creative flair to make it memorable.
-            </AnimatedText>
         </div>
     );
 }

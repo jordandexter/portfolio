@@ -13,15 +13,6 @@ export function StatisticsPreview({
 }: StatisticsPreviewProps) {
     return (
         <div className="flex w-full justify-center flex-col gap-6">
-
-            <AnimatedText
-                delay={600}
-                align="center"
-                scrollRef={scrollRef}>
-                <span className="text-foreground-emphasized">Nerds love stats.</span> I'm certainly not the exception. Here are a few I
-                think you'll enjoy.
-            </AnimatedText>
-
             <div className="flex w-full justify-center flex-col gap-2">
                 <h1 className="text-primary">Industry</h1>
                 <div className="flex flex-col gap-6 justify-center items-center">

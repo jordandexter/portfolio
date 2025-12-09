@@ -1,6 +1,6 @@
 "use client"
 import HeroHeader from "@/components/Hero";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
@@ -13,7 +13,6 @@ import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
 import { ModalContainer } from "@/modals";
-import { useState } from "react";
 
 export default function Home() {
     const ref = useRef<HTMLDivElement>(null);
@@ -35,6 +34,8 @@ export default function Home() {
                             <Section
                                 heading="Case Studies"
                                 subheading="Projects"
+                                paragraphEmphasized="Here are few of my favorites."
+                                paragraphText="These projects showcase not only my creativity, but also my experience working across multiple technologies each with a unique stack."
                                 parentRef={ref}>
                                 <ProjectPreview scrollRef={ref} />
                             </Section>
@@ -42,6 +43,8 @@ export default function Home() {
                             <Section
                                 heading="Technologies"
                                 subheading="Skillset"
+                                paragraphEmphasized="Frontend focused. Backend trained."
+                                paragraphText="With my formal training in network infrastructure and DevOps, I not only implement your application, but guarantee performance and longevity."
                                 parentRef={ref}
                                 variant='dark'>
                                 <TechnologiesPreview scrollRef={ref} />
@@ -50,6 +53,8 @@ export default function Home() {
                             <Section
                                 heading="Let's Talk Numbers"
                                 subheading="Statistics"
+                                paragraphEmphasized="Nerds love stats."
+                                paragraphText="I'm certainly not the exception. Here are a few I think you'll enjoy."
                                 position="center"
                                 parentRef={ref}
                                 variant="darkest">
@@ -59,6 +64,8 @@ export default function Home() {
                             <Section
                                 heading="Graphic Design"
                                 subheading="Branding"
+                                paragraphEmphasized="Beautiful websites begin with good design."
+                                paragraphText="Creating elegant, visually appealing designs has been a lifelong hobby. Here's some of my graphic work."
                                 parentRef={ref}
                                 variant='darkest'>
                                 <GraphicDesignPreview scrollRef={ref} />
@@ -67,6 +74,8 @@ export default function Home() {
                             <Section
                                 heading="Simple, Elegant, familiar."
                                 subheading="Philosophy"
+                                paragraphEmphasized="Simplicity is the ultimate sophistication."
+                                paragraphText="Let the UI stay intuitive and unobtrusive — allow just enough creative flair to make it memorable."
                                 position="center"
                                 parentRef={ref}
                                 variant='darkest'>
@@ -84,6 +93,9 @@ export default function Home() {
                             <Section
                                 heading="Let's Connect"
                                 subheading="Socials"
+                                position="center"
+                                paragraphEmphasized="Thanks for taking a look."
+                                paragraphText="If you like what you see, feel free to give a follow. Here are my main socials."
                                 parentRef={ref}
                                 variant="darkest">
                                 <InstagramPreview scrollRef={ref} />
@@ -92,6 +104,8 @@ export default function Home() {
                             <Section
                                 heading="Crafted With Love"
                                 subheading="Repository"
+                                paragraphEmphasized="Check out this repository on Github."
+                                paragraphText="Maybe leave a star, a nice message, or explore a few of my other projects."
                                 position="center"
                                 parentRef={ref}
                                 variant="darkest">
