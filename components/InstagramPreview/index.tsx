@@ -30,13 +30,6 @@ export function InstagramPreview({
                 }}
             >
             </motion.div>
-            <AnimatedText
-                delay={600}
-                align='center'
-                scrollRef={scrollRef}>
-                <span className='text-foreground-emphasized'>Thanks for taking a look.</span> If you like what you see, feel free to give a follow. Here are
-                my main socials.
-            </AnimatedText>
             <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center relative gap-6">
                 <div className='hidden lg:flex'></div>
 

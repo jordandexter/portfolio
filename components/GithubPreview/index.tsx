@@ -1,7 +1,5 @@
 "use client"
 import { RefObject, useEffect, useState, useRef, MouseEvent } from "react";
-import { SectionHeader } from "../Section/SectionHeader";
-import { AnimatedText } from "../AnimatedText";
 
 interface GithubPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -49,12 +47,6 @@ export function GithubPreview({
 
     return (
         <div className="flex gap-6 flex-col relative">
-            <AnimatedText
-                delay={600}
-                scrollRef={scrollRef}>
-                <span className="text-foreground-emphasized">Checkout this repository on Github.</span> Maybe leave a star, a nice message, or explore a few of my other projects.
-            </AnimatedText>
-
             <div className="flex relative justify-center">
 
                 <div ref={triggerRef} className="flex w-full h-0" />

@@ -134,17 +134,6 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
 
     return (
         <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
-            <AnimatedText
-                delay={600}
-                align="left"
-                scrollRef={scrollRef}>
-                <span className="text-foreground-emphasized inline">
-                    Beautiful websites begin with good design.
-                </span>{" "}
-                Creating elegant, visually appealing designs has been a lifelong hobby. Here's some of my graphic
-                work.
-            </AnimatedText>
-
             <motion.div className="flex w-full flex-col justify-center items-center"
                 style={{
                     opacity: opacityScale,
