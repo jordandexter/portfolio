@@ -43,8 +43,6 @@ export default function Home() {
                             <Section
                                 heading="Technologies"
                                 subheading="Skillset"
-                                paragraphEmphasized="Frontend focused. Backend trained."
-                                paragraphText="With my formal training in network infrastructure and DevOps, I not only implement your application, but guarantee performance and longevity."
                                 parentRef={ref}
                                 variant='dark'>
                                 <TechnologiesPreview scrollRef={ref} />
@@ -75,7 +73,7 @@ export default function Home() {
                                 heading="Simple, Elegant, familiar."
                                 subheading="Philosophy"
                                 paragraphEmphasized="Simplicity is the ultimate sophistication."
-                                paragraphText="Let the UI stay intuitive and unobtrusive — allow just enough creative flair to make it memorable."
+                                paragraphText="Let the UI stay intuitive and unobtrusive. Allow just enough creative flair to make it memorable."
                                 position="center"
                                 parentRef={ref}
                                 variant='darkest'>
