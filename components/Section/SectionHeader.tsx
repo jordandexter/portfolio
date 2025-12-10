@@ -49,7 +49,7 @@ export const SectionHeader = ({
                             <h3 className={`flex text-foreground fade-in ${postion === 'center' ? 'justify-center' : postion === 'left' ? 'justify-start' : 'justify-end'}`}>{subheading}</h3>
                         }
                         {heading &&
-                            <h1 className="flex text-4xl bg-clip-text text-transparent inline-block fade-in-heading primary-gradient pb-1"
+                            <h1 className="flex  text-2xl md:text-4xl bg-clip-text text-transparent inline-block fade-in-heading primary-gradient pb-1"
                                 style={{
                                     animationDuration: '1000ms',
                                     animationDelay: '400ms',
