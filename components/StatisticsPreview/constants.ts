@@ -23,7 +23,7 @@ export const industryStats: Statistic[] = [
     },
     {
         title: "Projects Deployed",
-        value: 6,
+        value: 4,
         metric: "+",
     },
     {
