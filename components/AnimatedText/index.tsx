@@ -3,6 +3,7 @@ import { ReactNode, RefObject, useRef, useState, useEffect } from "react"
 
 interface AnimatedTextProps {
     scrollRef: RefObject<HTMLDivElement | null>,
+    className?: string,
     align?: 'left' | 'center' | 'right',
     delay: number,
     children: ReactNode
@@ -11,6 +12,7 @@ interface AnimatedTextProps {
 
 export function AnimatedText({
     scrollRef,
+    className,
     align = 'left',
     delay,
     children,
@@ -50,7 +52,7 @@ export function AnimatedText({
     }, [animationTrigger])
 
     return (
-        <div className={`flex flex-col ${align === 'left' ? 'items-start text-left' : align === 'right' ? 'items-end text-right' : 'items-center text-center'}`}>
+        <div className={`flex flex-col ${align === 'left' ? 'items-start text-left' : align === 'right' ? 'items-end text-right' : 'items-center text-center'} ${className}`}>
             <h2 className="text-foreground max-w-[500px] text-xl font-bold transition-all duration-1000"
                 style={{
                     translate: animationTrigger ? '0px 0px' : `0 20px`,

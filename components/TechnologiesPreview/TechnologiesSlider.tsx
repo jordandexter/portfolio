@@ -55,8 +55,8 @@ export const TechnologiesSlider = ({
     }, [scrollRef, ref])
 
     return (
-        <div ref={containerRef} className="flex relative w-full">
-            <motion.div className="flex flex-row gap-2 min-h-30 hover:cursor-grab "
+        <div ref={containerRef} className="flex relative w-full hover:cursor-grab">
+            <motion.div className="flex flex-row gap-2 min-h-30"
                 drag='x'
                 whileDrag={{ cursor: 'grabbing' }}
                 dragConstraints={containerRef}>
@@ -75,7 +75,7 @@ export const TechnologiesSlider = ({
                             ) : (
                                 <Code2 size={35} />
                             )}
-                            <p className={`cursor-default ${hoveredItem === item ? "text-primary" : 'text-foreground'}`}>{item.name}</p>
+                            <p className={` ${hoveredItem === item ? "text-primary" : 'text-foreground'}`}>{item.name}</p>
                         </div>
                     )
                 })}

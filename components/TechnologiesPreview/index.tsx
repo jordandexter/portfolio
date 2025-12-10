@@ -21,9 +21,11 @@ export function TechnologiesPreview({
             style={{
                 scrollbarWidth: 'none'
             }}>
-            <div className="flex flex-wrap md:flex-nowrap gap-6 md:justify-between">
+            <div className="flex flex-wrap md:flex-nowrap gap-0 lg:justify-between relative">
+
                 <AnimatedText
                     scrollRef={scrollRef}
+                    className={`${hoveredIcon ? 'opacity-0 md:opacity-100' : ''} transition-opacity duration-400`}
                     align='left'
                     delay={400}
                 >
@@ -31,7 +33,7 @@ export function TechnologiesPreview({
                 </AnimatedText>
 
                 {hoveredIcon &&
-                    <div className="flex flex-col w-[500px] fade-in border-1 p-3 bg-section-background rounded-[15px]">
+                    <div className="absolute md:right-0 flex flex-col w-full md:max-w-[400px] fade-in border-1 p-3 bg-section-background rounded-[15px]">
                         <h1 className="w-full flex justify-center pl-1 text-sm">{hoveredIcon.name}</h1>
                         <div className="flex flex-row gap-3 h-full justify-center items-center">
                             {hoveredIcon.Icon ? (
@@ -56,7 +58,6 @@ export function TechnologiesPreview({
                         </div>
 
                     </div>
-
                 }
 
             </div>
