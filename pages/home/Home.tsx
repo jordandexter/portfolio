@@ -5,7 +5,8 @@ import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
 import { Section } from "@/components/Section";
-import { StickySection } from "@/components/StickySection";
+import { BackgroundStickySection } from "@/components/BackgroundStickySection";
+import { DesignStickySection } from "@/components/DesignStickSection";
 import { BackgroundPreview } from "@/components/BackgroundPreview";
 import { ContactForm } from "@/components/ContactForm";
 import { StatisticsPreview } from "@/components/StatisticsPreview";
@@ -34,7 +35,7 @@ export default function Home() {
                             <Section
                                 heading="Case Studies"
                                 subheading="Projects"
-                                paragraphEmphasized="Here are few of my favorites."
+                                paragraphEmphasized="Here are a few of my favorites."
                                 paragraphText="These projects showcase not only my creativity, but also my experience working across multiple technologies each with a unique stack."
                                 parentRef={ref}>
                                 <ProjectPreview scrollRef={ref} />
@@ -80,13 +81,13 @@ export default function Home() {
                                 <ComponentPreview scrollRef={ref} />
                             </Section>
 
-                            <StickySection
+                            <BackgroundStickySection
                                 heading="Background"
                                 subheading="About"
                                 parentRef={ref}
                                 variant="darkest">
                                 <BackgroundPreview scrollRef={ref} backgroundPreviewRef={aboutSectionRef} />
-                            </StickySection>
+                            </BackgroundStickySection>
 
                             <Section
                                 heading="Let's Connect"

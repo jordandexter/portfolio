@@ -11,7 +11,7 @@ interface SectionProps {
     children?: ReactNode
 }
 
-export function StickySection({
+export function BackgroundStickySection({
     heading,
     subheading,
     parentRef,

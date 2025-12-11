@@ -1,5 +1,6 @@
 import { RefObject } from "react";
 import { AnimatedParagraph } from "./AnimatedParagraph";
+import { BackgroundSticky } from "./sticky";
 interface BackgroundPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
     backgroundPreviewRef: RefObject<HTMLDivElement | null>
