@@ -18,7 +18,7 @@ export function InstagramPreview({
     });
     const translateScale = useTransform(scrollYProgress, [0.6, 0.7], ["-1000px", "650px"]);
     return (
-        <div className='flex flex-col w-full justify-center gap-6 pb-30'>
+        <div className='flex flex-col w-full justify-center gap-6 md:pb-10'>
 
             <motion.div className='absolute h-80 w-80 opacity-80 pointer-events-none'
                 style={{
