@@ -137,9 +137,8 @@ export const projects: Project[] = [
         such as which items are performing the best, or even promote their establishment to be more likely to appear on
         a users feed.
         \n\n
-        Although my time with Menu Mingle was relatively short, I had the opportunity to see work collaboratively with the
-        client to not only help their vision come to life but to guide them toward some of the standard UI practices of the 
-        modern web development world.
+        Although my time with Menu Mingle was relatively short, I had the opportunity to work directly with the
+        client to not only help their vision come to life but to guide them toward some of the standard UI modern web development.
         `
     },
     {
