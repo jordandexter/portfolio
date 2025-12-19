@@ -30,8 +30,6 @@ export function GithubPreview({
 
 
     useEffect(() => {
-        console.log(flareX)
-
         if (flareX <= 130) {
             setLeftFlareOpacity((130 - flareX) / 50)
             setRightFlareOpacity(0)

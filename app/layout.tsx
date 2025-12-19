@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { ModalContainer } from "@/modals";
 
 export const metadata: Metadata = {
   title: "Jordan Dexter | Web Development Portfolio",
@@ -25,6 +26,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: gtmScript2 }} />
       </head>
       <body className={`flex bg-background flex-col min-w-[375px] antialiased hidden`}>
+        <ModalContainer />
         <Header />
         {children}
       </body>
