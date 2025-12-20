@@ -63,7 +63,7 @@ export function BackgroundStickySection({
             </motion.div>
 
 
-            <div className="flex w-full items-center justify-center">
+            <div id="Background" className="flex w-full items-center justify-center">
                 <div className="flex w-full max-w-200 px-12 justify-center">
                     <SectionHeader
                         postion="center"

@@ -13,6 +13,8 @@ import { StatisticsPreview } from "@/components/StatisticsPreview";
 import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
+import * as THREE from 'three';
+import { SpacialEffect } from "@/components/SpacialEffect";
 
 export default function Home() {
     const ref = useRef<HTMLDivElement>(null);
@@ -21,6 +23,7 @@ export default function Home() {
     return (
         <div className="flex justify-center font-sans">
             <div ref={ref} className="absolute z-9999 pointer-events-none top-0 w-0 min-h-screen" />
+            <SpacialEffect />
             <main className="flex flex-col w-full gap-8 items-center">
                 {ref &&
                     <>

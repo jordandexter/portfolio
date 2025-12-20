@@ -1,6 +1,7 @@
-import { RefObject } from "react";
+import { RefObject, useRef, useEffect } from "react";
 import { AnimatedParagraph } from "./AnimatedParagraph";
 import { BackgroundSticky } from "./sticky";
+import { useFocusedSection } from "@/stores/focusedSection";
 interface BackgroundPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
     backgroundPreviewRef: RefObject<HTMLDivElement | null>
@@ -11,9 +12,31 @@ export function BackgroundPreview({
     backgroundPreviewRef
 }: BackgroundPreviewProps) {
 
+    const triggerRef = useRef<HTMLDivElement | null>(null);
+    const { setFocusedSection } = useFocusedSection()
+
+    useEffect(() => {
+        if (!scrollRef.current || !triggerRef.current) return;
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(async (entry) => {
+                    if (entry.isIntersecting) {
+                        setFocusedSection("Background")
+                    }
+                })
+            }
+        )
+
+        observer.observe(triggerRef.current)
+    }, [scrollRef, triggerRef])
+
     return (
+
         <div ref={backgroundPreviewRef} className="flex flex-col w-full items-center">
-            <div className="flex flex-col w-full max-w-200 z-1">
+            < div className="flex flex-col w-full max-w-200 z-1">
+
+                <div ref={triggerRef} className="flex w-full h-0" />
 
                 <AnimatedParagraph scrollRef={scrollRef}>
                     <h2 className="text-white font-bold text-xl px-12">
@@ -55,6 +78,6 @@ export function BackgroundPreview({
                     </h2>
                 </AnimatedParagraph>
             </div>
-        </div>
+        </div >
     );
 }

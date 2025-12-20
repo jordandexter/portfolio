@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { ModalContainer } from "@/modals";
 
 export const metadata: Metadata = {
-  title: "Jordan Dexter | Web Development Portfolio",
+  title: "Jordan Dexter | Software Engineer and Web Development Portfolio",
 };
 
 
@@ -25,7 +25,7 @@ export default function RootLayout({
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL52QLRR5K" />
         <script dangerouslySetInnerHTML={{ __html: gtmScript2 }} />
       </head>
-      <body className={`flex bg-background flex-col min-w-[375px] antialiased hidden`}>
+      <body className={`flex bg-background flex-col min-w-[375px] antialiased dark`}>
         <ModalContainer />
         <Header />
         {children}
