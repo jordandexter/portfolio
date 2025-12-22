@@ -4,7 +4,7 @@ import * as THREE from 'three';
 
 export function SpacialEffect() {
     const generatePointInScene = () => {
-        const bound = 3500;
+        const bound = 4500;
         const isNegative = Math.random() < 0.5 ? true : false
         let x = Math.random();
         if (isNegative)
@@ -61,7 +61,7 @@ export function SpacialEffect() {
         camera.lookAt(0, 0, 0)
 
 
-        for (let i: number = 0; i < 600; i++) {
+        for (let i: number = 0; i < 800; i++) {
             addSphere(scene)
         }
 

@@ -1,15 +1,12 @@
 'use client'
 import { useFocusedSection } from "@/stores/focusedSection"
-import { ArrowLeft, ArrowRight, Hamburger, HamburgerIcon, MenuIcon } from "lucide-react"
-import { useEffect, useState } from "react"
-
-
+import { ArrowRight, MenuIcon } from "lucide-react"
+import { useState } from "react"
 
 interface NavButton {
     title: string,
     heading: string
 }
-
 
 const navOptions: NavButton[] = [
     { title: 'Home', heading: 'Home' },
@@ -25,7 +22,7 @@ export function Header() {
 
     return (
         <div className="fixed rounded-full w-full bg-transparent z-99 flex justify-center p-4">
-            <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border-1 border-black/60 bg-gray-500/20 p-4 justify-between gap-5 transition-all duration-300" style={{
+            <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border-1 border-black/10 bg-gray-500/20 p-4 justify-between gap-5 transition-all duration-300" style={{
                 backdropFilter: 'blur(40px)'
             }}>
                 <div className="h-8 w-8 rounded-full overflow-hidden hidden md:flex">
@@ -39,11 +36,11 @@ export function Header() {
                                     const sectionDiv = document.getElementById(opt.heading)
                                     if (!sectionDiv) return;
 
-                                    const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset - 100;
+                                    const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset - 150;
 
                                     window.scrollTo({
                                         top: top,
-                                        behavior: 'smooth'
+                                        behavior: 'instant'
                                     })
                                 }}>
                                 {opt.title}
