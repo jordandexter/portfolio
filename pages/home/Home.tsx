@@ -6,14 +6,12 @@ import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
 import { Section } from "@/components/Section";
 import { BackgroundStickySection } from "@/components/BackgroundStickySection";
-import { DesignStickySection } from "@/components/DesignStickSection";
 import { BackgroundPreview } from "@/components/BackgroundPreview";
 import { ContactForm } from "@/components/ContactForm";
 import { StatisticsPreview } from "@/components/StatisticsPreview";
 import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
-import * as THREE from 'three';
 import { SpacialEffect } from "@/components/SpacialEffect";
 
 export default function Home() {

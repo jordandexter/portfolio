@@ -19,7 +19,6 @@ export function InstagramPreview({
     const translateScale = useTransform(scrollYProgress, [0.6, 0.7], ["-1000px", "650px"]);
     return (
         <div className='flex flex-col w-full justify-center gap-6 md:pb-10'>
-
             <motion.div className='absolute h-80 w-80 opacity-80 pointer-events-none'
                 style={{
                     backgroundImage: 'radial-gradient(var(--color-foreground-emphasized) 20%, transparent)',
@@ -32,13 +31,14 @@ export function InstagramPreview({
                 <div className='hidden lg:flex'></div>
 
                 <div className='flex w-full justify-center'>
-                    <img src={image} className="h-150 min-w-70 max-w-70 z-1 border-8 border-black w-full overflow-hidden rounded-[36px] object-cover" height={2532} width={1170} />
+                    <img src={'instagram-hover.png'} className={`absolute h-150 top-0 min-w-70 max-w-70 ${image === 'instagram-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
+                    <img src={'github-hover.png'} className={`absolute h-150 min-w-70 top-0 max-w-70 ${image === 'github-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
+                    <img src={'linkedin-hover.png'} className={`absolute h-150 min-w-70 top-0 max-w-70 ${image === 'linkedin-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
                 </div>
                 <SocialCardContainer
                     scrollRef={scrollRef}
                     setImage={setImage}
                 />
-
             </div>
         </div >
     );
