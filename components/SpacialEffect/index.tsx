@@ -66,8 +66,8 @@ export function SpacialEffect() {
         }
 
         const animate = () => {
-            origin.rotation.y += 0.0003
-            origin.rotation.x += 0.0002
+            origin.rotation.y += 0.0008
+            origin.rotation.x += 0.001
             renderer.render(scene, camera);
             window.requestAnimationFrame(animate)
         };
