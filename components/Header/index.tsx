@@ -51,7 +51,9 @@ export function Header() {
                         )
                     })}
                 </div>
-                <div className="hidden md:flex" />
+                <div className="hidden md:flex opacity-0 w-8 rounded-full overflow-hidden hidden md:flex">
+                    <img src='/IMG_4202.jpg' />
+                </div>
                 <div className="flex md:hidden justify-between">
                     <div className="h-8 w-8 rounded-full overflow-hidden flex">
                         <img src='/IMG_4202.jpg' />
