@@ -23,7 +23,7 @@ export function Header() {
     return (
         <div className="fixed rounded-full w-full bg-transparent z-99 flex justify-center p-4">
             <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border-1 border-black/10 bg-gray-500/20 p-4 justify-between gap-5 transition-all duration-300" style={{
-                backdropFilter: 'blur(40px)'
+                backdropFilter: 'blur(10px)'
             }}>
                 <div className="h-8 w-8 rounded-full overflow-hidden hidden md:flex">
                     <img src='/IMG_4202.jpg' />

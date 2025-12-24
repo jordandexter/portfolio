@@ -51,7 +51,7 @@ export const ProjectModal = ({
                 />
                 {project.description?.split('\n\n').map((paragraph, index) => {
                     return (
-                        <AnimatedText scrollRef={ref} align="left" delay={200} key={index} className="text-xl md:text-3xl">{paragraph}</AnimatedText>
+                        <AnimatedText showAnimatedText={true} scrollRef={ref} align="left" delay={200} key={index} className="text-xl md:text-3xl">{paragraph}</AnimatedText>
                     )
                 })}
             </div>
