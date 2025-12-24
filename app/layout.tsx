@@ -4,9 +4,9 @@ import { Header } from "@/components/Header";
 import { ModalContainer } from "@/modals";
 
 export const metadata: Metadata = {
-  title: "Jordan Dexter | Software Engineer and Web Development Portfolio",
+  title: "Jordan Dexter | e Engineering and Web Development Portfolio",
+  description: "These projects showcase not only my creativity, but also my experience working across multiple technologies each with a unique stack."
 };
-
 
 const gtmScript2 = `window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
