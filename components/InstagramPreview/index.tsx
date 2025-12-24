@@ -30,8 +30,8 @@ export function InstagramPreview({
             <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center relative gap-6">
                 <div className='hidden lg:flex'></div>
 
-                <div className='flex w-full justify-center'>
-                    <img src={'instagram-hover.png'} className={`absolute h-150 top-0 min-w-70 max-w-70 ${image === 'instagram-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
+                <div className='flex min-w-full md:w-full justify-center min-w-70 max-w-70 h-150 relative'>
+                    <img src={'instagram-hover.png'} className={`absolute h-150 min-w-70 max-w-70 ${image === 'instagram-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
                     <img src={'github-hover.png'} className={`absolute h-150 min-w-70 top-0 max-w-70 ${image === 'github-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
                     <img src={'linkedin-hover.png'} className={`absolute h-150 min-w-70 top-0 max-w-70 ${image === 'linkedin-hover.png' ? 'z-1' : 'z-0'} border-8 border-black w-full overflow-hidden rounded-[36px] object-cover`} height={2532} width={1170} />
                 </div>

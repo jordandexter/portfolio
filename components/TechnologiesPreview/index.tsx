@@ -24,6 +24,7 @@ export function TechnologiesPreview({
             <div className="flex flex-wrap md:flex-nowrap gap-0 lg:justify-between relative">
 
                 <AnimatedText
+                    showAnimatedText={true}
                     scrollRef={scrollRef}
                     className={`${hoveredIcon ? 'opacity-0 md:opacity-100' : ''} transition-opacity duration-400`}
                     align='left'

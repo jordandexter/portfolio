@@ -6,6 +6,7 @@ interface SectionHeaderProps {
     subheading?: string,
     postion?: 'left' | 'right' | 'center'
     parentRef: RefObject<HTMLDivElement | null>
+    onAnimationEnd?: () => void
 }
 
 export const SectionHeader = ({
@@ -13,6 +14,7 @@ export const SectionHeader = ({
     subheading,
     postion = 'left',
     parentRef,
+    onAnimationEnd
 }: SectionHeaderProps) => {
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const [animationTrigger, setAnimationTrigger] = useState(false);
@@ -25,6 +27,9 @@ export const SectionHeader = ({
                 entries.forEach(async (entry) => {
                     if (entry.isIntersecting) {
                         setAnimationTrigger(true)
+                        setTimeout(() => {
+                            onAnimationEnd?.()
+                        }, 800);
                     }
                 })
             }

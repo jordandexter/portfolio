@@ -13,8 +13,10 @@ interface SectionProps {
     parentRef: RefObject<HTMLDivElement | null>,
     variant?: 'dark' | 'darkest'
     children?: ReactNode
-
 }
+
+
+const ANIMATION_DELAY = 200;
 
 export function Section({
     heading,
@@ -27,7 +29,10 @@ export function Section({
     children
 }: SectionProps) {
     const background = !variant ? 'bg-background-section' : variant === 'dark' ? 'bg-section-background-dark' : 'bg-section-background-darkest'
+
     const triggerRef = useRef<HTMLDivElement | null>(null);
+    const [showAnimatedText, setShowAnimatedText] = useState(false);
+    const [showChildren, setShowChildren] = useState(!heading && !subheading ? true : false);
     const [animationTrigger, setAnimationTrigger] = useState(false);
     const { setFocusedSection } = useFocusedSection()
 
@@ -41,11 +46,7 @@ export function Section({
                         if (heading) {
                             setFocusedSection(heading)
                         }
-                        setTimeout(() => {
-                            setAnimationTrigger(true)
-                        }, 800)
-
-
+                        setAnimationTrigger(true)
                     }
                 })
             }
@@ -54,26 +55,32 @@ export function Section({
         observer.observe(triggerRef.current)
     }, [parentRef, triggerRef])
 
-
     return (
         <div id={heading} className={`flex px-10 min-h-100 overflow-hidden justify-center items-center flex-col py-12 relative ${background}`} >
             <div className="flex flex-col w-full max-w-[1000px] gap-6">
+
                 <SectionHeader
                     heading={heading}
                     postion={position}
                     subheading={subheading}
                     parentRef={parentRef}
+                    onAnimationEnd={() => { setShowAnimatedText(true) }}
                 />
-                {(paragraphEmphasized || paragraphText) &&
-                    <AnimatedText
-                        scrollRef={parentRef}
-                        align={position}
-                        delay={400}
-                    >
-                        <span className="text-foreground-emphasized">{paragraphEmphasized}</span> {paragraphText}
-                    </AnimatedText>
-                }
-                <div className={`transition-opacity transition-translate duration-1000 ${animationTrigger ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+
+                <AnimatedText
+                    showAnimatedText={showAnimatedText}
+                    scrollRef={parentRef}
+                    align={position}
+                    onAnimationEnd={() => { setShowChildren(true) }}
+                >
+                    {(paragraphEmphasized || paragraphText) &&
+                        <>
+                            <span className="text-foreground-emphasized">{paragraphEmphasized}</span> {paragraphText}
+                        </>
+                    }
+                </AnimatedText>
+
+                <div className={`transition-opacity transition-translate duration-1000 ${animationTrigger && showChildren ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                     <div ref={triggerRef} className="flex w-full h-0 translate-y-100 pointer-events-none" />
                     {children}
                 </div>
