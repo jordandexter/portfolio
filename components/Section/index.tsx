@@ -4,6 +4,19 @@ import { SectionHeader } from "./SectionHeader";
 import { AnimatedText } from "../AnimatedText";
 import { useFocusedSection } from "@/stores/focusedSection";
 
+
+/*
+
+Section Component:
+
+In order for each section to behave as similarly as possible, the section compoent defines the general layout
+of each portion of the page: heading, paragraph, and  children.
+
+There are a few configurable values such as alignment or background color. However, the sections are not suppose
+to be infinately flexible to keep the design of the application as cohesive as possible.
+
+*/
+
 interface SectionProps {
     heading?: string,
     subheading?: string,
@@ -14,9 +27,6 @@ interface SectionProps {
     variant?: 'dark' | 'darkest'
     children?: ReactNode
 }
-
-
-const ANIMATION_DELAY = 200;
 
 export function Section({
     heading,
