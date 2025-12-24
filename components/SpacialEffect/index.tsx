@@ -61,7 +61,7 @@ export function SpacialEffect() {
         camera.lookAt(0, 0, 0)
 
 
-        for (let i: number = 0; i < 800; i++) {
+        for (let i: number = 0; i < 1000; i++) {
             addSphere(scene)
         }
 

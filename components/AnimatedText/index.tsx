@@ -2,19 +2,21 @@
 import { ReactNode, RefObject, useRef, useState, useEffect } from "react"
 
 interface AnimatedTextProps {
+    showAnimatedText: boolean,
     scrollRef: RefObject<HTMLDivElement | null>,
     className?: string,
     align?: 'left' | 'center' | 'right',
-    delay: number,
+    delay?: number,
     children: ReactNode
     onAnimationEnd?: () => void
 }
 
 export function AnimatedText({
+    showAnimatedText,
     scrollRef,
     className,
     align = 'left',
-    delay,
+    delay = 0,
     children,
     onAnimationEnd
 }: AnimatedTextProps) {
@@ -22,6 +24,9 @@ export function AnimatedText({
     const [animationTrigger, setAnimationTrigger] = useState(false);
 
     useEffect(() => {
+        if (!showAnimatedText) return;
+        console.log('here')
+
         if (!scrollRef.current || !triggerRef.current) return;
 
         const observer = new IntersectionObserver(
@@ -31,22 +36,20 @@ export function AnimatedText({
                         setTimeout(() => {
                             setAnimationTrigger(true)
                         }, delay)
-
-
                     }
                 })
             }
         )
 
         observer.observe(triggerRef.current)
-    }, [scrollRef, triggerRef])
+    }, [scrollRef, triggerRef, showAnimatedText])
 
 
     useEffect(() => {
         if (animationTrigger && onAnimationEnd) {
             setTimeout(() => {
                 onAnimationEnd()
-            }, 200)
+            }, 400)
         }
 
     }, [animationTrigger])
