@@ -1,8 +1,23 @@
 "use client"
-import { useEffect } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { useTransform, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-export function SpacialEffect() {
+interface SpacialEffectProps {
+    scrollRef: RefObject<HTMLDivElement | null>
+}
+
+export function SpacialEffect({
+    scrollRef
+}: SpacialEffectProps) {
+    const { scrollYProgress } = useScroll({
+        target: scrollRef,
+        offset: ["start start", "end start"]
+    });
+
+    const scaleScale = useTransform(scrollYProgress, [0.8, 1], [1, 0]);
+
     const generatePointInScene = () => {
         const bound = 4500;
         const isNegative = Math.random() < 0.5 ? true : false
@@ -74,11 +89,12 @@ export function SpacialEffect() {
         animate()
     }, [])
     return (
-        <div className="fixed inset-0 overflow-hidden"
+        <motion.div className="fixed inset-0 overflow-hidden"
             style={{
-                backgroundImage: 'linear-gradient(-35deg, #0c9ac540, #000000 70%)'
+                backgroundImage: 'linear-gradient(-35deg, #0c9ac540, #000000 70%)',
+                opacity: scaleScale
             }}>
             <canvas id="spacialeffect" />
-        </div>
+        </motion.div>
     );
 }
