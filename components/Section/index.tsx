@@ -42,7 +42,7 @@ export function Section({
 
     const triggerRef = useRef<HTMLDivElement | null>(null);
     const [showAnimatedText, setShowAnimatedText] = useState(false);
-    const [showChildren, setShowChildren] = useState(!heading && !subheading ? true : false);
+    const [showChildren, setShowChildren] = useState(false);
     const [animationTrigger, setAnimationTrigger] = useState(false);
     const { setFocusedSection } = useFocusedSection()
 
@@ -64,6 +64,7 @@ export function Section({
 
         observer.observe(triggerRef.current)
     }, [parentRef, triggerRef])
+    console.log(undefined)
 
     return (
         <div id={heading} className={`flex px-10 min-h-100 overflow-hidden justify-center items-center flex-col py-12 relative ${background}`} >
@@ -74,7 +75,13 @@ export function Section({
                     postion={position}
                     subheading={subheading}
                     parentRef={parentRef}
-                    onAnimationEnd={() => { setShowAnimatedText(true) }}
+                    onAnimationEnd={() => {
+                        if (paragraphText || paragraphEmphasized) {
+                            setShowAnimatedText(true)
+                        } else {
+                            setShowChildren(true)
+                        }
+                    }}
                 />
 
                 <AnimatedText
