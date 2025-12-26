@@ -25,7 +25,7 @@ export default function Home() {
             <main className="flex flex-col w-full gap-8 items-center">
                 {ref &&
                     <>
-                        <HeroHeader scrollRef={ref} aboutSectionRef={aboutSectionRef} />
+                        <HeroHeader scrollRef={ref} />
                         <div className="flex flex-col w-full z-1 bg-section-background rounded-t-[50px]"
                             style={{
                                 boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'

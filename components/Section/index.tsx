@@ -3,6 +3,7 @@ import { RefObject, ReactNode, useState, useRef, useEffect } from "react";
 import { SectionHeader } from "./SectionHeader";
 import { AnimatedText } from "../AnimatedText";
 import { useFocusedSection } from "@/stores/focusedSection";
+import { head } from "framer-motion/client";
 
 
 /*
@@ -64,7 +65,6 @@ export function Section({
 
         observer.observe(triggerRef.current)
     }, [parentRef, triggerRef])
-    console.log(undefined)
 
     return (
         <div id={heading} className={`flex px-10 min-h-100 overflow-hidden justify-center items-center flex-col py-12 relative ${background}`} >

@@ -22,7 +22,7 @@ export function Header() {
 
     return (
         <div className="fixed rounded-full w-full bg-transparent z-99 flex justify-center p-4">
-            <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border-1 border-black/10 bg-gray-500/20 p-4 justify-between gap-5 transition-all duration-300" style={{
+            <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border-1 border-black/10 bg-gray-500/20 p-4 justify-between transition-all duration-300" style={{
                 backdropFilter: 'blur(10px)'
             }}>
                 <div className="h-8 w-8 rounded-full overflow-hidden hidden md:flex">
@@ -31,7 +31,7 @@ export function Header() {
                 <div className="md:flex hidden">
                     {navOptions.map((opt) => {
                         return (
-                            <button key={opt.heading} className={`${opt.heading === focusedSection ? 'text-primary font-bold  border-primary' : 'text-white/50 hover:text-white/70'}`}
+                            <button key={opt.heading} className={`w-20 ${opt.heading === focusedSection ? 'text-primary font-bold border-primary' : 'text-white/50 hover:text-white/70'}`}
                                 onClick={() => {
                                     const sectionDiv = document.getElementById(opt.heading)
                                     if (!sectionDiv) return;
@@ -58,7 +58,6 @@ export function Header() {
                     <button className={`hover:text-white ${showMobileMenu ? 'text-white' : ''}`}
                         onClick={() => {
                             setShowMobileMenu(!showMobileMenu)
-
                         }}>
                         <MenuIcon />
                     </button>
@@ -74,10 +73,11 @@ export function Header() {
                                     const sectionDiv = document.getElementById(opt.heading)
                                     if (!sectionDiv) return;
 
-                                    const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset;
+                                    const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset - 150;
+
                                     window.scrollTo({
                                         top: top,
-                                        behavior: 'smooth'
+                                        behavior: 'instant'
                                     })
                                 }}>
                                 <p className="w-full flex justify-between ">

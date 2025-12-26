@@ -53,8 +53,15 @@ export function AnimatedText({
 
     }, [animationTrigger])
 
-    if (!children || children === undefined)
+
+    useEffect(() => {
+        if (!children || children === undefined)
+            onAnimationEnd?.();
+    }, [])
+
+    if (!children || children === undefined) {
         return null
+    }
 
     return (
         <div className={`flex flex-col ${align === 'left' ? 'items-start text-left' : align === 'right' ? 'items-end text-right' : 'items-center text-center'} ${className}`}>

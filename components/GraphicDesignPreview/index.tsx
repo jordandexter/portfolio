@@ -2,7 +2,6 @@ import { RefObject, useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, motion, useDragControls } from "framer-motion";
 import { designs } from "./constants";
 import { Pause, Play } from "lucide-react";
-import { AnimatedText } from "../AnimatedText";
 
 interface GraphicDesignPreviewProps {
     scrollRef: RefObject<HTMLDivElement | null>
@@ -22,8 +21,8 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
         target: ref,
         offset: ["start end", "start start"]
     });
-    const opacityScale = useTransform(scrollYProgress, [0.5, 0.9], ["0%", "100%"]);
-    const translateScale = useTransform(scrollYProgress, [0.5, 0.9], ["200px", "0px"]);
+    const opacityScale = useTransform(scrollYProgress, [0.4, 0.7], ["0%", "100%"]);
+    const translateScale = useTransform(scrollYProgress, [0.4, 0.7], ["200px", "0px"]);
 
     const getCarouselContainer = () => {
         const carouselContainer = document.getElementById('carousel');
@@ -134,13 +133,13 @@ export function GraphicDesignPreview({ scrollRef }: GraphicDesignPreviewProps) {
 
     return (
         <div ref={ref} className="flex w-full flex-col gap-5 scrollbar-hide">
-            <motion.div className="flex w-full flex-col justify-center items-center"
+            <motion.div className="flex w-full flex-col"
                 style={{
                     opacity: opacityScale,
                     translateY: translateScale
                 }}>
                 <div className="flex w-full justify-center">
-                    <div className="flex w-150 md:w-150 lg:h-200 lg:w-160 relative">
+                    <div className="flex w-150 md:w-150 lg:h-160 lg:w-160 relative">
                         <motion.div
                             id='carousel'
                             className=" flex min-h-full flex-row flex-nowrap transition-all duration-1000 ease-in-out"

@@ -37,10 +37,7 @@ export function ContactForm({
     }, [scrollRef, triggerRef])
 
     return (
-        <div className={`flex w-full justify-center items-center flex-col gap-12 py-40`}
-            style={{
-            }}>
-
+        <div className={`flex w-full justify-center items-center flex-col gap-12 py-40`}>
             <div id='Contact Me' ref={triggerRef} className="flex w-full h-0 translate-y-100 pointer-events-none" />
             <ContactFormContent />
         </div>

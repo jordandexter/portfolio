@@ -18,8 +18,8 @@ export function ProjectPreview({
         offset: ["start end", "start start"]
     });
 
-    const opacityScale = useTransform(scrollYProgress, [0, 0.7], ["0%", "100%"]);
-    const scaleScale = useTransform(scrollYProgress, [0, 0.7], [0.5, 1]);
+    const opacityScale = useTransform(scrollYProgress, [0, 0.6], ["0%", "100%"]);
+    const scaleScale = useTransform(scrollYProgress, [0, 0.6], [0.5, 1]);
 
     return (
         <div ref={ref} className="flex max-w-[1000px] justify-center overflow-hidden flex-col">
