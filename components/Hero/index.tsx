@@ -9,12 +9,10 @@ const SHOW_CONTAINER_NAMES = false
 
 interface HeroHeaderProps {
     scrollRef: RefObject<HTMLDivElement | null>;
-    aboutSectionRef: RefObject<HTMLDivElement | null>;
 }
 
 export default function HeroHeader({
     scrollRef,
-    aboutSectionRef,
 }: HeroHeaderProps) {
     const { setContactFormModalOpen } = useModalStore()
     const [hovered, setHovered] = useState(false)
@@ -29,20 +27,6 @@ export default function HeroHeader({
     const opacityScale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
     const scaleScale = useTransform(scrollYProgress, [0, 1], [1, 0.0]);
     const blurScale = useTransform(scrollYProgress, [0, 1], ["0px", "200px"])
-
-    const scrollToAbout = () => {
-        const body = document.getElementsByTagName('html')[0]
-        if (aboutSectionRef.current) {
-            const top = aboutSectionRef.current.getBoundingClientRect().top + window.pageYOffset;
-            if (body && aboutSectionRef.current) {
-                body.scrollTo({
-                    top: top - 100,
-                    behavior: 'smooth'
-                })
-            }
-        }
-    }
-
 
     useEffect(() => {
         if (!scrollRef.current || !triggerRef.current) return;
@@ -85,7 +69,7 @@ export default function HeroHeader({
                             animationDuration: '1000ms',
                             animationDelay: '200ms'
                         }}>
-                            Frontend Developer | Software Engineer
+                            Software Engineer | Full-stack Developer
                         </h2>
                         <h1 className="text-5xl fade-in bg-clip-text text-transparent primary-gradient"
                             style={{
