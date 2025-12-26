@@ -25,7 +25,6 @@ export function AnimatedText({
 
     useEffect(() => {
         if (!showAnimatedText) return;
-        console.log('here')
 
         if (!scrollRef.current || !triggerRef.current) return;
 
@@ -53,6 +52,9 @@ export function AnimatedText({
         }
 
     }, [animationTrigger])
+
+    if (!children || children === undefined)
+        return null
 
     return (
         <div className={`flex flex-col ${align === 'left' ? 'items-start text-left' : align === 'right' ? 'items-end text-right' : 'items-center text-center'} ${className}`}>
