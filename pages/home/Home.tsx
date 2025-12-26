@@ -30,7 +30,6 @@ export default function Home() {
                             style={{
                                 boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'
                             }}>
-
                             <Section
                                 heading="Case Studies"
                                 subheading="Projects"
@@ -115,6 +114,23 @@ export default function Home() {
                                 variant="dark">
                                 <ContactForm scrollRef={ref} />
                             </Section>
+
+
+                            <div className="flex w-full justify-center py-6 flex-col items-center bg-section-background-dark">
+                                <div className="flex w-full flex-col max-w-250 justify-center gap-5">
+                                    <div className="flex w-full justify-between">
+                                        <p className="text-white/40"
+                                            style={{
+                                                fontSize: '13px'
+                                            }}>2025 - 'Nothin reserved</p>
+                                        <p className="text-white/40"
+                                            style={{
+                                                fontSize: '13px'
+                                            }}>Built with <span className="text-primary">Next.js</span> + <span className="text-primary">React</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </>
