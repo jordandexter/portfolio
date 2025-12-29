@@ -98,7 +98,7 @@ export function Section({
                 </AnimatedText>
 
                 <div className={`transition-opacity transition-translate duration-1000 ${animationTrigger && showChildren ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-                    <div ref={triggerRef} className="flex w-full h-0 translate-y-100 pointer-events-none" />
+                    <div ref={triggerRef} className="flex w-full h-0 translate-y-[30%] z-1000 pointer-events-none" />
                     {children}
                 </div>
             </div>
