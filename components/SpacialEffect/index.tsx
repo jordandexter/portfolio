@@ -19,7 +19,7 @@ export function SpacialEffect({
     const scaleScale = useTransform(scrollYProgress, [0.8, 1], [1, 0]);
 
     const generatePointInScene = () => {
-        const bound = 4500;
+        const bound = 8500;
         const isNegative = Math.random() < 0.5 ? true : false
         let x = Math.random();
         if (isNegative)
@@ -47,7 +47,7 @@ export function SpacialEffect({
     useEffect(() => {
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(
-            50,
+            80,
             window.innerWidth / window.innerHeight,
             1,
             6000
@@ -76,13 +76,14 @@ export function SpacialEffect({
         camera.lookAt(0, 0, 0)
 
 
-        for (let i: number = 0; i < 1000; i++) {
+        for (let i: number = 0; i < 3000; i++) {
             addSphere(scene)
         }
 
         const animate = () => {
-            origin.rotation.y += 0.0016
-            origin.rotation.x += 0.002
+            origin.rotation.y += 0.0008
+            origin.rotation.z = 0.5
+            origin.rotation.x = 0.5
             renderer.render(scene, camera);
             window.requestAnimationFrame(animate)
         };

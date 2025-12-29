@@ -132,7 +132,7 @@ export const ContactFormContent = () => {
     }, [formData])
 
     return (
-        <div ref={ref} className={`flex items-center flex-col w-full max-w-150 bg-transparent gap-1 md:gap-4 overflow-scroll p-6 ${sending && !hasSent ? 'opacity-50' : ''}`}
+        <div ref={ref} className={`flex items-center flex-col w-full max-w-150 bg-transparent gap-1 md:gap-4 ${sending && !hasSent ? 'opacity-50' : ''}`}
             style={{
                 scrollbarWidth: 'none'
             }}>
@@ -205,29 +205,32 @@ export const ContactFormContent = () => {
                         />
                     </div>
 
+                    <div className='flex flex-col gap-5'>
 
-                    <button type='button' disabled={sending} onClick={onSubmit} className={`flex gap-2 mt-5 md:mt-0 ${sending ? 'bg-transparent' : 'bg-primary max-w-100'} min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white`}>
-                        {sending ? 'Submitting...' : 'Submit'}
-                        {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-                    </button>
 
-                    <div className="flex flex-col gap-3 justify-center items-center">
-                        <div className="flex flex-row gap-12">
-                            {socials.map((social) => {
-                                return (
-                                    <a className="flex flex-col justify-center items-center"
-                                        href={social.link}
-                                        key={social.name}
-                                        target="__blank"
-                                        onMouseEnter={() => setHoveredSocial(social)}
-                                        onMouseLeave={() => setHoveredSocial(null)}>
-                                        <div className={`flex ${hoveredSocial == social ? 'bg-primary' : 'bg-section-background'} w-10 h-10 justify-center items-center rounded-full`}>
-                                            <social.icon size={24} color={`${hoveredSocial === social ? 'white' : ''}`} />
-                                        </div>
-                                        <p className={`${hoveredSocial === social ? 'text-primary' : ''}`}>{social.name}</p>
-                                    </a>
-                                )
-                            })}
+                        <button type='button' disabled={sending} onClick={onSubmit} className={`flex gap-2 mt-5 md:mt-0 ${sending ? 'bg-transparent' : 'bg-primary max-w-100'} min-w-[150px] rounded-full text-gray-200 py-2 font-bold hover:bg-primary-hover hover:text-white`}>
+                            {sending ? 'Submitting...' : 'Submit'}
+                            {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+                        </button>
+
+                        <div className="flex flex-col gap-3 justify-center items-center">
+                            <div className="flex flex-row gap-12">
+                                {socials.map((social) => {
+                                    return (
+                                        <a className="flex flex-col justify-center items-center"
+                                            href={social.link}
+                                            key={social.name}
+                                            target="__blank"
+                                            onMouseEnter={() => setHoveredSocial(social)}
+                                            onMouseLeave={() => setHoveredSocial(null)}>
+                                            <div className={`flex ${hoveredSocial == social ? 'bg-primary' : 'bg-section-background'} w-10 h-10 justify-center items-center rounded-full`}>
+                                                <social.icon size={24} color={`${hoveredSocial === social ? 'white' : ''}`} />
+                                            </div>
+                                            <p className={`${hoveredSocial === social ? 'text-primary' : ''}`}>{social.name}</p>
+                                        </a>
+                                    )
+                                })}
+                            </div>
                         </div>
                     </div>
                 </>
