@@ -1,6 +1,6 @@
 "use client"
 import HeroHeader from "@/components/Hero";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
@@ -13,10 +13,27 @@ import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
 import { SpacialEffect } from "@/components/SpacialEffect";
+import { useSearchParams } from "next/dist/client/components/navigation";
 
 export default function Home() {
+    const params = useSearchParams()
     const ref = useRef<HTMLDivElement>(null);
     const aboutSectionRef = useRef<HTMLDivElement>(null)
+
+
+
+    useEffect(() => {
+        const val = params?.get('redirect')
+        if (val) {
+            const sectionDiv = document.getElementById(val)
+            if (!sectionDiv) return;
+            const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset - 150;
+            window.scrollTo({
+                top: top,
+                behavior: 'instant'
+            })
+        }
+    }, [])
 
     return (
         <div className="flex justify-center font-sans">
