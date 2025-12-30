@@ -1,6 +1,7 @@
 'use client'
 import { useFocusedSection } from "@/stores/focusedSection"
 import { ArrowRight, MenuIcon } from "lucide-react"
+import { redirect } from "next/dist/server/api-utils"
 import { useState } from "react"
 
 interface NavButton {
@@ -34,10 +35,12 @@ export function Header() {
                             <button key={opt.heading} className={`w-20 ${opt.heading === focusedSection ? 'text-primary font-bold border-primary' : 'text-white/50 hover:text-white/70'}`}
                                 onClick={() => {
                                     const sectionDiv = document.getElementById(opt.heading)
+                                    if (!sectionDiv) {
+                                        window.location.href = `/?redirect=${opt.heading}`
+                                    }
+
                                     if (!sectionDiv) return;
-
                                     const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset - 150;
-
                                     window.scrollTo({
                                         top: top,
                                         behavior: 'instant'
