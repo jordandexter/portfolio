@@ -1,8 +1,5 @@
-import { Bot, Braces, CircleUser, Code, Code2, Database, Hourglass, Layers, LayoutDashboard, Lock, Pencil, PersonStanding, Settings, Settings2, Users, Video, Workflow } from "lucide-react";
+import { Bot, CircleUser, Code2, Database, Layers, LayoutDashboard, Lock, Pencil, Plug, Settings2, Users, Workflow } from "lucide-react";
 import { Project } from "./types";
-
-
-
 
 export const projects: Project[] = [
     {
@@ -10,17 +7,17 @@ export const projects: Project[] = [
         subtitle: "Web Design",
         tools: [
             {
-                name: 'HLS',
-                icon: Video
-            },
-            {
                 name: 'Design',
                 icon: Pencil
             },
             {
                 name: 'Auth',
                 icon: Lock
-            }
+            },
+            {
+                name: 'WebSockets',
+                icon: Plug
+            },
         ],
         image: '/lfg/lfg-1.png',
         description: `The LFGTV project is my most complex project to date. The inital concept was
@@ -50,8 +47,8 @@ export const projects: Project[] = [
                 icon: Pencil
             },
             {
-                name: 'CSS',
-                icon: Braces
+                name: 'AI',
+                icon: Bot
             },
             {
                 name: 'API',

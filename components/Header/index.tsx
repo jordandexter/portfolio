@@ -1,7 +1,6 @@
 'use client'
 import { useFocusedSection } from "@/stores/focusedSection"
 import { ArrowRight, MenuIcon } from "lucide-react"
-import { redirect } from "next/dist/server/api-utils"
 import { useState } from "react"
 
 interface NavButton {
@@ -22,8 +21,8 @@ export function Header() {
     const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
 
     return (
-        <div className="fixed rounded-full w-full bg-transparent z-99 flex justify-center p-4">
-            <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border-1 border-black/10 bg-gray-500/20 p-4 justify-between transition-all duration-300" style={{
+        <div className="fixed rounded-full w-full bg-transparent z-99 flex justify-center p-3">
+            <div className="flex flex-col md:flex-row max-w-350 w-full rounded-[10px] border border-black/10 bg-gray-500/20 p-3 justify-between transition-all duration-300" style={{
                 backdropFilter: 'blur(10px)'
             }}>
                 <div className="h-8 w-8 rounded-full overflow-hidden hidden md:flex">
@@ -32,7 +31,7 @@ export function Header() {
                 <div className="md:flex hidden">
                     {navOptions.map((opt) => {
                         return (
-                            <button key={opt.heading} className={`w-20 ${opt.heading === focusedSection ? 'text-primary font-bold border-primary' : 'text-white/50 hover:text-white/70'}`}
+                            <button key={opt.heading} className={`w-20 ${opt.heading === focusedSection ? 'text-primary font-bold border-primary pointer-events-none' : 'text-white/50 hover:text-white/70'}`}
                                 onClick={() => {
                                     const sectionDiv = document.getElementById(opt.heading)
                                     if (!sectionDiv) {
@@ -70,7 +69,7 @@ export function Header() {
                 <div className={`${showMobileMenu ? 'flex flex-col md:hidden justify-end' : 'hidden'}`}>
                     {navOptions.map((opt) => {
                         return (
-                            <button key={opt.heading} className={`w-full py-10 hover:bg-gray-400/20 rounded-[10px] hover:text-white flex justify-start items-start ${opt.heading === focusedSection ? 'text-primary font-bold  border-primary' : 'text-white/50 hover:text-white/70'}`}
+                            <button key={opt.heading} className={`w-full py-10 hover:bg-gray-400/20 rounded-[10px] hover:text-white flex justify-start items-start ${opt.heading === focusedSection ? 'text-primary font-bold pointer-events-none border-primary' : 'text-white/50 hover:text-white/70'}`}
                                 onClick={() => {
                                     setShowMobileMenu(false)
                                     const sectionDiv = document.getElementById(opt.heading)
