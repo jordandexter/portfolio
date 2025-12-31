@@ -1,6 +1,6 @@
 "use client"
 import HeroHeader from "@/components/Hero";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ProjectPreview } from "@/components/ProjectPreview";
 import { TechnologiesPreview } from "@/components/TechnologiesPreview"
 import { GraphicDesignPreview } from "@/components/GraphicDesignPreview";
@@ -16,11 +16,10 @@ import { SpacialEffect } from "@/components/SpacialEffect";
 import { useSearchParams } from "next/dist/client/components/navigation";
 
 export default function Home() {
+    const [showHero, setShowHero] = useState(false);
     const params = useSearchParams()
     const ref = useRef<HTMLDivElement>(null);
     const aboutSectionRef = useRef<HTMLDivElement>(null)
-
-
 
     useEffect(() => {
         const val = params?.get('redirect')
@@ -38,20 +37,20 @@ export default function Home() {
     return (
         <div className="flex justify-center font-sans">
             <div ref={ref} className="absolute z-9999 pointer-events-none top-0 w-0 min-h-screen" />
-            <SpacialEffect scrollRef={ref} />
+            <SpacialEffect scrollRef={ref} onShow={setShowHero} />
             <main className="flex flex-col w-full gap-8 items-center">
                 {ref &&
                     <>
-                        <HeroHeader scrollRef={ref} />
+                        <HeroHeader scrollRef={ref} showHero={showHero} />
                         <div className="flex flex-col w-full z-1 bg-section-background rounded-t-[50px]"
                             style={{
-                                boxShadow: '0 -10px 40px 0 rgba(65, 65, 65, 0.1)'
+                                boxShadow: '0 -10px 10px 0 rgba(0, 0, 0, 0.1)'
                             }}>
                             <Section
                                 heading="Case Studies"
                                 subheading="Projects"
                                 paragraphEmphasized="Here are a few of my favorites."
-                                paragraphText="These projects showcase not only my creativity, but also my experience working across multiple technologies each with a unique stack."
+                                paragraphText="This list of projects is an attempt to smash four years of work into six tiny boxes. Click one to learn more."
                                 parentRef={ref}>
                                 <ProjectPreview scrollRef={ref} />
                             </Section>
@@ -139,7 +138,7 @@ export default function Home() {
                                         <p className="text-white/40"
                                             style={{
                                                 fontSize: '13px'
-                                            }}>2025 - 'Nothin reserved</p>
+                                            }}>2025 - Nothin' reserved</p>
                                         <p className="text-white/40"
                                             style={{
                                                 fontSize: '13px'

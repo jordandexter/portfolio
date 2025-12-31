@@ -1,15 +1,17 @@
 "use client"
-import { RefObject, useEffect, useRef } from 'react';
+import { Dispatch, RefObject, SetStateAction, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useTransform, useScroll } from 'framer-motion';
 import { motion } from 'framer-motion';
 
 interface SpacialEffectProps {
     scrollRef: RefObject<HTMLDivElement | null>
+    onShow?: Dispatch<SetStateAction<boolean>>
 }
 
 export function SpacialEffect({
-    scrollRef
+    scrollRef,
+    onShow
 }: SpacialEffectProps) {
     const { scrollYProgress } = useScroll({
         target: scrollRef,
@@ -28,7 +30,7 @@ export function SpacialEffect({
         return x;
     }
 
-    const addSphere = (scene: any) => {
+    const addSphere = async (scene: any) => {
         const circleGeometry = new THREE.SphereGeometry(5, 5, 5);
         const circleMaterial = new THREE.MeshStandardMaterial({
 
@@ -75,15 +77,17 @@ export function SpacialEffect({
         origin.add(camera)
         camera.lookAt(0, 0, 0)
 
-
         for (let i: number = 0; i < 3000; i++) {
             addSphere(scene)
         }
 
+        onShow?.(true)
+        origin.rotation.z = 0.5
+        origin.rotation.x = 0.5
+
         const animate = () => {
             origin.rotation.y += 0.0008
-            origin.rotation.z = 0.5
-            origin.rotation.x = 0.5
+
             renderer.render(scene, camera);
             window.requestAnimationFrame(animate)
         };

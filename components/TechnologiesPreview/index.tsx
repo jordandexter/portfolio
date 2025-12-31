@@ -30,7 +30,7 @@ export function TechnologiesPreview({
                     align='left'
                     delay={400}
                 >
-                    <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> With my formal training in network infrastructure and DevOps, I not only implement your application, but guarantee performance and longevity.
+                    <span className="text-foreground-emphasized">Frontend focused. Backend trained.</span> Formal training in DevOps paired with proven passion for sleek user experiences has made me the well-rounded full-stack engineer you see today.
                 </AnimatedText>
 
                 {hoveredIcon &&
