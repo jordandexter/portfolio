@@ -13,26 +13,11 @@ import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
 import { SpacialEffect } from "@/components/SpacialEffect";
-import { useSearchParams } from "next/dist/client/components/navigation";
 
 export default function Home() {
     const [showHero, setShowHero] = useState(false);
-    const params = useSearchParams()
     const ref = useRef<HTMLDivElement>(null);
     const aboutSectionRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        const val = params?.get('redirect')
-        if (val) {
-            const sectionDiv = document.getElementById(val)
-            if (!sectionDiv) return;
-            const top = sectionDiv.getBoundingClientRect().top + window.pageYOffset - 150;
-            window.scrollTo({
-                top: top,
-                behavior: 'instant'
-            })
-        }
-    }, [])
 
     return (
         <div className="flex justify-center font-sans">

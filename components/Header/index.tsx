@@ -35,7 +35,7 @@ export function Header() {
                                 onClick={() => {
                                     const sectionDiv = document.getElementById(opt.heading)
                                     if (!sectionDiv) {
-                                        window.location.href = `/?redirect=${opt.heading}`
+                                        window.location.href = `/`
                                     }
 
                                     if (!sectionDiv) return;
