@@ -13,6 +13,7 @@ import { GithubPreview } from "@/components/GithubPreview";
 import { InstagramPreview } from "@/components/InstagramPreview";
 import { ComponentPreview } from "@/components/ComponentPreview";
 import { SpacialEffect } from "@/components/SpacialEffect";
+import Footer from '@/components/Footer'
 
 export default function Home() {
     const [showHero, setShowHero] = useState(false);
@@ -116,22 +117,7 @@ export default function Home() {
                                 <ContactForm scrollRef={ref} />
                             </Section>
 
-
-                            <div className="flex w-full justify-center py-6 flex-col items-center bg-section-background-dark">
-                                <div className="flex w-full flex-col max-w-250 justify-center gap-5">
-                                    <div className="flex w-full justify-between">
-                                        <p className="text-white/40"
-                                            style={{
-                                                fontSize: '13px'
-                                            }}>2025 - Nothin' reserved</p>
-                                        <p className="text-white/40"
-                                            style={{
-                                                fontSize: '13px'
-                                            }}>Built with <span className="text-primary">Next.js</span> + <span className="text-primary">React</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <Footer />
                         </div>
 
                     </>
